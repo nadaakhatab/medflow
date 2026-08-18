@@ -1,0 +1,17 @@
+query_id,condition,intent,question,expected_document,expected_page_range,expected_section,notes
+GT_01,Hypothyroidism,Diagnosis,"How is hypothyroidism diagnosed in clinical practice?",Hypo_brochure.pdf,2-4,Diagnosis,TSH blood test is primary confirmation
+GT_02,Hypothyroidism,Symptoms,"What are the common clinical signs and symptoms of hypothyroidism?",Hypothyroidism_web_booklet.pdf,4-5,Symptoms,Classic signs of slowed metabolism
+GT_03,Hypothyroidism,Treatment,"What is the standard medical treatment for primary hypothyroidism?",Hypothyroidism_web_booklet.pdf,9-10,Treatment,Daily levothyroxine monotherapy
+GT_04,Hashimoto's Thyroiditis,Diagnosis,"How is Hashimoto's disease diagnosed?",Hashimotos_Thyroiditis.pdf,1-2,Diagnosis,TPO antibodies confirm autoimmune cause
+GT_05,Hashimoto's Thyroiditis,Etiology,"What is the underlying cause and pathophysiology of Hashimoto's thyroiditis?",Hashimotos_Thyroiditis.pdf,1-2,General Content,Chronic autoimmune destruction
+GT_06,Hyperthyroidism,Diagnosis,"How is hyperthyroidism diagnosed?",hyperthyroidism.pdf,2-3,Diagnosis,Low TSH with high free T4/T3
+GT_07,Hyperthyroidism,Treatment,"What are the primary treatment options available for hyperthyroidism?",hyperthyroidism.pdf,3-4,Treatment,Antithyroid drugs/RAI/beta-blockers/surgery
+GT_08,Graves' Disease,Diagnosis,"How is the diagnosis of Graves' disease made?",Graves_brochure.pdf,2-2,Diagnosis,TRAb antibodies + orbitopathy + goiter
+GT_09,Graves' Disease,Treatment,"What are the treatment options for Graves disease?",Graves_brochure.pdf,2-2,Treatment,Four recognized management modalities
+GT_10,Graves' Disease,Complications,"What are the clinical manifestations of Graves' eye disease (orbitopathy)?",Graves_brochure.pdf,1-2,Symptoms,Bulging eyes and periorbital inflammation
+GT_11,Thyroid Nodules,Evaluation,"How should a thyroid nodule be evaluated?",Nodules_brochure.pdf,2-3,Evaluation,Ultrasound + TSH + FNA biopsy
+GT_12,Thyroid Nodules,Evaluation,"When is a fine needle aspiration (FNA) biopsy recommended for a thyroid nodule?",thy.2015.0020.pdf,12-15,Evaluation,ATA sonographic pattern & size criteria
+GT_13,Differentiated Thyroid Cancer,Management,"How is differentiated thyroid cancer managed?",thy.2015.0020.pdf,24-28,Management,Total thyroidectomy or lobectomy
+GT_14,Differentiated Thyroid Cancer,Risk Stratification,"How is recurrence risk stratified in differentiated thyroid cancer after initial surgery?",thy.2015.0020.pdf,32-34,Risk Stratification,Three-tiered ATA risk stratification
+GT_15,Differentiated Thyroid Cancer,Follow-Up,"What tests are used for long-term surveillance of differentiated thyroid cancer?",thy.2015.0020.pdf,41-44,Follow-Up,Serum Tg + TgAb + neck ultrasound
+GT_16,Thyroid Nodules & DTC,Management,"What are the updated guidelines regarding active surveillance for low-risk thyroid tumors?",praw-et-al-2025-executive-summary-of-the-2025-american-thyroid-association-management-guidelines-for-adult-patients.pdf,1-4,Management,2025 ATA active surveillance updates

@@ -1,0 +1,30 @@
+# Virtual Environments
+.venv/
+venv/
+ENV/
+env/
+
+# Python Cache
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+.pytest_cache/
+
+# Environment Variables (Secrets)
+.env
+day1/.env
+day2/.env
+day3/.env
+
+# Local ChromaDB Vector Store
+chroma_db/
+chroma_db_*/
+*.sqlite3
+
+# OS / Editor Files
+.DS_Store
+Thumbs.db
+.vscode/
+.idea/
+.ipynb_checkpoints/

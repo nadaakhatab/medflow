@@ -1,0 +1,1071 @@
+{
+  "evaluation_name": "baseline",
+  "collection_name": "thyroid_section_aware",
+  "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+  "total_queries": 16,
+  "hit_at_1": 0.1875,
+  "hit_at_3": 0.5625,
+  "hit_at_5": 0.6875,
+  "precision_at_3": 0.2917,
+  "precision_at_5": 0.2625,
+  "mrr": 0.3854,
+  "mean_latency_ms": 12.47,
+  "detailed_queries": [
+    {
+      "query_id": "GT_01",
+      "condition": "Hypothyroidism",
+      "intent": "Diagnosis",
+      "question": "How is hypothyroidism diagnosed in clinical practice?",
+      "latency_ms": 34.93,
+      "hit_at_1": 0,
+      "hit_at_3": 1,
+      "hit_at_5": 1,
+      "precision_at_3": 0.3333,
+      "precision_at_5": 0.2,
+      "reciprocal_rank": 0.5,
+      "first_relevant_rank": 2,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 15,
+          "section": "Treatment & Management",
+          "chunk_id": "S00234",
+          "similarity": 0.618,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Treatment & Management] dose and give you your blood test results. Choose a doctor who keeps up to date about advances in the diagnosis and  treatment of thyroid disease."
+        },
+        {
+          "rank": 2,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 5,
+          "section": "Treatment & Management",
+          "chunk_id": "S00144",
+          "similarity": 0.6054,
+          "is_relevant": true,
+          "snippet": "[Hypothyroidism web booklet | Treatment & Management] Hypothyroidism \u2022 (ATA) Copyright \u00a9 2019 (ATA) 5 PAGE SYMPTOMS Hypothyroidism has a variety of symptoms. Symptoms are something you see, feel and/o"
+        },
+        {
+          "rank": 3,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 7,
+          "section": "Symptoms & Clinical Presentation",
+          "chunk_id": "S00164",
+          "similarity": 0.6028,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Symptoms & Clinical Presentation] that many people with a normally functioning thyroid can have. These symptoms might be clues to conditions that may or  may not be relat"
+        },
+        {
+          "rank": 4,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 19,
+          "section": "Treatment & Management",
+          "chunk_id": "S00257",
+          "similarity": 0.6023,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Treatment & Management] (Foreword by George H.W . Bush) by Sheldon Rubenfeld, M.D. The Thyroid Society for Education and Research,  Houston, T exas, 1996, 2002, 2003.  \u2022 "
+        },
+        {
+          "rank": 5,
+          "document": "ThyroidDisease.pdf",
+          "page": 11,
+          "section": "Treatment & Management",
+          "chunk_id": "S00360",
+          "similarity": 0.6017,
+          "is_relevant": false,
+          "snippet": "[ThyroidDisease | Treatment & Management] If the goiter is large, then thyroid hormone treatment is indicated since it often causes significant  reduction in the size of the goiter after several month"
+        }
+      ]
+    },
+    {
+      "query_id": "GT_02",
+      "condition": "Hypothyroidism",
+      "intent": "Symptoms",
+      "question": "What are the common clinical signs and symptoms of hypothyroidism?",
+      "latency_ms": 12.5,
+      "hit_at_1": 1,
+      "hit_at_3": 1,
+      "hit_at_5": 1,
+      "precision_at_3": 0.6667,
+      "precision_at_5": 0.6,
+      "reciprocal_rank": 1.0,
+      "first_relevant_rank": 1,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 5,
+          "section": "Treatment & Management",
+          "chunk_id": "S00144",
+          "similarity": 0.6129,
+          "is_relevant": true,
+          "snippet": "[Hypothyroidism web booklet | Treatment & Management] Hypothyroidism \u2022 (ATA) Copyright \u00a9 2019 (ATA) 5 PAGE SYMPTOMS Hypothyroidism has a variety of symptoms. Symptoms are something you see, feel and/o"
+        },
+        {
+          "rank": 2,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 5,
+          "section": "Symptoms & Clinical Presentation",
+          "chunk_id": "S00149",
+          "similarity": 0.6089,
+          "is_relevant": true,
+          "snippet": "[Hypothyroidism web booklet | Symptoms & Clinical Presentation] breasts  \u2022 Feeling irritable  \u2022 New or worsening depression-sadness or not caring about anything  \u2022 New or worsening hoarse voice  \u2022 New"
+        },
+        {
+          "rank": 3,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 15,
+          "section": "Treatment & Management",
+          "chunk_id": "S00234",
+          "similarity": 0.6062,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Treatment & Management] dose and give you your blood test results. Choose a doctor who keeps up to date about advances in the diagnosis and  treatment of thyroid disease."
+        },
+        {
+          "rank": 4,
+          "document": "ThyroidDisease.pdf",
+          "page": 12,
+          "section": "Treatment & Management",
+          "chunk_id": "S00364",
+          "similarity": 0.6052,
+          "is_relevant": false,
+          "snippet": "[ThyroidDisease | Treatment & Management] thyroid follicular cells leading to the thyroid goiter (enlargement of thyroid gland).   Grave\u2019s disease is a multisystem disease. The most common symptom is "
+        },
+        {
+          "rank": 5,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 7,
+          "section": "Symptoms & Clinical Presentation",
+          "chunk_id": "S00164",
+          "similarity": 0.602,
+          "is_relevant": true,
+          "snippet": "[Hypothyroidism web booklet | Symptoms & Clinical Presentation] that many people with a normally functioning thyroid can have. These symptoms might be clues to conditions that may or  may not be relat"
+        }
+      ]
+    },
+    {
+      "query_id": "GT_03",
+      "condition": "Hypothyroidism",
+      "intent": "Treatment",
+      "question": "What is the standard medical treatment for primary hypothyroidism?",
+      "latency_ms": 13.09,
+      "hit_at_1": 0,
+      "hit_at_3": 0,
+      "hit_at_5": 0,
+      "precision_at_3": 0.0,
+      "precision_at_5": 0.0,
+      "reciprocal_rank": 0.0,
+      "first_relevant_rank": null,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 3,
+          "section": "Treatment & Management",
+          "chunk_id": "S00124",
+          "similarity": 0.5966,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Treatment & Management] Diagnosis ........................................................................................................................................"
+        },
+        {
+          "rank": 2,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 3,
+          "section": "Treatment & Management",
+          "chunk_id": "S00119",
+          "similarity": 0.5948,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Treatment & Management] Hypothyroidism \u2022 (ATA) Copyright \u00a9 2019 (ATA) 3 PAGE TABLE OF CONTENTS The (ATA) ................................................................."
+        },
+        {
+          "rank": 3,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 3,
+          "section": "Diagnosis & Tests",
+          "chunk_id": "S00127",
+          "similarity": 0.5936,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Diagnosis & Tests] Treatment ............................................................................................................................................."
+        },
+        {
+          "rank": 4,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 3,
+          "section": "Surveillance & Follow-Up",
+          "chunk_id": "S00131",
+          "similarity": 0.5928,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Surveillance & Follow-Up] If hypothyroidism is not treated or if treatment is stopped ...................................................................................."
+        },
+        {
+          "rank": 5,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 3,
+          "section": "Surveillance & Follow-Up",
+          "chunk_id": "S00129",
+          "similarity": 0.5881,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Surveillance & Follow-Up] Treatment Considerations........................................................................................................................"
+        }
+      ]
+    },
+    {
+      "query_id": "GT_04",
+      "condition": "Hashimoto's Thyroiditis",
+      "intent": "Diagnosis",
+      "question": "How is Hashimoto's disease diagnosed?",
+      "latency_ms": 8.77,
+      "hit_at_1": 0,
+      "hit_at_3": 0,
+      "hit_at_5": 1,
+      "precision_at_3": 0.0,
+      "precision_at_5": 0.2,
+      "reciprocal_rank": 0.25,
+      "first_relevant_rank": 4,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "ThyroidDisease.pdf",
+          "page": 10,
+          "section": "Diagnosis & Tests",
+          "chunk_id": "S00358",
+          "similarity": 0.5829,
+          "is_relevant": false,
+          "snippet": "[ThyroidDisease | Diagnosis & Tests] neck may also be enlarged.   The diagnosis of Hashimoto\u2019s thyroiditis depends on a correlation of symptoms, examination, and  primarily laboratory work\u2010up. The lev"
+        },
+        {
+          "rank": 2,
+          "document": "ThyroidDisease.pdf",
+          "page": 10,
+          "section": "Symptoms & Clinical Presentation",
+          "chunk_id": "S00356",
+          "similarity": 0.5829,
+          "is_relevant": false,
+          "snippet": "[ThyroidDisease | Symptoms & Clinical Presentation] exposure, and selenium deficiency have also been associated with an increased risk of the disease.   Usually Hashimoto\u2019s thyroiditis is discovered a"
+        },
+        {
+          "rank": 3,
+          "document": "thy.2015.0020.pdf",
+          "page": 36,
+          "section": "Treatment & Management",
+          "chunk_id": "S00941",
+          "similarity": 0.5705,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Treatment & Management] vagus nerve (such as carotid endarterectomy, cervical eso- phagectomy, and anterior approach to the cervical spine) or a history of prior external beam radiati"
+        },
+        {
+          "rank": 4,
+          "document": "Hashimotos_Thyroiditis.pdf",
+          "page": 2,
+          "section": "Diagnosis & Tests",
+          "chunk_id": "S00098",
+          "similarity": 0.5697,
+          "is_relevant": true,
+          "snippet": "[Hashimotos Thyroiditis | Diagnosis & Tests] Learn More More details on this and other thyroid-related topics are available online at . For information on thyroid patient support organizations, please"
+        },
+        {
+          "rank": 5,
+          "document": "thy.2015.0020.pdf",
+          "page": 12,
+          "section": "Evaluation & Workup",
+          "chunk_id": "S00619",
+          "similarity": 0.5684,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Evaluation & Workup] of Hashimoto\u2019s disease or other diffuse thyroidal illness. However, if detected, diffuse 18FDG-PET uptake in the thyroid should also prompt sonographic examinatio"
+        }
+      ]
+    },
+    {
+      "query_id": "GT_05",
+      "condition": "Hashimoto's Thyroiditis",
+      "intent": "Etiology",
+      "question": "What is the underlying cause and pathophysiology of Hashimoto's thyroiditis?",
+      "latency_ms": 13.77,
+      "hit_at_1": 0,
+      "hit_at_3": 0,
+      "hit_at_5": 0,
+      "precision_at_3": 0.0,
+      "precision_at_5": 0.0,
+      "reciprocal_rank": 0.0,
+      "first_relevant_rank": null,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "Hypo_brochure.pdf",
+          "page": 2,
+          "section": "Treatment & Management",
+          "chunk_id": "S00108",
+          "similarity": 0.594,
+          "is_relevant": false,
+          "snippet": "[Hypo brochure | Treatment & Management] B orn without a working thyroid. Some babies are born  without a thyroid or with one that didn\u2019t grow right. Th yroiditis. This is inflammation of the thyroid."
+        },
+        {
+          "rank": 2,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 14,
+          "section": "Surveillance & Follow-Up",
+          "chunk_id": "S00226",
+          "similarity": 0.5897,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Surveillance & Follow-Up] HYPOTHYROIDISM CAUSED BY IODINE DEFICIENCY  The body needs iodine to make thyroid hormone. People who live in parts of the world where they do n"
+        },
+        {
+          "rank": 3,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 15,
+          "section": "Treatment & Management",
+          "chunk_id": "S00238",
+          "similarity": 0.5883,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Treatment & Management] MANY QUESTIONS ABOUT HYPOTHYROIDISM REMAIN MYSTERIES For example: Which genes increase people\u2019s risk for thyroid disease? What triggers the start "
+        },
+        {
+          "rank": 4,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 3,
+          "section": "Treatment & Management",
+          "chunk_id": "S00122",
+          "similarity": 0.5881,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Treatment & Management] Factors contributing to risk of developing hypothyroidism: ......................................................................................."
+        },
+        {
+          "rank": 5,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 6,
+          "section": "Symptoms & Clinical Presentation",
+          "chunk_id": "S00151",
+          "similarity": 0.5851,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Symptoms & Clinical Presentation] Hypothyroidism \u2022 (ATA) Copyright \u00a9 2019 (ATA) 6 PAGE CAUSES There are many reasons why the cells in the thyroid cannot make enough thyro"
+        }
+      ]
+    },
+    {
+      "query_id": "GT_06",
+      "condition": "Hyperthyroidism",
+      "intent": "Diagnosis",
+      "question": "How is hyperthyroidism diagnosed?",
+      "latency_ms": 10.62,
+      "hit_at_1": 0,
+      "hit_at_3": 0,
+      "hit_at_5": 0,
+      "precision_at_3": 0.0,
+      "precision_at_5": 0.0,
+      "reciprocal_rank": 0.0,
+      "first_relevant_rank": null,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 15,
+          "section": "Treatment & Management",
+          "chunk_id": "S00234",
+          "similarity": 0.6077,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Treatment & Management] dose and give you your blood test results. Choose a doctor who keeps up to date about advances in the diagnosis and  treatment of thyroid disease."
+        },
+        {
+          "rank": 2,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 7,
+          "section": "Symptoms & Clinical Presentation",
+          "chunk_id": "S00164",
+          "similarity": 0.6028,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Symptoms & Clinical Presentation] that many people with a normally functioning thyroid can have. These symptoms might be clues to conditions that may or  may not be relat"
+        },
+        {
+          "rank": 3,
+          "document": "Hashimotos_Thyroiditis.pdf",
+          "page": 2,
+          "section": "Diagnosis & Tests",
+          "chunk_id": "S00098",
+          "similarity": 0.6027,
+          "is_relevant": false,
+          "snippet": "[Hashimotos Thyroiditis | Diagnosis & Tests] Learn More More details on this and other thyroid-related topics are available online at . For information on thyroid patient support organizations, please"
+        },
+        {
+          "rank": 4,
+          "document": "ThyroidDisease.pdf",
+          "page": 10,
+          "section": "Risk Stratification & Complications",
+          "chunk_id": "S00353",
+          "similarity": 0.6017,
+          "is_relevant": false,
+          "snippet": "[ThyroidDisease | Risk Stratification & Complications] Hashimoto\u2019s thyroiditis was first described in four patients in 1912 by Dr. Hakaru Hashimoto. The  disease has also been called struma lymphomato"
+        },
+        {
+          "rank": 5,
+          "document": "Nodules_brochure.pdf",
+          "page": 1,
+          "section": "Diagnosis & Tests",
+          "chunk_id": "S00265",
+          "similarity": 0.5996,
+          "is_relevant": false,
+          "snippet": "[Nodules brochure | Diagnosis & Tests] cause thyroid nodules.  HOW IS A THYROID NODULE EVALUATED  AND DIAGNOSED? Once the nodule is discovered, your doctor will try to  determine whether the rest of y"
+        }
+      ]
+    },
+    {
+      "query_id": "GT_07",
+      "condition": "Hyperthyroidism",
+      "intent": "Treatment",
+      "question": "What are the primary treatment options available for hyperthyroidism?",
+      "latency_ms": 9.86,
+      "hit_at_1": 0,
+      "hit_at_3": 0,
+      "hit_at_5": 0,
+      "precision_at_3": 0.0,
+      "precision_at_5": 0.0,
+      "reciprocal_rank": 0.0,
+      "first_relevant_rank": null,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 3,
+          "section": "Diagnosis & Tests",
+          "chunk_id": "S00127",
+          "similarity": 0.5866,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Diagnosis & Tests] Treatment ............................................................................................................................................."
+        },
+        {
+          "rank": 2,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 14,
+          "section": "Surveillance & Follow-Up",
+          "chunk_id": "S00221",
+          "similarity": 0.5853,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Surveillance & Follow-Up] Hypothyroidism \u2022 (ATA) Copyright \u00a9 2019 (ATA) 14 PAGE \u2022 Start or stop taking a drug that can interfere with absorbing thyroxine, or you change y"
+        },
+        {
+          "rank": 3,
+          "document": "ATA_2016_Hyperthyroidism_Thyrotoxicosis_Guidelines.pdf",
+          "page": 6,
+          "section": "Treatment & Management",
+          "chunk_id": "S00052",
+          "similarity": 0.5853,
+          "is_relevant": false,
+          "snippet": "[ATA 2016 Hyperthyroidism Thyrotoxicosis Guidelines | Treatment & Management] especially if not expected to be amenable to salvage surgery. EBRT can now be considered for patients with gross residual "
+        },
+        {
+          "rank": 4,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 3,
+          "section": "Treatment & Management",
+          "chunk_id": "S00119",
+          "similarity": 0.5827,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Treatment & Management] Hypothyroidism \u2022 (ATA) Copyright \u00a9 2019 (ATA) 3 PAGE TABLE OF CONTENTS The (ATA) ................................................................."
+        },
+        {
+          "rank": 5,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 3,
+          "section": "Surveillance & Follow-Up",
+          "chunk_id": "S00131",
+          "similarity": 0.5811,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Surveillance & Follow-Up] If hypothyroidism is not treated or if treatment is stopped ...................................................................................."
+        }
+      ]
+    },
+    {
+      "query_id": "GT_08",
+      "condition": "Graves' Disease",
+      "intent": "Diagnosis",
+      "question": "How is the diagnosis of Graves' disease made?",
+      "latency_ms": 8.66,
+      "hit_at_1": 0,
+      "hit_at_3": 1,
+      "hit_at_5": 1,
+      "precision_at_3": 0.3333,
+      "precision_at_5": 0.6,
+      "reciprocal_rank": 0.3333,
+      "first_relevant_rank": 3,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "ThyroidDisease.pdf",
+          "page": 12,
+          "section": "Treatment & Management",
+          "chunk_id": "S00364",
+          "similarity": 0.6231,
+          "is_relevant": false,
+          "snippet": "[ThyroidDisease | Treatment & Management] thyroid follicular cells leading to the thyroid goiter (enlargement of thyroid gland).   Grave\u2019s disease is a multisystem disease. The most common symptom is "
+        },
+        {
+          "rank": 2,
+          "document": "ThyroidDisease.pdf",
+          "page": 12,
+          "section": "Diagnosis & Tests",
+          "chunk_id": "S00366",
+          "similarity": 0.6182,
+          "is_relevant": false,
+          "snippet": "[ThyroidDisease | Diagnosis & Tests] Ophthalmopathy (eye changes) occur in 50% of Grave\u2019s disease patients. Seventy\u2010five percent of these patients  develop these changes within one year before or afte"
+        },
+        {
+          "rank": 3,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "Diagnosis & Tests",
+          "chunk_id": "S00084",
+          "similarity": 0.6159,
+          "is_relevant": true,
+          "snippet": "[Graves brochure | Diagnosis & Tests] disease are the presence of Graves\u2019 eye disease and/or  dermopathy (see above), a symmetrically enlarged thyroid  gland and a history of other family members with"
+        },
+        {
+          "rank": 4,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "Treatment & Management",
+          "chunk_id": "S00090",
+          "similarity": 0.6065,
+          "is_relevant": true,
+          "snippet": "[Graves brochure | Treatment & Management] most patients will find one treatment plan that is right  for them. Hyperthyroidism due to Graves\u2019 disease is, in  general, controllable and safely treated a"
+        },
+        {
+          "rank": 5,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "Diagnosis & Tests",
+          "chunk_id": "S00083",
+          "similarity": 0.6064,
+          "is_relevant": true,
+          "snippet": "[Graves brochure | Diagnosis & Tests] Graves\u2019 Disease HOW IS THE DIAGNOSIS OF GRAVES\u2019  DISEASE MADE? The diagnosis of hyperthyroidism is made on the basis  of your symptoms and findings during a physi"
+        }
+      ]
+    },
+    {
+      "query_id": "GT_09",
+      "condition": "Graves' Disease",
+      "intent": "Treatment",
+      "question": "What are the treatment options for Graves disease?",
+      "latency_ms": 11.04,
+      "hit_at_1": 1,
+      "hit_at_3": 1,
+      "hit_at_5": 1,
+      "precision_at_3": 1.0,
+      "precision_at_5": 0.6,
+      "reciprocal_rank": 1.0,
+      "first_relevant_rank": 1,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "Treatment & Management",
+          "chunk_id": "S00086",
+          "similarity": 0.6168,
+          "is_relevant": true,
+          "snippet": "[Graves brochure | Treatment & Management] diagnosis if the above tests are not readily available. HOW IS GRAVES\u2019 DISEASE TREATED? The treatment of hyperthyroidism is described in detail in  the Hyper"
+        },
+        {
+          "rank": 2,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "Treatment & Management",
+          "chunk_id": "S00087",
+          "similarity": 0.6109,
+          "is_relevant": true,
+          "snippet": "[Graves brochure | Treatment & Management] radioactive iodine and surgery.  Antithyroid medications are typically preferred in patients  who have a high likelihood of remission (women, mild  disease, "
+        },
+        {
+          "rank": 3,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "Treatment & Management",
+          "chunk_id": "S00090",
+          "similarity": 0.6074,
+          "is_relevant": true,
+          "snippet": "[Graves brochure | Treatment & Management] most patients will find one treatment plan that is right  for them. Hyperthyroidism due to Graves\u2019 disease is, in  general, controllable and safely treated a"
+        },
+        {
+          "rank": 4,
+          "document": "thy.2015.0020.pdf",
+          "page": 55,
+          "section": "Surgery",
+          "chunk_id": "S01172",
+          "similarity": 0.6018,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Surgery] (D) RAI adjuvant therapy should be considered after total thyroidectomy in ATA intermediate-risk level DTC patients. (Weak recommendation, Low-quality evidence) (E) RAI adjuv"
+        },
+        {
+          "rank": 5,
+          "document": "ThyroidDisease.pdf",
+          "page": 14,
+          "section": "Surgery",
+          "chunk_id": "S00380",
+          "similarity": 0.6017,
+          "is_relevant": false,
+          "snippet": "[ThyroidDisease | Surgery] prednisone (steroids) is added to the I\u2010131 treatment, then 67% of patients with ophthalmopathy will have  improvement, and no patients have progression. Steroids of course "
+        }
+      ]
+    },
+    {
+      "query_id": "GT_10",
+      "condition": "Graves' Disease",
+      "intent": "Complications",
+      "question": "What are the clinical manifestations of Graves' eye disease (orbitopathy)?",
+      "latency_ms": 11.69,
+      "hit_at_1": 0,
+      "hit_at_3": 1,
+      "hit_at_5": 1,
+      "precision_at_3": 0.6667,
+      "precision_at_5": 0.6,
+      "reciprocal_rank": 0.5,
+      "first_relevant_rank": 2,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "ThyroidDisease.pdf",
+          "page": 12,
+          "section": "Diagnosis & Tests",
+          "chunk_id": "S00366",
+          "similarity": 0.6312,
+          "is_relevant": false,
+          "snippet": "[ThyroidDisease | Diagnosis & Tests] Ophthalmopathy (eye changes) occur in 50% of Grave\u2019s disease patients. Seventy\u2010five percent of these patients  develop these changes within one year before or afte"
+        },
+        {
+          "rank": 2,
+          "document": "Graves_brochure.pdf",
+          "page": 1,
+          "section": "Symptoms & Clinical Presentation",
+          "chunk_id": "S00079",
+          "similarity": 0.6262,
+          "is_relevant": true,
+          "snippet": "[Graves brochure | Symptoms & Clinical Presentation] orbitopathy). Overall, a third of patients with Graves\u2019  disease develop some signs and symptoms of Graves\u2019  eye disease but only 5% have moderate-"
+        },
+        {
+          "rank": 3,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "Diagnosis & Tests",
+          "chunk_id": "S00084",
+          "similarity": 0.6256,
+          "is_relevant": true,
+          "snippet": "[Graves brochure | Diagnosis & Tests] disease are the presence of Graves\u2019 eye disease and/or  dermopathy (see above), a symmetrically enlarged thyroid  gland and a history of other family members with"
+        },
+        {
+          "rank": 4,
+          "document": "ThyroidDisease.pdf",
+          "page": 12,
+          "section": "Treatment & Management",
+          "chunk_id": "S00364",
+          "similarity": 0.6164,
+          "is_relevant": false,
+          "snippet": "[ThyroidDisease | Treatment & Management] thyroid follicular cells leading to the thyroid goiter (enlargement of thyroid gland).   Grave\u2019s disease is a multisystem disease. The most common symptom is "
+        },
+        {
+          "rank": 5,
+          "document": "Graves_brochure.pdf",
+          "page": 1,
+          "section": "Symptoms & Clinical Presentation",
+          "chunk_id": "S00080",
+          "similarity": 0.6155,
+          "is_relevant": true,
+          "snippet": "[Graves brochure | Symptoms & Clinical Presentation] been made. Seldom do eye problems occur long after  the disease has been treated. In some patients with  eye symptoms, hyperthyroidism never develo"
+        }
+      ]
+    },
+    {
+      "query_id": "GT_11",
+      "condition": "Thyroid Nodules",
+      "intent": "Evaluation",
+      "question": "How should a thyroid nodule be evaluated?",
+      "latency_ms": 7.87,
+      "hit_at_1": 0,
+      "hit_at_3": 1,
+      "hit_at_5": 1,
+      "precision_at_3": 0.6667,
+      "precision_at_5": 0.6,
+      "reciprocal_rank": 0.5,
+      "first_relevant_rank": 2,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "thy.2015.0020.pdf",
+          "page": 27,
+          "section": "Evaluation & Workup",
+          "chunk_id": "S00825",
+          "similarity": 0.6115,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Evaluation & Workup] nancy & RECOMMENDATION 30 (A) FNA of clinically relevant thyroid nodules (refer to section [A10]) should be performed in euthyroid and hy- pothyroid pregnant wome"
+        },
+        {
+          "rank": 2,
+          "document": "Nodules_brochure.pdf",
+          "page": 1,
+          "section": "Diagnosis & Tests",
+          "chunk_id": "S00264",
+          "similarity": 0.6093,
+          "is_relevant": true,
+          "snippet": "[Nodules brochure | Diagnosis & Tests] COMMON ARE THEY? We do not know what causes most thyroid nodules but  they are extremely common. By age 60, about one-half of  all people have a thyroid nodule t"
+        },
+        {
+          "rank": 3,
+          "document": "Nodules_brochure.pdf",
+          "page": 1,
+          "section": "Symptoms & Clinical Presentation",
+          "chunk_id": "S00260",
+          "similarity": 0.6073,
+          "is_relevant": true,
+          "snippet": "[Nodules brochure | Symptoms & Clinical Presentation] thyroid cells that forms a lump within the thyroid gland.  Although the vast majority of thyroid nodules are benign  (noncancerous), a small propo"
+        },
+        {
+          "rank": 4,
+          "document": "thy.2015.0020.pdf",
+          "page": 2,
+          "section": "Surveillance & Follow-Up",
+          "chunk_id": "S00517",
+          "similarity": 0.6069,
+          "is_relevant": true,
+          "snippet": "[thy.2015.0020 | Surveillance & Follow-Up] optimal care for patients with these disorders. INTRODUCTION T hyroid nodules are a common clinical problem. Epidemiologic studies have shown the prevalence "
+        },
+        {
+          "rank": 5,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 15,
+          "section": "Treatment & Management",
+          "chunk_id": "S00234",
+          "similarity": 0.6064,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Treatment & Management] dose and give you your blood test results. Choose a doctor who keeps up to date about advances in the diagnosis and  treatment of thyroid disease."
+        }
+      ]
+    },
+    {
+      "query_id": "GT_12",
+      "condition": "Thyroid Nodules",
+      "intent": "Evaluation",
+      "question": "When is a fine needle aspiration (FNA) biopsy recommended for a thyroid nodule?",
+      "latency_ms": 12.55,
+      "hit_at_1": 0,
+      "hit_at_3": 0,
+      "hit_at_5": 1,
+      "precision_at_3": 0.0,
+      "precision_at_5": 0.2,
+      "reciprocal_rank": 0.25,
+      "first_relevant_rank": 4,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "thy.2015.0020.pdf",
+          "page": 18,
+          "section": "Evaluation & Workup",
+          "chunk_id": "S00683",
+          "similarity": 0.6007,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Evaluation & Workup] Ultrasound-guided FNA with real-time visualization of needle placement in the target nodule decreases the false-negative rate of a benign cytology diagnosis (68,6"
+        },
+        {
+          "rank": 2,
+          "document": "thy.2015.0020.pdf",
+          "page": 25,
+          "section": "Evaluation & Workup",
+          "chunk_id": "S00798",
+          "similarity": 0.6001,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Evaluation & Workup] tually zero (129\u2013133,236), routine rebiopsy is not a viable or cost-effective option because of the low false-negative rate of an US-guided FNA benign cytology re"
+        },
+        {
+          "rank": 3,
+          "document": "thy.2015.0020.pdf",
+          "page": 21,
+          "section": "Evaluation & Workup",
+          "chunk_id": "S00736",
+          "similarity": 0.5996,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Evaluation & Workup] AUS/FLUS diagnoses (22/51, 43%), and patients with a be- nign cytologic interpretation following the initial AUS/FLUS diagnosis (2/7, 29%) (196). Use of thyroid c"
+        },
+        {
+          "rank": 4,
+          "document": "thy.2015.0020.pdf",
+          "page": 14,
+          "section": "Evaluation & Workup",
+          "chunk_id": "S00640",
+          "similarity": 0.5983,
+          "is_relevant": true,
+          "snippet": "[thy.2015.0020 | Evaluation & Workup] 5\u201310 Recommend FNA at \u20211.5 cm Very low suspicion Spongiform or partially cystic nodules with- out any of the sonographic features de- scribed in low, intermediate"
+        },
+        {
+          "rank": 5,
+          "document": "Nodules_brochure.pdf",
+          "page": 2,
+          "section": "Evaluation & Workup",
+          "chunk_id": "S00271",
+          "similarity": 0.5979,
+          "is_relevant": false,
+          "snippet": "[Nodules brochure | Evaluation & Workup] then examined under a microscope by a pathologist.  The report of a thyroid fine needle biopsy will usually  indicate one of the following findings: 1. The nod"
+        }
+      ]
+    },
+    {
+      "query_id": "GT_13",
+      "condition": "Differentiated Thyroid Cancer",
+      "intent": "Management",
+      "question": "How is differentiated thyroid cancer managed?",
+      "latency_ms": 9.06,
+      "hit_at_1": 0,
+      "hit_at_3": 1,
+      "hit_at_5": 1,
+      "precision_at_3": 0.3333,
+      "precision_at_5": 0.2,
+      "reciprocal_rank": 0.3333,
+      "first_relevant_rank": 3,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "Nodules_brochure.pdf",
+          "page": 2,
+          "section": "Evaluation & Workup",
+          "chunk_id": "S00270",
+          "similarity": 0.6176,
+          "is_relevant": false,
+          "snippet": "[Nodules brochure | Evaluation & Workup] Otherwise, the biopsy does not usually require any other  special preparation (no fasting). Patients typically return  home or to work after the biopsy without"
+        },
+        {
+          "rank": 2,
+          "document": "ThyroidCancer_brochure.pdf",
+          "page": 2,
+          "section": "Diagnosis & Tests",
+          "chunk_id": "S00299",
+          "similarity": 0.6157,
+          "is_relevant": false,
+          "snippet": "[ThyroidCancer brochure | Diagnosis & Tests] /web-links-for-important -documents- about-potassium-iodide/.  HOW IS THYROID CANCER DIAGNOSED?  If your doctor suspects from your physical exam and  ultra"
+        },
+        {
+          "rank": 3,
+          "document": "thy.2015.0020.pdf",
+          "page": 29,
+          "section": "Evaluation & Workup",
+          "chunk_id": "S00842",
+          "similarity": 0.6156,
+          "is_relevant": true,
+          "snippet": "[thy.2015.0020 | Evaluation & Workup] sary therapy. The speci\ufb01c goals of initial therapy are to 1. Remove the primary tumor, disease that has extended beyond the thyroid capsule, and clinically signi\ufb01"
+        },
+        {
+          "rank": 4,
+          "document": "ThyroidCancer_brochure.pdf",
+          "page": 1,
+          "section": "Treatment & Management",
+          "chunk_id": "S00287",
+          "similarity": 0.6144,
+          "is_relevant": false,
+          "snippet": "[ThyroidCancer brochure | Treatment & Management] usually very treatable and is often cured with surgery (see  Thyroid Surgery brochure) and, if indicated, radioactive  iodine (see Radioactive Iodine "
+        },
+        {
+          "rank": 5,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 15,
+          "section": "Treatment & Management",
+          "chunk_id": "S00238",
+          "similarity": 0.6134,
+          "is_relevant": false,
+          "snippet": "[Hypothyroidism web booklet | Treatment & Management] MANY QUESTIONS ABOUT HYPOTHYROIDISM REMAIN MYSTERIES For example: Which genes increase people\u2019s risk for thyroid disease? What triggers the start "
+        }
+      ]
+    },
+    {
+      "query_id": "GT_14",
+      "condition": "Differentiated Thyroid Cancer",
+      "intent": "Risk Stratification",
+      "question": "How is recurrence risk stratified in differentiated thyroid cancer after initial surgery?",
+      "latency_ms": 11.25,
+      "hit_at_1": 1,
+      "hit_at_3": 1,
+      "hit_at_5": 1,
+      "precision_at_3": 0.3333,
+      "precision_at_5": 0.2,
+      "reciprocal_rank": 1.0,
+      "first_relevant_rank": 1,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "thy.2015.0020.pdf",
+          "page": 33,
+          "section": "Surveillance & Follow-Up",
+          "chunk_id": "S00895",
+          "similarity": 0.6209,
+          "is_relevant": true,
+          "snippet": "[thy.2015.0020 | Surveillance & Follow-Up] extent of initial thyroid surgery probably has little impact on disease-speci\ufb01c survival. While recurrence rates can be quite low in these patients, it is li"
+        },
+        {
+          "rank": 2,
+          "document": "thy.2015.0020.pdf",
+          "page": 45,
+          "section": "Surveillance & Follow-Up",
+          "chunk_id": "S01067",
+          "similarity": 0.6058,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Surveillance & Follow-Up] bination of a TERT mutation and a BRAF mutation within the same tumor was associated with a high risk of structural disease recurrence (155). These results, "
+        },
+        {
+          "rank": 3,
+          "document": "ThyroidCancer_brochure.pdf",
+          "page": 2,
+          "section": "Diagnosis & Tests",
+          "chunk_id": "S00299",
+          "similarity": 0.6031,
+          "is_relevant": false,
+          "snippet": "[ThyroidCancer brochure | Diagnosis & Tests] /web-links-for-important -documents- about-potassium-iodide/.  HOW IS THYROID CANCER DIAGNOSED?  If your doctor suspects from your physical exam and  ultra"
+        },
+        {
+          "rank": 4,
+          "document": "Nodules_brochure.pdf",
+          "page": 2,
+          "section": "Surveillance & Follow-Up",
+          "chunk_id": "S00272",
+          "similarity": 0.6028,
+          "is_relevant": false,
+          "snippet": "[Nodules brochure | Surveillance & Follow-Up] benign thyroid nodules do not need to be removed  unless they are causing symptoms like choking or  difficulty swallowing. Follow up ultrasound exams  are"
+        },
+        {
+          "rank": 5,
+          "document": "thy.2015.0020.pdf",
+          "page": 29,
+          "section": "Evaluation & Workup",
+          "chunk_id": "S00842",
+          "similarity": 0.6023,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Evaluation & Workup] sary therapy. The speci\ufb01c goals of initial therapy are to 1. Remove the primary tumor, disease that has extended beyond the thyroid capsule, and clinically signi\ufb01"
+        }
+      ]
+    },
+    {
+      "query_id": "GT_15",
+      "condition": "Differentiated Thyroid Cancer",
+      "intent": "Follow-Up",
+      "question": "What tests are used for long-term surveillance of differentiated thyroid cancer?",
+      "latency_ms": 11.54,
+      "hit_at_1": 0,
+      "hit_at_3": 0,
+      "hit_at_5": 0,
+      "precision_at_3": 0.0,
+      "precision_at_5": 0.0,
+      "reciprocal_rank": 0.0,
+      "first_relevant_rank": null,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "thy.2015.0020.pdf",
+          "page": 6,
+          "section": "Evaluation & Workup",
+          "chunk_id": "S00568",
+          "similarity": 0.6124,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Evaluation & Workup] nodules? 10 [A4] Serum thyrotropin measurement R2 11 [A5] Serum thyroglobulin measurement R3 11 [A6] Serum calcitonin measurement R4 11 [A7] [18F]Fluorodeoxygluco"
+        },
+        {
+          "rank": 2,
+          "document": "thy.2015.0020.pdf",
+          "page": 2,
+          "section": "Surveillance & Follow-Up",
+          "chunk_id": "S00516",
+          "similarity": 0.611,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Surveillance & Follow-Up] of differentiated thyroid cancer include those related to surveillance for recurrent disease using imaging and serum thyroglobulin, thyroid hormone therapy, "
+        },
+        {
+          "rank": 3,
+          "document": "thy.2015.0020.pdf",
+          "page": 19,
+          "section": "Treatment & Management",
+          "chunk_id": "S00701",
+          "similarity": 0.6068,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Treatment & Management] studies are expected to establish the impact of molecular pro- \ufb01ling involving multiple mutations or other genetic alterations on clinical management of patien"
+        },
+        {
+          "rank": 4,
+          "document": "thy.2015.0020.pdf",
+          "page": 1,
+          "section": "Evaluation & Workup",
+          "chunk_id": "S00512",
+          "similarity": 0.6065,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Evaluation & Workup] initial evaluation, clinical and ultrasound criteria for \ufb01ne-needle aspiration biopsy, interpretation of \ufb01ne-needle aspiration biopsy results, use of molecular ma"
+        },
+        {
+          "rank": 5,
+          "document": "thy.2015.0020.pdf",
+          "page": 89,
+          "section": "Treatment & Management",
+          "chunk_id": "S01643",
+          "similarity": 0.6035,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Treatment & Management] [D1] DIRECTIONS FOR FUTURE RESEARCH [D2] Optimizing molecular markers for diagnosis, progno- sis, and therapeutic targets Signi\ufb01cant progress has been made ove"
+        }
+      ]
+    },
+    {
+      "query_id": "GT_16",
+      "condition": "Thyroid Nodules & DTC",
+      "intent": "Management",
+      "question": "What are the updated guidelines regarding active surveillance for low-risk thyroid tumors?",
+      "latency_ms": 12.38,
+      "hit_at_1": 0,
+      "hit_at_3": 1,
+      "hit_at_5": 1,
+      "precision_at_3": 0.3333,
+      "precision_at_5": 0.2,
+      "reciprocal_rank": 0.5,
+      "first_relevant_rank": 2,
+      "retrieved": [
+        {
+          "rank": 1,
+          "document": "thy.2015.0020.pdf",
+          "page": 11,
+          "section": "Evaluation & Workup",
+          "chunk_id": "S00615",
+          "similarity": 0.6146,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Evaluation & Workup] B) Diffuse 18FDG-PET uptake, in conjunction with so- nographic and clinical evidence of chronic lymphocytic thyroiditis, does not require further imaging or FNA. "
+        },
+        {
+          "rank": 2,
+          "document": "thy.2015.0020.pdf",
+          "page": 2,
+          "section": "Surveillance & Follow-Up",
+          "chunk_id": "S00516",
+          "similarity": 0.605,
+          "is_relevant": true,
+          "snippet": "[thy.2015.0020 | Surveillance & Follow-Up] of differentiated thyroid cancer include those related to surveillance for recurrent disease using imaging and serum thyroglobulin, thyroid hormone therapy, "
+        },
+        {
+          "rank": 3,
+          "document": "thy.2015.0020.pdf",
+          "page": 63,
+          "section": "Surveillance & Follow-Up",
+          "chunk_id": "S01294",
+          "similarity": 0.604,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Surveillance & Follow-Up] examined in multiple prospective (737,739,740) and retro- spective studies (741\u2013743). The majority of these studies (737,739\u2013742) have independently con\ufb01rmed"
+        },
+        {
+          "rank": 4,
+          "document": "thy.2015.0020.pdf",
+          "page": 35,
+          "section": "Surveillance & Follow-Up",
+          "chunk_id": "S00934",
+          "similarity": 0.5995,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Surveillance & Follow-Up] (Strong recommendation, Low-quality evidence) ATA THYROID NODULE/DTC GUIDELINES 35"
+        },
+        {
+          "rank": 5,
+          "document": "thy.2015.0020.pdf",
+          "page": 14,
+          "section": "Evaluation & Workup",
+          "chunk_id": "S00640",
+          "similarity": 0.5991,
+          "is_relevant": false,
+          "snippet": "[thy.2015.0020 | Evaluation & Workup] 5\u201310 Recommend FNA at \u20211.5 cm Very low suspicion Spongiform or partially cystic nodules with- out any of the sonographic features de- scribed in low, intermediate"
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,46 @@
+[
+  {
+    "config_name": "tokens_200_ov0",
+    "num_chunks": 1470,
+    "hit_at_1": 0.4375,
+    "hit_at_3": 0.8125,
+    "hit_at_5": 0.8125,
+    "p_at_3": 0.5833,
+    "p_at_5": 0.4875,
+    "mrr": 0.6146,
+    "latency_ms": 14.37
+  },
+  {
+    "config_name": "tokens_400_ov50",
+    "num_chunks": 827,
+    "hit_at_1": 0.5,
+    "hit_at_3": 0.75,
+    "hit_at_5": 0.8125,
+    "p_at_3": 0.4583,
+    "p_at_5": 0.4125,
+    "mrr": 0.6406,
+    "latency_ms": 20.74
+  },
+  {
+    "config_name": "tokens_600_ov100",
+    "num_chunks": 584,
+    "hit_at_1": 0.4375,
+    "hit_at_3": 0.75,
+    "hit_at_5": 0.8125,
+    "p_at_3": 0.375,
+    "p_at_5": 0.3625,
+    "mrr": 0.5854,
+    "latency_ms": 14.75
+  },
+  {
+    "config_name": "chars_500_ov50_naive",
+    "num_chunks": 2313,
+    "hit_at_1": 0.5,
+    "hit_at_3": 0.8125,
+    "hit_at_5": 0.8125,
+    "p_at_3": 0.4792,
+    "p_at_5": 0.5125,
+    "mrr": 0.625,
+    "latency_ms": 14.87
+  }
+]
