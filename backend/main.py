@@ -77,30 +77,32 @@ def startup_event():
         except Exception:
             pass # Column already exists
             
-        # Seed Admin User
-        admin_email = os.getenv("INITIAL_ADMIN_EMAIL", "medflow@gmail.com")
-        admin_password = os.getenv("INITIAL_ADMIN_PASSWORD", "medflow@2026")
+        # Seed Admin User ONLY if explicitly configured via environment variables
+        admin_email = os.getenv("INITIAL_ADMIN_EMAIL", "").strip()
+        admin_password = os.getenv("INITIAL_ADMIN_PASSWORD", "").strip()
         
-        admin_user = db.query(models.User).filter(models.User.email == admin_email.lower()).first()
-        if not admin_user:
-            hashed_pw = auth.get_password_hash(admin_password)
-            new_admin = models.User(
-                full_name="Medflow Admin",
-                email=admin_email.lower(),
-                password_hash=hashed_pw,
-                role="admin",
-                profession="Admin",
-                is_active=True
-            )
-            db.add(new_admin)
-            db.commit()
-            print(f"[FastAPI] Created initial admin account: {admin_email}")
+        if admin_email and admin_password:
+            admin_user = db.query(models.User).filter(models.User.email == admin_email.lower()).first()
+            if not admin_user:
+                hashed_pw = auth.get_password_hash(admin_password)
+                new_admin = models.User(
+                    full_name="Medflow Admin",
+                    email=admin_email.lower(),
+                    password_hash=hashed_pw,
+                    role="admin",
+                    profession="Admin",
+                    is_active=True
+                )
+                db.add(new_admin)
+                db.commit()
+                print("[FastAPI] Configured initial admin account from Space environment settings.")
+            else:
+                admin_user.role = "admin"
+                admin_user.password_hash = auth.get_password_hash(admin_password)
+                db.commit()
+                print("[FastAPI] Verified existing admin user credentials.")
         else:
-            # Ensure the existing user has admin role and updated password hash
-            admin_user.role = "admin"
-            admin_user.password_hash = auth.get_password_hash(admin_password)
-            db.commit()
-            print(f"[FastAPI] Verified existing admin user {admin_email}.")
+            print("[FastAPI] INITIAL_ADMIN_EMAIL / INITIAL_ADMIN_PASSWORD not set. Skipping initial admin seeding.")
     finally:
         db.close()
 
@@ -552,3 +554,4 @@ async def get_pdf_page_content(doc_id: str, page_num: int, current_user: models.
     """
     content = rag_engine.get_page_content(doc_id, page_num)
     return content
+
