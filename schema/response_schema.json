@@ -1,0 +1,95 @@
+{
+  "$schema": "http://json-schema.org/draft-07/schema#",
+  "title": "ClinicalGroundedAnswer",
+  "description": "Schema for citation-grounded clinical evidence responses in MedFlow",
+  "type": "object",
+  "required": [
+    "recommendation",
+    "evidence",
+    "citations",
+    "confidence"
+  ],
+  "additionalProperties": false,
+  "properties": {
+    "recommendation": {
+      "type": "string",
+      "description": "Grounded clinical recommendation or refusal"
+    },
+    "evidence": {
+      "type": "string",
+      "description": "Supporting evidence quoted or summarized directly from retrieved guidelines"
+    },
+    "citations": {
+      "type": "array",
+      "description": "List of source citations grounded in retrieved passages",
+      "items": {
+        "type": "object",
+        "required": [
+          "document",
+          "section",
+          "page"
+        ],
+        "additionalProperties": false,
+        "properties": {
+          "document": {
+            "type": "string",
+            "minLength": 1,
+            "description": "Document name or guideline title"
+          },
+          "section": {
+            "type": "string",
+            "description": "Section or heading within the document"
+          },
+          "page": {
+            "type": "integer",
+            "minimum": 1,
+            "description": "1-indexed page number"
+          }
+        }
+      }
+    },
+    "confidence": {
+      "type": "string",
+      "enum": [
+        "high",
+        "medium",
+        "low",
+        "insufficient"
+      ],
+      "description": "Confidence level based strictly on retrieved guideline evidence"
+    }
+  },
+  "if": {
+    "properties": {
+      "confidence": {
+        "enum": [
+          "high",
+          "medium",
+          "low"
+        ]
+      }
+    }
+  },
+  "then": {
+    "properties": {
+      "evidence": {
+        "type": "string",
+        "minLength": 1
+      },
+      "citations": {
+        "type": "array",
+        "minItems": 1
+      }
+    }
+  },
+  "else": {
+    "properties": {
+      "evidence": {
+        "type": "string"
+      },
+      "citations": {
+        "type": "array"
+      }
+    }
+  }
+}

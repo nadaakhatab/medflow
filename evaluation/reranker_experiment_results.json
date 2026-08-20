@@ -1,0 +1,789 @@
+{
+  "dense_baseline": {
+    "hit_at_1": 0.5625,
+    "hit_at_3": 0.8125,
+    "hit_at_5": 0.875,
+    "precision_at_3": 0.5417,
+    "precision_at_5": 0.5,
+    "mrr": 0.7031
+  },
+  "dense_plus_reranker": {
+    "hit_at_1": 0.4375,
+    "hit_at_3": 0.75,
+    "hit_at_5": 0.8125,
+    "precision_at_3": 0.4583,
+    "precision_at_5": 0.4375,
+    "mrr": 0.6062,
+    "mean_latency_ms": 282.35
+  },
+  "details": [
+    {
+      "query_id": "GT_01",
+      "question": "How is hypothyroidism diagnosed in clinical practice?",
+      "dense_first_rank": 1,
+      "rerank_first_rank": 1,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 4,
+          "section": "N/A",
+          "rerank_score": 4.8689,
+          "is_relevant": true
+        },
+        {
+          "rank": 2,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 7,
+          "section": "N/A",
+          "rerank_score": 2.2099,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 11,
+          "section": "N/A",
+          "rerank_score": 2.1007,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document": "Nodules_brochure.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 1.1535,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 9,
+          "section": "N/A",
+          "rerank_score": 0.939,
+          "is_relevant": false
+        }
+      ]
+    },
+    {
+      "query_id": "GT_02",
+      "question": "What are the common clinical signs and symptoms of hypothyroidism?",
+      "dense_first_rank": 1,
+      "rerank_first_rank": 1,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 5,
+          "section": "N/A",
+          "rerank_score": 5.0812,
+          "is_relevant": true
+        },
+        {
+          "rank": 2,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 5,
+          "section": "N/A",
+          "rerank_score": 5.024,
+          "is_relevant": true
+        },
+        {
+          "rank": 3,
+          "document": "Hashimotos_Thyroiditis.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 5.0076,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 4,
+          "section": "N/A",
+          "rerank_score": 4.1583,
+          "is_relevant": true
+        },
+        {
+          "rank": 5,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 7,
+          "section": "N/A",
+          "rerank_score": 2.8063,
+          "is_relevant": true
+        }
+      ]
+    },
+    {
+      "query_id": "GT_03",
+      "question": "What is the standard medical treatment for primary hypothyroidism?",
+      "dense_first_rank": 2,
+      "rerank_first_rank": 2,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 4,
+          "section": "N/A",
+          "rerank_score": 1.4185,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 12,
+          "section": "N/A",
+          "rerank_score": -0.2362,
+          "is_relevant": true
+        },
+        {
+          "rank": 3,
+          "document": "Hashimotos_Thyroiditis.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": -0.6597,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 9,
+          "section": "N/A",
+          "rerank_score": -0.7135,
+          "is_relevant": true
+        },
+        {
+          "rank": 5,
+          "document": "hyperthyroidism.pdf",
+          "page": 3,
+          "section": "N/A",
+          "rerank_score": -0.7699,
+          "is_relevant": false
+        }
+      ]
+    },
+    {
+      "query_id": "GT_04",
+      "question": "How is Hashimoto's disease diagnosed?",
+      "dense_first_rank": 1,
+      "rerank_first_rank": 2,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "ThyroidDisease.pdf",
+          "page": 10,
+          "section": "N/A",
+          "rerank_score": 6.6697,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document": "Hashimotos_Thyroiditis.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": 6.6212,
+          "is_relevant": true
+        },
+        {
+          "rank": 3,
+          "document": "Hashimotos_Thyroiditis.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": 6.3079,
+          "is_relevant": true
+        },
+        {
+          "rank": 4,
+          "document": "ThyroidDisease.pdf",
+          "page": 10,
+          "section": "N/A",
+          "rerank_score": 5.7701,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document": "ThyroidDisease.pdf",
+          "page": 10,
+          "section": "N/A",
+          "rerank_score": 5.2234,
+          "is_relevant": false
+        }
+      ]
+    },
+    {
+      "query_id": "GT_05",
+      "question": "What is the underlying cause and pathophysiology of Hashimoto's thyroiditis?",
+      "dense_first_rank": 1,
+      "rerank_first_rank": 2,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "ThyroidDisease.pdf",
+          "page": 10,
+          "section": "N/A",
+          "rerank_score": 5.1668,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document": "Hashimotos_Thyroiditis.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 4.704,
+          "is_relevant": true
+        },
+        {
+          "rank": 3,
+          "document": "Hypothyroidism_web_booklet.pdf",
+          "page": 6,
+          "section": "N/A",
+          "rerank_score": 4.3786,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document": "Hashimotos_Thyroiditis.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 3.0163,
+          "is_relevant": true
+        },
+        {
+          "rank": 5,
+          "document": "ThyroidDisease.pdf",
+          "page": 10,
+          "section": "N/A",
+          "rerank_score": 2.6339,
+          "is_relevant": false
+        }
+      ]
+    },
+    {
+      "query_id": "GT_06",
+      "question": "How is hyperthyroidism diagnosed?",
+      "dense_first_rank": 1,
+      "rerank_first_rank": 1,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "hyperthyroidism.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": 7.2755,
+          "is_relevant": true
+        },
+        {
+          "rank": 2,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": 7.1237,
+          "is_relevant": true
+        },
+        {
+          "rank": 3,
+          "document": "hyperthyroidism.pdf",
+          "page": 3,
+          "section": "N/A",
+          "rerank_score": 2.6809,
+          "is_relevant": true
+        },
+        {
+          "rank": 4,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": 2.2358,
+          "is_relevant": true
+        },
+        {
+          "rank": 5,
+          "document": "Nodules_brochure.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 1.5985,
+          "is_relevant": false
+        }
+      ]
+    },
+    {
+      "query_id": "GT_07",
+      "question": "What are the primary treatment options available for hyperthyroidism?",
+      "dense_first_rank": 1,
+      "rerank_first_rank": 1,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": 5.892,
+          "is_relevant": true
+        },
+        {
+          "rank": 2,
+          "document": "hyperthyroidism.pdf",
+          "page": 3,
+          "section": "N/A",
+          "rerank_score": 5.7286,
+          "is_relevant": true
+        },
+        {
+          "rank": 3,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": 4.6346,
+          "is_relevant": true
+        },
+        {
+          "rank": 4,
+          "document": "ThyroidDisease.pdf",
+          "page": 13,
+          "section": "N/A",
+          "rerank_score": 1.6359,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document": "hyperthyroidism.pdf",
+          "page": 4,
+          "section": "N/A",
+          "rerank_score": 0.7057,
+          "is_relevant": true
+        }
+      ]
+    },
+    {
+      "query_id": "GT_08",
+      "question": "How is the diagnosis of Graves' disease made?",
+      "dense_first_rank": 1,
+      "rerank_first_rank": 1,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": 9.5452,
+          "is_relevant": true
+        },
+        {
+          "rank": 2,
+          "document": "Graves_brochure.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 4.4164,
+          "is_relevant": true
+        },
+        {
+          "rank": 3,
+          "document": "Graves_brochure.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 4.2695,
+          "is_relevant": true
+        },
+        {
+          "rank": 4,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": 3.5596,
+          "is_relevant": true
+        },
+        {
+          "rank": 5,
+          "document": "Graves_brochure.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 0.751,
+          "is_relevant": true
+        }
+      ]
+    },
+    {
+      "query_id": "GT_09",
+      "question": "What are the treatment options for Graves disease?",
+      "dense_first_rank": 1,
+      "rerank_first_rank": 1,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": 7.577,
+          "is_relevant": true
+        },
+        {
+          "rank": 2,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": 6.2256,
+          "is_relevant": true
+        },
+        {
+          "rank": 3,
+          "document": "ThyroidDisease.pdf",
+          "page": 14,
+          "section": "N/A",
+          "rerank_score": 4.9455,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document": "ThyroidDisease.pdf",
+          "page": 15,
+          "section": "N/A",
+          "rerank_score": 3.9267,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": 3.4474,
+          "is_relevant": true
+        }
+      ]
+    },
+    {
+      "query_id": "GT_10",
+      "question": "What are the clinical manifestations of Graves' eye disease (orbitopathy)?",
+      "dense_first_rank": 1,
+      "rerank_first_rank": 1,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "Graves_brochure.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 4.6007,
+          "is_relevant": true
+        },
+        {
+          "rank": 2,
+          "document": "ThyroidDisease.pdf",
+          "page": 12,
+          "section": "N/A",
+          "rerank_score": 2.6304,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document": "ThyroidDisease.pdf",
+          "page": 12,
+          "section": "N/A",
+          "rerank_score": 1.1498,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document": "Graves_brochure.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 0.5063,
+          "is_relevant": true
+        },
+        {
+          "rank": 5,
+          "document": "Graves_brochure.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": -0.5314,
+          "is_relevant": true
+        }
+      ]
+    },
+    {
+      "query_id": "GT_11",
+      "question": "How should a thyroid nodule be evaluated?",
+      "dense_first_rank": 2,
+      "rerank_first_rank": 2,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "thy.2015.0020.pdf",
+          "page": 10,
+          "section": "N/A",
+          "rerank_score": 7.6493,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document": "Nodules_brochure.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 7.201,
+          "is_relevant": true
+        },
+        {
+          "rank": 3,
+          "document": "Nodules_brochure.pdf",
+          "page": 3,
+          "section": "N/A",
+          "rerank_score": 7.1902,
+          "is_relevant": true
+        },
+        {
+          "rank": 4,
+          "document": "thy.2015.0020.pdf",
+          "page": 25,
+          "section": "N/A",
+          "rerank_score": 7.1533,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document": "thy.2015.0020.pdf",
+          "page": 10,
+          "section": "N/A",
+          "rerank_score": 6.4655,
+          "is_relevant": false
+        }
+      ]
+    },
+    {
+      "query_id": "GT_12",
+      "question": "When is a fine needle aspiration (FNA) biopsy recommended for a thyroid nodule?",
+      "dense_first_rank": 4,
+      "rerank_first_rank": 5,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "Nodules_brochure.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": 5.6078,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document": "ThyroidDisease.pdf",
+          "page": 8,
+          "section": "N/A",
+          "rerank_score": 4.897,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document": "thy.2015.0020.pdf",
+          "page": 100,
+          "section": "N/A",
+          "rerank_score": 4.5463,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document": "thy.2015.0020.pdf",
+          "page": 97,
+          "section": "N/A",
+          "rerank_score": 4.1053,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document": "thy.2015.0020.pdf",
+          "page": 16,
+          "section": "N/A",
+          "rerank_score": 3.5168,
+          "is_relevant": true
+        }
+      ]
+    },
+    {
+      "query_id": "GT_13",
+      "question": "How is differentiated thyroid cancer managed?",
+      "dense_first_rank": null,
+      "rerank_first_rank": null,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "thy.2015.0020.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": 5.5172,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document": "thy.2015.0020.pdf",
+          "page": 128,
+          "section": "N/A",
+          "rerank_score": 5.2285,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document": "thy.2015.0020.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 3.6956,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document": "thy.2015.0020.pdf",
+          "page": 128,
+          "section": "N/A",
+          "rerank_score": 3.4278,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document": "thy.2015.0020.pdf",
+          "page": 126,
+          "section": "N/A",
+          "rerank_score": 2.4688,
+          "is_relevant": false
+        }
+      ]
+    },
+    {
+      "query_id": "GT_14",
+      "question": "How is recurrence risk stratified in differentiated thyroid cancer after initial surgery?",
+      "dense_first_rank": 2,
+      "rerank_first_rank": null,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "thy.2015.0020.pdf",
+          "page": 112,
+          "section": "N/A",
+          "rerank_score": 5.7177,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document": "thy.2015.0020.pdf",
+          "page": 112,
+          "section": "N/A",
+          "rerank_score": 5.6385,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document": "thy.2015.0020.pdf",
+          "page": 42,
+          "section": "N/A",
+          "rerank_score": 3.4892,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document": "thy.2015.0020.pdf",
+          "page": 50,
+          "section": "N/A",
+          "rerank_score": 3.3744,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document": "thy.2015.0020.pdf",
+          "page": 41,
+          "section": "N/A",
+          "rerank_score": 2.936,
+          "is_relevant": false
+        }
+      ]
+    },
+    {
+      "query_id": "GT_15",
+      "question": "What tests are used for long-term surveillance of differentiated thyroid cancer?",
+      "dense_first_rank": null,
+      "rerank_first_rank": null,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "thy.2015.0020.pdf",
+          "page": 2,
+          "section": "N/A",
+          "rerank_score": 4.2191,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document": "ThyroidCancer_brochure.pdf",
+          "page": 4,
+          "section": "N/A",
+          "rerank_score": 3.8381,
+          "is_relevant": false
+        },
+        {
+          "rank": 3,
+          "document": "thy.2015.0020.pdf",
+          "page": 112,
+          "section": "N/A",
+          "rerank_score": 1.4902,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document": "ATA_2016_Hyperthyroidism_Thyrotoxicosis_Guidelines.pdf",
+          "page": 6,
+          "section": "N/A",
+          "rerank_score": 1.4737,
+          "is_relevant": false
+        },
+        {
+          "rank": 5,
+          "document": "praw-et-al-2025-executive-summary-of-the-2025-american-thyroid-association-management-guidelines-for-adult-patients.pdf",
+          "page": 6,
+          "section": "N/A",
+          "rerank_score": 1.4737,
+          "is_relevant": false
+        }
+      ]
+    },
+    {
+      "query_id": "GT_16",
+      "question": "What are the updated guidelines regarding active surveillance for low-risk thyroid tumors?",
+      "dense_first_rank": 2,
+      "rerank_first_rank": 2,
+      "reranked_top5": [
+        {
+          "rank": 1,
+          "document": "ATA_2016_Hyperthyroidism_Thyrotoxicosis_Guidelines.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 5.7353,
+          "is_relevant": false
+        },
+        {
+          "rank": 2,
+          "document": "praw-et-al-2025-executive-summary-of-the-2025-american-thyroid-association-management-guidelines-for-adult-patients.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 5.7353,
+          "is_relevant": true
+        },
+        {
+          "rank": 3,
+          "document": "ATA_2016_Hyperthyroidism_Thyrotoxicosis_Guidelines.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 3.725,
+          "is_relevant": false
+        },
+        {
+          "rank": 4,
+          "document": "praw-et-al-2025-executive-summary-of-the-2025-american-thyroid-association-management-guidelines-for-adult-patients.pdf",
+          "page": 1,
+          "section": "N/A",
+          "rerank_score": 3.725,
+          "is_relevant": true
+        },
+        {
+          "rank": 5,
+          "document": "ATA_2016_Hyperthyroidism_Thyrotoxicosis_Guidelines.pdf",
+          "page": 3,
+          "section": "N/A",
+          "rerank_score": 3.2615,
+          "is_relevant": false
+        }
+      ]
+    }
+  ]
+}

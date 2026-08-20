@@ -1,0 +1,4 @@
+model_name,dimension,hit_at_1,hit_at_3,hit_at_5,p_at_3,p_at_5,mrr,query_latency_ms,indexing_time_s
+sentence-transformers/all-MiniLM-L6-v2,384,0.4375,0.8125,0.8125,0.5833,0.4875,0.6146,14.54,35.33
+sentence-transformers/all-mpnet-base-v2,768,0.5,0.75,0.8125,0.4792,0.4375,0.6375,42.85,202.39
+BAAI/bge-small-en-v1.5,384,0.5625,0.8125,0.875,0.5417,0.5,0.7031,22.4,58.66

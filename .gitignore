@@ -4,15 +4,20 @@
 .env.*.local
 *.pem
 *.key
+day1/.env
+day2/.env
+day3/.env
 
 # Python Virtual Environments & Caches
 .venv/
 venv/
 ENV/
+env/
 __pycache__/
 *.pyc
 *.pyo
 *.pyd
+.pytest_cache/
 
 # SQLite Database & Storage runtime files
 *.db
@@ -24,5 +29,7 @@ tools/cloudflared.exe
 
 # IDE & System Files
 .DS_Store
+Thumbs.db
 .vscode/
 .idea/
+.ipynb_checkpoints/
