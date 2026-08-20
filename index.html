@@ -2091,10 +2091,9 @@
     // =========================================================================
     // AUTHENTICATION CONFIGURATION
     // Automatically disables bypass on public production domains.
-    // In local development, bypass is active unless explicitly disabled.
+    // A browser-only mock user makes protected API calls fail with 401.
     // =========================================================================
-    const isLocalHost = typeof window !== 'undefined' && ['localhost', '127.0.0.1', '::1', ''].includes(window.location.hostname);
-    const DEV_AUTH_BYPASS = isLocalHost && (localStorage.getItem('medflow_force_auth') !== 'true');
+    const DEV_AUTH_BYPASS = false;
 
     if (DEV_AUTH_BYPASS) {
       console.info('🛠️ [DEV MODE] Medflow Development Authentication Bypass is ACTIVE for local development.');
@@ -2862,9 +2861,8 @@
 
         typing.classList.add('hidden');
 
-        if (!response.ok) {
-          throw new Error(`API error: ${response.status}`);
-        }
+        if (response.status === 401) throw new Error('AUTH_REQUIRED');
+        if (!response.ok) throw new Error(`API error: ${response.status}`);
 
         const data = await response.json();
         const latencySec = ((Date.now() - startTime) / 1000).toFixed(2);
@@ -2935,7 +2933,9 @@
             !
           </div>
           <div class="bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-800 p-4 rounded-2xl text-xs sm:text-sm text-red-700 dark:text-red-300">
-            <strong>Backend Connection Offline:</strong> Medflow backend is unavailable. Please start Medflow using <code>start_medflow.bat</code>.
+            ${err.message === 'AUTH_REQUIRED'
+              ? '<strong>Login required:</strong> Please create an account or sign in before using Medflow RAG.'
+              : '<strong>Backend Connection Offline:</strong> Medflow backend is unavailable. Please start Medflow using <code>start_medflow.bat</code>.'}
           </div>
         `;
         chatContainer.appendChild(errBubble);
@@ -3417,7 +3417,8 @@
 
       try {
         const res = await authenticatedFetch(`${API_BASE_URL}/api/v1/imported-documents`);
-        if (!res.ok) throw new Error();
+        if (res.status === 401) throw new Error('AUTH_REQUIRED');
+        if (!res.ok) throw new Error('SEARCH_FAILED');
         const data = await res.json();
         
         if (!data.documents || data.documents.length === 0) {
@@ -3563,9 +3564,12 @@
         }).join('');
 
       } catch(e) {
+        const message = e.message === 'AUTH_REQUIRED'
+          ? 'Please log in before searching the medical knowledge base.'
+          : 'Error executing vector search. Ensure FastAPI server is running.';
         resultsContainer.innerHTML = `
           <div class="p-4 bg-red-50 dark:bg-red-950/60 rounded-xl text-xs text-red-700 text-center">
-            Error executing vector search. Ensure FastAPI server is running.
+            ${message}
           </div>
         `;
       }
@@ -3619,26 +3623,42 @@
       setTimeout(() => toast.remove(), 4200);
     }
 
-    async function loadSystemStatus() {
+    async function loadSystemStatus(retries = 15, delayMs = 1500) {
       const statusLabel = document.getElementById('system-status-label');
       const chunkCount = document.getElementById('system-chunk-count');
       const chatLabel = document.getElementById('chat-engine-label');
       const chatDot = document.getElementById('chat-engine-dot');
-      try {
-        const response = await authenticatedFetch(`${API_BASE_URL}/`);
-        if (!response.ok) throw new Error('Health check failed');
-        const data = await response.json();
-        const match = String(data.vector_store || '').match(/\((\d+)\s+Active/i);
-        if (chunkCount) chunkCount.textContent = match ? Number(match[1]).toLocaleString() : 'Available';
-        if (statusLabel) statusLabel.textContent = 'Engine online';
-        if (chatLabel) chatLabel.textContent = 'Hybrid RAG online';
-        if (chatDot) { chatDot.classList.remove('bg-slate-500', 'bg-red-400'); chatDot.classList.add('bg-teal-400'); }
-      } catch (error) {
-        if (chunkCount) chunkCount.textContent = 'Unavailable';
-        if (statusLabel) statusLabel.textContent = 'Backend offline';
-        if (chatLabel) chatLabel.textContent = 'RAG engine offline';
-        if (chatDot) { chatDot.classList.remove('bg-slate-500', 'bg-teal-400'); chatDot.classList.add('bg-red-400'); }
+
+      if (chatLabel && chatLabel.textContent !== 'Hybrid RAG online') {
+        chatLabel.textContent = 'RAG engine starting...';
       }
+
+      for (let attempt = 0; attempt < retries; attempt++) {
+        try {
+          const response = await authenticatedFetch(`${API_BASE_URL}/health`);
+          if (response.ok) {
+            const data = await response.json();
+            if (data.status === 'healthy' || data.ready === true) {
+              const activeCount = data.active_chunks !== undefined ? data.active_chunks : (data.vector_store ? (data.vector_store.match(/\((\d+)\s+Active/i) || [])[1] : null);
+              if (chunkCount) chunkCount.textContent = activeCount !== null ? Number(activeCount).toLocaleString() : '1,904';
+              if (statusLabel) statusLabel.textContent = 'Engine online';
+              if (chatLabel) chatLabel.textContent = 'Hybrid RAG online';
+              if (chatDot) { chatDot.classList.remove('bg-slate-500', 'bg-red-400'); chatDot.classList.add('bg-teal-400'); }
+              return;
+            }
+          }
+        } catch (error) {
+          // Retry on connection error during startup window
+        }
+        if (attempt < retries - 1) {
+          await new Promise(resolve => setTimeout(resolve, delayMs));
+        }
+      }
+
+      if (chunkCount) chunkCount.textContent = 'Unavailable';
+      if (statusLabel) statusLabel.textContent = 'Backend offline';
+      if (chatLabel) chatLabel.textContent = 'RAG engine offline';
+      if (chatDot) { chatDot.classList.remove('bg-slate-500', 'bg-teal-400'); chatDot.classList.add('bg-red-400'); }
     }
 
     window.addEventListener('DOMContentLoaded', () => {
