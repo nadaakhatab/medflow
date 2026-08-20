@@ -1,7 +1,6 @@
 """
-Medflow Medical RAG Application Launcher
-Starts both FastAPI Backend (Port 8000) and Frontend HTTP Server (Port 3000) concurrently.
-Guarantees clean port binding and displays real-time backend startup feedback.
+Compatibility launcher for the single-port Medflow20 application.
+FastAPI serves both the website and API on port 7860.
 """
 
 import os
@@ -44,12 +43,11 @@ def main():
     print(f"Using Python executable: {python_exe}")
     print("=" * 65)
 
-    # 1. Clean up orphan background processes on ports 8000 and 3000
-    for port in [8000, 3000]:
+    # 1. Never replace another process on the primary application port.
+    for port in [7860]:
         if is_port_in_use(port):
-            print(f"[Launcher] Port {port} is in use by a previous process. Cleaning up...")
-            kill_process_on_port(port)
-            time.sleep(1)
+            print(f"[ERROR] Port {port} is already in use. Start Medflow with start_medflow.bat to reuse a healthy instance.")
+            sys.exit(1)
 
     env = os.environ.copy()
     medflow20_dir = os.path.join(root_dir, "medflow20")
@@ -59,24 +57,17 @@ def main():
     env.setdefault("HF_HUB_OFFLINE", "1")
     env.setdefault("TRANSFORMERS_OFFLINE", "1")
 
-    # 2. Start FastAPI Backend on Port 8000
-    print("\n[1/2] Launching FastAPI Backend (Medflow20 Engine) on http://127.0.0.1:8000 ...")
+    # 2. Start the complete FastAPI application on the single local port.
+    print("\n[1/1] Launching Medflow20 on http://127.0.0.1:7860 ...")
     backend_proc = subprocess.Popen(
-        [python_exe, "-m", "uvicorn", "backend.main:app", "--host", "127.0.0.1", "--port", "8000"],
+        [python_exe, "-m", "uvicorn", "backend.main:app", "--host", "127.0.0.1", "--port", "7860"],
         cwd=root_dir,
         env=env
     )
 
-    # 3. Start Frontend HTTP Server on Port 3000
-    print("[2/2] Launching Frontend HTTP Server on http://127.0.0.1:3000 ...")
-    frontend_proc = subprocess.Popen(
-        [python_exe, "-m", "http.server", "3000", "--bind", "127.0.0.1"],
-        cwd=root_dir
-    )
-
-    # Wait for FastAPI backend to be fully bound and ready on port 8000
-    print("[Launcher] Waiting for Medflow20 RAG Engine & FastAPI to initialize on port 8000...")
-    max_wait = 45
+    # Wait for FastAPI and the Medflow20 corpus to be fully ready.
+    print("[Launcher] Waiting for Medflow20 RAG Engine & FastAPI to initialize on port 7860...")
+    max_wait = 180
     start_time = time.time()
     backend_ready = False
     import urllib.request
@@ -85,11 +76,10 @@ def main():
     while time.time() - start_time < max_wait:
         if backend_proc.poll() is not None:
             print(f"\n[ERROR] FastAPI Backend process exited unexpectedly! (Exit code: {backend_proc.returncode})")
-            frontend_proc.terminate()
             sys.exit(1)
         
         try:
-            req = urllib.request.Request("http://127.0.0.1:8000/health")
+            req = urllib.request.Request("http://127.0.0.1:7860/health")
             with urllib.request.urlopen(req, timeout=1) as response:
                 if response.status == 200:
                     backend_ready = True
@@ -101,13 +91,12 @@ def main():
     if not backend_ready:
         print("\n[ERROR] Medflow20 backend failed to become ready within timeout.")
         backend_proc.terminate()
-        frontend_proc.terminate()
         sys.exit(1)
 
     print("\n[SUCCESS] Medflow Application Services Initialized Successfully!")
     print("------------------------------------------------------------")
-    print("  Frontend UI:      http://127.0.0.1:3000/index.html")
-    print("  Backend API Docs: http://127.0.0.1:8000/docs")
+    print("  Medflow UI:       http://127.0.0.1:7860")
+    print("  Backend API Docs: http://127.0.0.1:7860/docs")
     print("------------------------------------------------------------")
     print("Press Ctrl+C to stop all processes.\n")
 
@@ -121,7 +110,6 @@ def main():
         print("\nStopping Medflow services...")
     finally:
         backend_proc.terminate()
-        frontend_proc.terminate()
         print("Done.")
 
 if __name__ == "__main__":

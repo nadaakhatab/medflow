@@ -53,15 +53,9 @@ app = FastAPI(
 app.add_middleware(
     CORSMiddleware,
     allow_origins=[
-        "http://localhost:3000",
-        "http://127.0.0.1:3000",
-        "http://localhost:8000",
-        "http://127.0.0.1:8000",
-        "http://localhost",
-        "http://127.0.0.1",
-        "null"
+        "http://localhost:7860",
+        "http://127.0.0.1:7860",
     ],
-    allow_origin_regex=r"^https?://(localhost|127\.0\.0\.1)(:\d+)?$",
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
@@ -582,4 +576,5 @@ async def get_pdf_page_content(doc_id: str, page_num: int, current_user: models.
     """
     content = rag_engine.get_page_content(doc_id, page_num)
     return content
+
 
