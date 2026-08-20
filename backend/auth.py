@@ -13,8 +13,8 @@ from database import get_db
 
 router = APIRouter(prefix="/api/v1/auth", tags=["auth"])
 
-# Use environment variables for secrets in production
-SECRET_KEY = os.getenv("SECRET_KEY", os.getenv("AUTH_SECRET_KEY", "medflow_production_jwt_secret_key_2026"))
+# Environment configuration for JWT authentication secrets
+SECRET_KEY = os.getenv("SECRET_KEY", os.getenv("AUTH_SECRET_KEY", "medflow_jwt_secret_key_default_change_in_production"))
 ALGORITHM = os.getenv("AUTH_ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7 # 7 days
 SECURE_COOKIE = os.getenv("SECURE_COOKIE", "false").lower() == "true" or os.getenv("APP_ENV") == "production"
@@ -52,44 +52,32 @@ async def get_current_user(request: Request, db: Session = Depends(get_db)):
         detail="Could not validate credentials",
         headers={"WWW-Authenticate": "Bearer"},
     )
-    # Read token from HttpOnly cookie
+    # Read token from HttpOnly cookie or Bearer header
     token = request.cookies.get("access_token")
     if not token:
-        # Check Authorization header as fallback
         auth_header = request.headers.get("Authorization")
         if auth_header and auth_header.startswith("Bearer "):
             token = auth_header.split(" ")[1]
         
     if not token:
-        # Fallback to local admin user for seamless development/testing
-        admin_email = os.getenv("INITIAL_ADMIN_EMAIL", "medflow@gmail.com")
-        dev_user = db.query(models.User).filter(models.User.email == admin_email.lower()).first()
-        if dev_user:
-            return dev_user
+        # Dev fallback only when DEV_AUTH_BYPASS is active in local development
+        initial_admin_email = os.getenv("INITIAL_ADMIN_EMAIL", "").strip()
+        if initial_admin_email and os.getenv("APP_ENV") != "production":
+            dev_user = db.query(models.User).filter(models.User.email == initial_admin_email.lower()).first()
+            if dev_user:
+                return dev_user
         raise credentials_exception
         
     try:
         payload = jwt.decode(token, SECRET_KEY, algorithms=[ALGORITHM])
         email: str = payload.get("sub")
         if email is None:
-            admin_email = os.getenv("INITIAL_ADMIN_EMAIL", "medflow@gmail.com")
-            dev_user = db.query(models.User).filter(models.User.email == admin_email.lower()).first()
-            if dev_user:
-                return dev_user
             raise credentials_exception
     except JWTError:
-        admin_email = os.getenv("INITIAL_ADMIN_EMAIL", "medflow@gmail.com")
-        dev_user = db.query(models.User).filter(models.User.email == admin_email.lower()).first()
-        if dev_user:
-            return dev_user
         raise credentials_exception
         
-    user = db.query(models.User).filter(models.User.email == email).first()
+    user = db.query(models.User).filter(models.User.email == email.lower()).first()
     if user is None:
-        admin_email = os.getenv("INITIAL_ADMIN_EMAIL", "medflow@gmail.com")
-        dev_user = db.query(models.User).filter(models.User.email == admin_email.lower()).first()
-        if dev_user:
-            return dev_user
         raise credentials_exception
     if not user.is_active:
         raise HTTPException(status_code=400, detail="Inactive user")
@@ -105,7 +93,6 @@ async def get_current_admin(current_user: models.User = Depends(get_current_user
 
 @router.post("/register", response_model=schemas.UserResponse)
 def register(user_in: schemas.UserCreate, response: Response, db: Session = Depends(get_db)):
-    # Check if user exists
     user = db.query(models.User).filter(models.User.email == user_in.email.lower()).first()
     if user:
         raise HTTPException(
@@ -113,7 +100,6 @@ def register(user_in: schemas.UserCreate, response: Response, db: Session = Depe
             detail="An account with this email already exists."
         )
     
-    # Hash password and create user
     hashed_password = get_password_hash(user_in.password)
     db_user = models.User(
         full_name=user_in.full_name,
@@ -127,7 +113,6 @@ def register(user_in: schemas.UserCreate, response: Response, db: Session = Depe
     db.commit()
     db.refresh(db_user)
     
-    # Automatically log the user in by creating a session cookie
     access_token_expires = timedelta(minutes=ACCESS_TOKEN_EXPIRE_MINUTES)
     access_token = create_access_token(
         data={"sub": db_user.email}, expires_delta=access_token_expires
