@@ -1,0 +1,53 @@
+{
+  "pre_file_count": 70,
+  "post_file_count_excluding_post_manifests": 95,
+  "changed_existing_files": [
+    "README.md",
+    "config.py",
+    "day3/README.md",
+    "day3/config.py",
+    "day3/generator.py",
+    "day3/test_day3.py",
+    "day3/test_day3_compliance.py",
+    "generator.py",
+    "rag_pipeline.py",
+    "requirements.txt"
+  ],
+  "new_files": [
+    ".env.example",
+    "PACKAGE_SECURITY_NOTE.md",
+    "PROJECT_REVIEW_DAY4.md",
+    "day3/DAY3_REVIEW.md",
+    "day3/test_day3_corpus_grounding.py",
+    "day4/README.md",
+    "day4/RESPONSIBLE_AI_CHECKLIST.md",
+    "day4/__init__.py",
+    "day4/claim_validator.py",
+    "day4/config.py",
+    "day4/day4_pipeline.py",
+    "day4/day4_safety_evaluation.ipynb",
+    "day4/evaluate_day4.py",
+    "day4/evaluation_metrics.py",
+    "day4/frozen_index_builder.py",
+    "day4/index_audit.py",
+    "day4/safety_guardrails.py",
+    "day4/test_day4.py",
+    "day4/test_day4_compliance.py",
+    "day4/threshold_calibration.py",
+    "results/day4/SANDBOX_TEST_REPORT.md",
+    "results/day4/index_audit.json",
+    "results/day4/pre_day4_manifest.json",
+    "results/day4/sandbox_test_report.json",
+    "verify_project.py"
+  ],
+  "deleted_existing_files": [],
+  "preservation_checks": {
+    "day1_existing_files_changed": [],
+    "day2_existing_files_changed": [],
+    "chroma_existing_files_changed": [],
+    "data_existing_files_changed": [],
+    "evaluation_existing_files_changed": [],
+    "frozen_results_existing_files_changed": []
+  },
+  "note": "Day 3 files were intentionally hardened/reviewed; Day 1, Day 2, corpus, evaluation labels, Chroma DB, and frozen benchmark files were preserved."
+}

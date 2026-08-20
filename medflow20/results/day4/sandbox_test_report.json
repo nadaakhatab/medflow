@@ -1,0 +1,42 @@
+{
+  "total_tests_passed": 38,
+  "test_suites": {
+    "day1": {
+      "passed": 3,
+      "mode": "pypdf-backed compatibility loader; project logic tested"
+    },
+    "day2": {
+      "passed": 2,
+      "mode": "native"
+    },
+    "day3": {
+      "passed": 17,
+      "mode": "native pydantic/jsonschema/pypdf; langchain_core.Document compatibility stub"
+    },
+    "day4": {
+      "passed": 16,
+      "mode": "native"
+    }
+  },
+  "compileall": "passed",
+  "notebooks_validated": [
+    "day3/day3_grounded_generation.ipynb",
+    "day4/day4_safety_evaluation.ipynb"
+  ],
+  "index_audit": {
+    "persist_directory": "chroma_db",
+    "collection_name": "thyroid_section_aware",
+    "expected_indexed_chunks": 1470,
+    "database_exists": true,
+    "actual_indexed_chunks": 1696,
+    "manifest_exists": false,
+    "manifest_matches_frozen_day2": null,
+    "index_matches_frozen_day2": false,
+    "notes": [
+      "Persisted collection does not match the frozen Day 2 chunk count. Do not claim frozen Day 2 metrics from this live collection without rebuilding/auditing it."
+    ]
+  },
+  "full_llm_vector_runtime_executed_here": false,
+  "reason_full_runtime_not_executed_here": "uploaded virtual environment is Windows-specific; review environment is Linux",
+  "day4_metrics_fabricated": false
+}

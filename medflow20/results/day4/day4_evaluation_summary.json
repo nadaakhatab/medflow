@@ -1,0 +1,140 @@
+{
+  "index_audit": {
+    "persist_directory": "chroma_db_day2_frozen",
+    "collection_name": "thyroid_day2_frozen",
+    "expected_indexed_chunks": 1470,
+    "database_exists": true,
+    "actual_indexed_chunks": 1470,
+    "manifest_exists": true,
+    "manifest_matches_frozen_day2": true,
+    "index_matches_frozen_day2": true,
+    "notes": [
+      "Persisted collection count and frozen-index manifest match the Day 2 configuration."
+    ],
+    "manifest": {
+      "purpose": "non-destructive exact Day 2 frozen-index rebuild for Day 4 evaluation",
+      "collection_name": "thyroid_day2_frozen",
+      "embedding_model": "BAAI/bge-small-en-v1.5",
+      "normalize_embeddings": true,
+      "chunk_size_tokens": 200,
+      "chunk_overlap_tokens": 0,
+      "indexed_chunks": 1470,
+      "expected_indexed_chunks": 1470,
+      "top_k": 4,
+      "source_pdf_count": 11
+    }
+  },
+  "calibrated_threshold": 0.72,
+  "stratified_thresholds": {
+    "global_threshold": 0.72,
+    "family_thresholds": {
+      "diagnosis_evaluation": {
+        "mode": "global_fallback_insufficient_family_labels",
+        "sample_count": 6,
+        "positive_count": 5,
+        "negative_count": 1,
+        "selected_threshold": 0.72
+      },
+      "dosage": {
+        "mode": "global_fallback_insufficient_family_labels",
+        "sample_count": 1,
+        "positive_count": 0,
+        "negative_count": 1,
+        "selected_threshold": 0.72
+      },
+      "other": {
+        "mode": "family_calibrated",
+        "sample_count": 8,
+        "positive_count": 4,
+        "negative_count": 4,
+        "selected_threshold": 0.69,
+        "selected_metrics": {
+          "threshold": 0.69,
+          "tp": 4,
+          "tn": 4,
+          "fp": 0,
+          "fn": 0,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "answer_precision": 1.0,
+          "answer_recall": 1.0,
+          "answer_f1": 1.0,
+          "refusal_precision": 1.0,
+          "refusal_recall": 1.0,
+          "unsafe_accept_rate": 0.0,
+          "false_refusal_rate": 0.0
+        }
+      },
+      "procedure": {
+        "mode": "global_fallback_insufficient_family_labels",
+        "sample_count": 3,
+        "positive_count": 2,
+        "negative_count": 1,
+        "selected_threshold": 0.72
+      },
+      "symptoms": {
+        "mode": "global_fallback_insufficient_family_labels",
+        "sample_count": 2,
+        "positive_count": 2,
+        "negative_count": 0,
+        "selected_threshold": 0.72
+      },
+      "treatment_management": {
+        "mode": "family_calibrated",
+        "sample_count": 6,
+        "positive_count": 3,
+        "negative_count": 3,
+        "selected_threshold": 0.66,
+        "selected_metrics": {
+          "threshold": 0.66,
+          "tp": 3,
+          "tn": 3,
+          "fp": 0,
+          "fn": 0,
+          "accuracy": 1.0,
+          "balanced_accuracy": 1.0,
+          "answer_precision": 1.0,
+          "answer_recall": 1.0,
+          "answer_f1": 1.0,
+          "refusal_precision": 1.0,
+          "refusal_recall": 1.0,
+          "unsafe_accept_rate": 0.0,
+          "false_refusal_rate": 0.0
+        }
+      }
+    },
+    "minimum_labels_per_class": {
+      "positive": 2,
+      "negative": 2
+    }
+  },
+  "top_k": 4,
+  "answerable_queries": 16,
+  "refusal_queries": 10,
+  "mean_precision_at_4": 0.5312,
+  "grounding_metrics_scored_queries": 16,
+  "mean_citation_accuracy": 1.0,
+  "mean_faithfulness": 1.0,
+  "mean_raw_citation_accuracy": 0.8958,
+  "mean_raw_faithfulness": 0.9062,
+  "repaired_answer_count": 16,
+  "citation_accuracy_target": 1.0,
+  "citation_accuracy_target_met": true,
+  "faithfulness_target": 0.9,
+  "faithfulness_target_met": true,
+  "refusal_metrics": {
+    "total": 26,
+    "tp_answered_supported": 16,
+    "tn_refused_unsupported": 10,
+    "fp_unsafe_accept": 0,
+    "fn_false_refusal": 0,
+    "answerability_accuracy": 1.0,
+    "answer_precision": 1.0,
+    "answer_recall": 1.0,
+    "refusal_precision": 1.0,
+    "refusal_recall": 1.0,
+    "unsafe_accept_rate": 0.0,
+    "false_refusal_rate": 0.0
+  },
+  "metrics_are_frozen_day2_comparable": true
+}

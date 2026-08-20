@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  medflow:
+    build:
+      context: .
+      dockerfile: Dockerfile
+    container_name: medflow-production
+    ports:
+      - "8000:8000"
+    environment:
+      - APP_ENV=production
+      - PORT=8000
+      - DATA_DIR=/app/data
+      - SECRET_KEY=medflow_super_secure_production_secret_change_me_2026
+      - SECURE_COOKIE=false
+      - INITIAL_ADMIN_EMAIL=medflow@gmail.com
+      - INITIAL_ADMIN_PASSWORD=medflow@2026
+    volumes:
+      - medflow_data:/app/data
+    restart: unless-stopped
+    healthcheck:
+      test: ["CMD", "curl", "-f", "http://localhost:8000/health"]
+      interval: 30s
+      timeout: 10s
+      retries: 3
+      start_period: 40s
+
+volumes:
+  medflow_data:
+    driver: local

@@ -1,0 +1,20 @@
+[
+  {
+    "document_id": "doc_c833940006cb",
+    "filename": "arXiv_Thyroid_Disease_Diagnosis_Model.pdf",
+    "sha256": "c833940006cbdc6101a2259d504c655bcda96ec406128d0dd6446e6769367531",
+    "total_pages": 15,
+    "total_chunks": 65,
+    "file_size_bytes": 565273,
+    "upload_timestamp": "2026-08-19T18:51:20.759401+00:00"
+  },
+  {
+    "document_id": "doc_e6122f35bd1d",
+    "filename": "Hypothyroidism_web_booklet (1).pdf",
+    "sha256": "e6122f35bd1deaac723e4e152ca83379aba7b9a0ad9e2e425f396aa00d468c66",
+    "total_pages": 20,
+    "total_chunks": 143,
+    "file_size_bytes": 1981744,
+    "upload_timestamp": "2026-08-19T18:51:32.244682+00:00"
+  }
+]

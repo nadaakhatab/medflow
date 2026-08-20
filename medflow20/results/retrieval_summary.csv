@@ -1,0 +1,10 @@
+stage,pipeline_configuration,embedding_model,dimension,chunk_strategy,num_chunks,top_k,hit_at_1,hit_at_3,hit_at_5,precision_at_3,precision_at_5,mrr,latency_ms,notes
+Day 1 Baseline,Section-Aware V2,all-MiniLM-L6-v2,384,600 chars / 80 ov,1550,5,0.1875,0.5625,0.6875,0.2917,0.2625,0.3854,32.14,Official Day 1 starting baseline
+Day 2 Chunk Exp 1,Tokens 200 / 0 ov,all-MiniLM-L6-v2,384,200 tokens / 0 ov,1470,5,0.4375,0.8125,0.8125,0.5833,0.4875,0.6146,14.37,High precision with focused chunks
+Day 2 Chunk Exp 2,Tokens 400 / 50 ov,all-MiniLM-L6-v2,384,400 tokens / 50 ov,827,5,0.4375,0.7500,0.7500,0.4583,0.4125,0.6406,20.74,Medium token chunks
+Day 2 Chunk Exp 3,Tokens 600 / 100 ov,all-MiniLM-L6-v2,384,600 tokens / 100 ov,584,5,0.3750,0.7500,0.7500,0.3750,0.3625,0.5854,14.75,Large chunks diluted precision
+Day 2 Chunk Exp 4,Naive Fixed Chars,all-MiniLM-L6-v2,384,500 chars / 50 ov,2313,5,0.4375,0.8125,0.8125,0.4792,0.5125,0.6250,14.87,Blind character splitting baseline
+Day 2 Embedding 1,Tokens 200 / 0 ov,all-MiniLM-L6-v2,384,200 tokens / 0 ov,1470,5,0.4375,0.8125,0.8125,0.5833,0.4875,0.6146,14.54,Fast baseline embedding
+Day 2 Embedding 2,Tokens 200 / 0 ov,all-mpnet-base-v2,768,200 tokens / 0 ov,1470,5,0.5000,0.7500,0.8125,0.4792,0.4375,0.6375,42.85,768-dim model with heavy indexing cost
+Day 2 Embedding 3 (Selected),Tokens 200 / 0 ov,bge-small-en-v1.5,384,200 tokens / 0 ov,1470,5,0.5625,0.8125,0.8750,0.5417,0.5000,0.7031,22.40,Highest MRR and Hit@1 with query prefix
+Day 2 Reranker Exp,Dense Top-10 + CrossEncoder,bge-small + ms-marco,384,200 tokens / 0 ov,1470,5,0.4375,0.7500,0.8125,0.4583,0.4375,0.6062,282.35,Rejected due to domain shift and 12.6x latency

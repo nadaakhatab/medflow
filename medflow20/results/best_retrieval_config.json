@@ -1,0 +1,68 @@
+{
+  "project_name": "MedFlow — Evidence-Grounded Medical RAG for Thyroid Diseases",
+  "phase": "Day 2 — Retrieval Optimization (FINAL VALIDATED & FROZEN)",
+  "selected_configuration": {
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "embedding_dimension": 384,
+    "normalize_embeddings": true,
+    "query_instruction": "Represent this sentence for searching relevant passages: ",
+    "chunk_strategy": "token_aware_recursive",
+    "chunk_size_tokens": 200,
+    "chunk_overlap_tokens": 0,
+    "total_indexed_chunks": 1470,
+    "top_k_retrieval": 4,
+    "top_k_selection_rationale": "K=4 was empirically validated: it increases Hit rate from 81.25% (K=3) to 87.50% (capturing Rank-4 DTC Thyroglobulin surveillance evidence) while maintaining high precision (0.5312) and avoiding the 50% noise penalty of K=5.",
+    "distance_metric": "cosine",
+    "reranker_enabled": false,
+    "reranker_decision_note": "Cross-Encoder (ms-marco-MiniLM-L-6-v2) was tested and rejected due to observed performance drop across Hit@1, Hit@3, P@3, and MRR (from 0.7031 to 0.6062) alongside a 12.6x CPU latency penalty."
+  },
+  "source_tiering_policy": {
+    "tier_1_guidelines": [
+      "thy.2015.0020.pdf",
+      "ATA_2016_Hyperthyroidism_Thyrotoxicosis_Guidelines.pdf",
+      "praw-et-al-2025-executive-summary-of-the-2025-american-thyroid-association-management-guidelines-for-adult-patients.pdf"
+    ],
+    "tier_2_institutional_brochures": [
+      "Hypo_brochure.pdf",
+      "Hypothyroidism_web_booklet.pdf",
+      "Hashimotos_Thyroiditis.pdf",
+      "hyperthyroidism.pdf",
+      "Graves_brochure.pdf",
+      "Nodules_brochure.pdf",
+      "ThyroidCancer_brochure.pdf"
+    ],
+    "tier_3_supporting_reviews": [
+      "ThyroidDisease.pdf"
+    ]
+  },
+  "measured_evaluation_metrics": {
+    "ground_truth_questions": 16,
+    "day1_baseline_vs_day2_validated_final": {
+      "hit_at_1": {
+        "day1_baseline": 0.1875,
+        "day2_validated": 0.5625,
+        "improvement_relative": "+200.0%"
+      },
+      "hit_at_k": {
+        "day1_baseline_hit3": 0.5625,
+        "day2_validated_hit4": 0.8750,
+        "improvement_relative": "+55.6%"
+      },
+      "precision_at_k": {
+        "day1_baseline_p3": 0.2917,
+        "day2_validated_p4": 0.5312,
+        "improvement_relative": "+82.1%"
+      },
+      "mrr": {
+        "day1_baseline": 0.3854,
+        "day2_validated": 0.7031,
+        "improvement_relative": "+82.4%"
+      },
+      "mean_query_latency_ms": {
+        "day1_baseline": 32.14,
+        "day2_validated": 20.53,
+        "improvement_relative": "-36.1% faster"
+      }
+    }
+  }
+}

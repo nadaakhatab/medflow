@@ -1,0 +1,46 @@
+[
+  {
+    "document_id": "doc_c833940006cb",
+    "filename": "arXiv_Thyroid_Disease_Diagnosis_Model.pdf",
+    "total_pages": 15,
+    "total_chunks": 15,
+    "upload_timestamp": "2026-08-17T15:02:53.638017+00:00",
+    "status": "Indexed",
+    "sha256": "c833940006cbdc6101a2259d504c655bcda96ec406128d0dd6446e6769367531",
+    "file_size_bytes": 565273,
+    "file_path": "./uploaded_pdfs\\doc_c833940006cb.pdf"
+  },
+  {
+    "document_id": "doc_7cb89e0df200",
+    "filename": "arXiv_Thyroid_Diseases_Diagnosis_Expert_System.pdf",
+    "total_pages": 12,
+    "total_chunks": 31,
+    "upload_timestamp": "2026-08-17T15:05:35.056995+00:00",
+    "status": "Indexed",
+    "sha256": "7cb89e0df200b92c6db38ab5f2cce8398708b5baa5539275996f94ff3c5689d6",
+    "file_size_bytes": 185725,
+    "file_path": "./uploaded_pdfs\\doc_7cb89e0df200.pdf"
+  },
+  {
+    "document_id": "doc_e6122f35bd1d",
+    "filename": "Hypothyroidism_web_booklet (1).pdf",
+    "total_pages": 20,
+    "total_chunks": 18,
+    "upload_timestamp": "2026-08-17T15:06:10.989497+00:00",
+    "status": "Indexed",
+    "sha256": "e6122f35bd1deaac723e4e152ca83379aba7b9a0ad9e2e425f396aa00d468c66",
+    "file_size_bytes": 1981744,
+    "file_path": "./uploaded_pdfs\\doc_e6122f35bd1d.pdf"
+  },
+  {
+    "document_id": "doc_a974d831dcd3",
+    "filename": "NIH_Hypothyroidism.pdf",
+    "total_pages": 8,
+    "total_chunks": 9,
+    "upload_timestamp": "2026-08-17T15:06:34.486777+00:00",
+    "status": "Indexed",
+    "sha256": "a974d831dcd3cf53e20ede0c4f018fb73777065cdc97d62af9dee8b946e97ca7",
+    "file_size_bytes": 311988,
+    "file_path": "./uploaded_pdfs\\doc_a974d831dcd3.pdf"
+  }
+]

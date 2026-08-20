@@ -1,0 +1,481 @@
+{
+  "created_for": "Day 4 post-integration verification",
+  "file_count": 95,
+  "files": [
+    {
+      "path": ".env",
+      "sha256": "66c8cd60627daacd0da810f3fbde138621a0d623bc8eeca181b89786c68032bd",
+      "bytes": 101
+    },
+    {
+      "path": ".env.example",
+      "sha256": "860e0368fbec6daf3793b7e94edfd3952e8a3473e70feafc0e58f229fb1fcbdf",
+      "bytes": 481
+    },
+    {
+      "path": ".gitignore",
+      "sha256": "c24045ef44a0623e0536deff6eb55831a23ac3021fced41126d7543e11000946",
+      "bytes": 320
+    },
+    {
+      "path": "PACKAGE_SECURITY_NOTE.md",
+      "sha256": "43fc894ceaf174ae42108743d1e00acf4150ce917c99218525954aec521e2b2a",
+      "bytes": 595
+    },
+    {
+      "path": "PROJECT_REVIEW_DAY4.md",
+      "sha256": "43cfc14dcb7d2e2540f40967908dcc2821d3b637bd1c3a2b8e09f4a9146cb3c2",
+      "bytes": 3234
+    },
+    {
+      "path": "README.md",
+      "sha256": "fc8589c70fa676d7dfffcec8b6f3899996dd71aa4f3d4c936a70aa46deeef8dc",
+      "bytes": 12505
+    },
+    {
+      "path": "chroma_db/c001d1e1-12d4-480c-85e8-4f4fe6981dc7/data_level0.bin",
+      "sha256": "fe4f86a9e981246a6ece8ad5b037fcb728d57672892d4e84dcca020b7dbd23f8",
+      "bytes": 3893348
+    },
+    {
+      "path": "chroma_db/c001d1e1-12d4-480c-85e8-4f4fe6981dc7/header.bin",
+      "sha256": "3584d4d1ff62bdbb8d25bd623307fd2237ab4b65423536521c23d8e94c377954",
+      "bytes": 100
+    },
+    {
+      "path": "chroma_db/c001d1e1-12d4-480c-85e8-4f4fe6981dc7/index_metadata.pickle",
+      "sha256": "ac3b85b9571c4381a2e17226dcdddedc72effdeef40d79fc9c2028c4500c9288",
+      "bytes": 213852
+    },
+    {
+      "path": "chroma_db/c001d1e1-12d4-480c-85e8-4f4fe6981dc7/length.bin",
+      "sha256": "97d91d37c6fa166b4c52f6982410ed1b142fdd8b90610aab39acd702656bc012",
+      "bytes": 9292
+    },
+    {
+      "path": "chroma_db/c001d1e1-12d4-480c-85e8-4f4fe6981dc7/link_lists.bin",
+      "sha256": "54ae47bfd0c5f81d04820a9c090ab0987b5e1a2e781ecfa904ba3afc0e319702",
+      "bytes": 20172
+    },
+    {
+      "path": "chroma_db/c6eb3092-2b49-4bb7-bd67-e9521c306988/data_level0.bin",
+      "sha256": "6958991b63e5bc85134938f201d412f5225528556ab60e142ac410318fc429b7",
+      "bytes": 2842496
+    },
+    {
+      "path": "chroma_db/c6eb3092-2b49-4bb7-bd67-e9521c306988/header.bin",
+      "sha256": "c235913565bbaf6f2bf3238aeba3da5515507b23d8ffaf9b1b0e6864a579550e",
+      "bytes": 100
+    },
+    {
+      "path": "chroma_db/c6eb3092-2b49-4bb7-bd67-e9521c306988/index_metadata.pickle",
+      "sha256": "2612a45927b990b5b4506eac5088db3dbd42240786c8276ea055a73314255052",
+      "bytes": 156164
+    },
+    {
+      "path": "chroma_db/c6eb3092-2b49-4bb7-bd67-e9521c306988/length.bin",
+      "sha256": "917c3403d74ce4f9456dee6a2f8a9c1a451107277a2ac55339a70ffa8d4137b2",
+      "bytes": 6784
+    },
+    {
+      "path": "chroma_db/c6eb3092-2b49-4bb7-bd67-e9521c306988/link_lists.bin",
+      "sha256": "6401d353547bb3cd8d8f84081e93a730172db2c7bf9fb8b794f0a588c8ecce93",
+      "bytes": 15284
+    },
+    {
+      "path": "chroma_db/chroma.sqlite3",
+      "sha256": "bc11ed426d2d9141e2bdd7d3823a90ffeb4f0c9569da59fa3306dcf32de1704f",
+      "bytes": 28471296
+    },
+    {
+      "path": "config.py",
+      "sha256": "103a3a12801ca6128057ac6a2e84ad554834967122b9fa5c6c7d09bb22d4df7a",
+      "bytes": 1144
+    },
+    {
+      "path": "data/ATA_2016_Hyperthyroidism_Thyrotoxicosis_Guidelines.pdf",
+      "sha256": "3c4c5738b52e23b276af7d17ac66a44d9c0de220106372934c7b2959252801c8",
+      "bytes": 491379
+    },
+    {
+      "path": "data/Graves_brochure.pdf",
+      "sha256": "775d3b58351e3ee4d029fb064c53d57910a50cdb4c811a8e87d457100e9a8cef",
+      "bytes": 454264
+    },
+    {
+      "path": "data/Hashimotos_Thyroiditis.pdf",
+      "sha256": "1cc23f670c2d38187d5b3798c273ae39be6054026024c0cf8c373a5a088bcf4c",
+      "bytes": 474102
+    },
+    {
+      "path": "data/Hypo_brochure.pdf",
+      "sha256": "3fb302c9dc4625bc697b3d22ddd696d95deb5f77f06614078d2ccd4e2a73e6e1",
+      "bytes": 1396647
+    },
+    {
+      "path": "data/Hypothyroidism_web_booklet.pdf",
+      "sha256": "e6122f35bd1deaac723e4e152ca83379aba7b9a0ad9e2e425f396aa00d468c66",
+      "bytes": 1981744
+    },
+    {
+      "path": "data/Nodules_brochure.pdf",
+      "sha256": "bb94fdaedc9494bec3aaff99f095af32bf50a91c6a89ff8178f09a42eb215efa",
+      "bytes": 681574
+    },
+    {
+      "path": "data/ThyroidCancer_brochure.pdf",
+      "sha256": "5721391184e3b62c508efbec53ea005c4706c4d33982aef438fcd80b0f85d43b",
+      "bytes": 472047
+    },
+    {
+      "path": "data/ThyroidDisease.pdf",
+      "sha256": "42eb2134d040495feac4f41e12d62850ef2d2a556ad456f29aff455c07932763",
+      "bytes": 155653
+    },
+    {
+      "path": "data/hyperthyroidism.pdf",
+      "sha256": "15474b80a90c05a7f3e27919f1eaef79a1dd7c57d8df1d23a1cc48e90ddaed03",
+      "bytes": 1178433
+    },
+    {
+      "path": "data/praw-et-al-2025-executive-summary-of-the-2025-american-thyroid-association-management-guidelines-for-adult-patients.pdf",
+      "sha256": "3c4c5738b52e23b276af7d17ac66a44d9c0de220106372934c7b2959252801c8",
+      "bytes": 491379
+    },
+    {
+      "path": "data/thy.2015.0020.pdf",
+      "sha256": "a54a74b0fb9d8bab7bb8389515aa53453c4cc6de4f6087a945cd4e407e5c35ca",
+      "bytes": 3355546
+    },
+    {
+      "path": "day1/.env",
+      "sha256": "66c8cd60627daacd0da810f3fbde138621a0d623bc8eeca181b89786c68032bd",
+      "bytes": 101
+    },
+    {
+      "path": "day1/README.md",
+      "sha256": "e1c905c9d37b947fb307d7f5169e49403e58c89f0b8d7f286b0fd6bb80b6e06a",
+      "bytes": 1632
+    },
+    {
+      "path": "day1/config.py",
+      "sha256": "4f7c833d7af17abaf3673143e3044f62fc578ccb6188ee30da71602ce66679dd",
+      "bytes": 984
+    },
+    {
+      "path": "day1/day1_pipeline.py",
+      "sha256": "3209721e7802b124692e7cbe82d5494c630d809277e1e3353d4517a44d009b69",
+      "bytes": 2160
+    },
+    {
+      "path": "day1/day1_task1_ingestion.ipynb",
+      "sha256": "fcaff9505c30655c17715ef27a88ff9843d96474460cac28e94f13f9af41bc00",
+      "bytes": 2879
+    },
+    {
+      "path": "day1/ingest.py",
+      "sha256": "db49224cf685e7af38ceeea77b91682e2b676e3a283deb530e12c50ff078611b",
+      "bytes": 8261
+    },
+    {
+      "path": "day1/test_day1.py",
+      "sha256": "ff667647e188084d0c2a47f6167a42f8f34cc5edc8dacc127389ba8b2e6fb27d",
+      "bytes": 1826
+    },
+    {
+      "path": "day2/.env",
+      "sha256": "66c8cd60627daacd0da810f3fbde138621a0d623bc8eeca181b89786c68032bd",
+      "bytes": 101
+    },
+    {
+      "path": "day2/README.md",
+      "sha256": "374198bcf4b5603f036f5cbb9d1e6b3c15d9ec402fbd6d64d42d64e0e349eb3e",
+      "bytes": 1935
+    },
+    {
+      "path": "day2/chunk_experiments.py",
+      "sha256": "f53b12f9ef53bc9080c4c75a3324639bc4f9e4a7e64471e141bbeafaf2eec285",
+      "bytes": 7104
+    },
+    {
+      "path": "day2/config.py",
+      "sha256": "f424b85256ca06e38a2f74c4a86cd1d59a67ea3a1c3ec79c83c1a454213f00df",
+      "bytes": 1242
+    },
+    {
+      "path": "day2/day2_retrieval_optimization.ipynb",
+      "sha256": "b7df0fd454ba1793812aca787e9e51cb3ae5e55b03fe7a1bd3919655956605d9",
+      "bytes": 2214
+    },
+    {
+      "path": "day2/embedding_benchmark.py",
+      "sha256": "b779aa919e1208ab2c72dc25b0ec2dad059d5b6612aa46347dcea8db00887504",
+      "bytes": 7338
+    },
+    {
+      "path": "day2/evaluate_retrieval.py",
+      "sha256": "1b695f6e7153bff288461251a77cd4a2ad03174bd2c149cfac2a243e7d42e16d",
+      "bytes": 8591
+    },
+    {
+      "path": "day2/reranker_experiment.py",
+      "sha256": "d91debdb5fc5b7a8eb093fdbeff8a0cf0830e3454886936020affa9a26070fb8",
+      "bytes": 8353
+    },
+    {
+      "path": "day2/test_day2.py",
+      "sha256": "db836bfceb4a05a83046ed94a7da1464e46f0e53c91a42392e09392c0d303dfb",
+      "bytes": 1773
+    },
+    {
+      "path": "day2/validate_top_k.py",
+      "sha256": "44a83af8c721188af6f9c8238b373ec0be05640d365a5f2874611542d755361e",
+      "bytes": 5737
+    },
+    {
+      "path": "day3/.env",
+      "sha256": "c2a6e6c313e52d818c9e9023f55c2390dd25574ef0a3e59119033a4c88e9794f",
+      "bytes": 127
+    },
+    {
+      "path": "day3/DAY3_REVIEW.md",
+      "sha256": "1af3eb8dfb0bb0c80a49254d2d9bf477acc249442e528f20acb197816ab1997c",
+      "bytes": 3878
+    },
+    {
+      "path": "day3/README.md",
+      "sha256": "d4b5a8ae448e28aacd522622c06883b81cef3776724e44c781a3c1d131aaa821",
+      "bytes": 2868
+    },
+    {
+      "path": "day3/config.py",
+      "sha256": "30fc3f931f10b64515f67ce6ae7e3c93bbefd7b149a2dfa947f2f2835a9f7a0c",
+      "bytes": 1648
+    },
+    {
+      "path": "day3/day3_grounded_generation.ipynb",
+      "sha256": "54820f10a49b63fc163eb6c969a2cc58bb3d89fb33b409d643780c2cbfc8eaf7",
+      "bytes": 2687
+    },
+    {
+      "path": "day3/day3_grounded_generation.py",
+      "sha256": "5045356553183be465d1c56328a3770ce9173cd81308d6a50cf6e5729202606d",
+      "bytes": 1402
+    },
+    {
+      "path": "day3/generator.py",
+      "sha256": "b79983da931b19f16d0b90c71f66f15d2e85c552ad6d6b80f1ef3bab430c5b6a",
+      "bytes": 18468
+    },
+    {
+      "path": "day3/test_day3.py",
+      "sha256": "a0bfb27656737de0f0ff7ea86faffd4682121e1461937708b2b369ee46955535",
+      "bytes": 3511
+    },
+    {
+      "path": "day3/test_day3_compliance.py",
+      "sha256": "3f66fc5ee9579c09454bcbe577bacf61e034d0afba597a8f370500f193601716",
+      "bytes": 14348
+    },
+    {
+      "path": "day3/test_day3_corpus_grounding.py",
+      "sha256": "1a52306b53a6901270cd8ebafb5b0e3f55133dc52e19a4902765cd8eae2f856c",
+      "bytes": 1225
+    },
+    {
+      "path": "day4/README.md",
+      "sha256": "bd597366aeeab4d324d0c9f630ce719118d612eba94f98bd3ca7089c780c9bfb",
+      "bytes": 8486
+    },
+    {
+      "path": "day4/RESPONSIBLE_AI_CHECKLIST.md",
+      "sha256": "134579d16069343a2d5df5a9b650e963886a7a7585645ee714f26777e11105e6",
+      "bytes": 1755
+    },
+    {
+      "path": "day4/__init__.py",
+      "sha256": "c1353b8faa5098392cc89e248eb1ebe139273461cd981531f7d441144353c675",
+      "bytes": 187
+    },
+    {
+      "path": "day4/claim_validator.py",
+      "sha256": "7f2751ec4efcefb6758b7c672ea3ecd10919dd426a951691eaa800ee76ae3281",
+      "bytes": 7250
+    },
+    {
+      "path": "day4/config.py",
+      "sha256": "fe71389538534382f9c893837ec87cf23b0d9c83059332fe1700556a8569e65e",
+      "bytes": 2020
+    },
+    {
+      "path": "day4/day4_pipeline.py",
+      "sha256": "c96f603f040a46be8c4b3f50834daa8c0a33e438c02e4a5b2330e7977afef619",
+      "bytes": 2061
+    },
+    {
+      "path": "day4/day4_safety_evaluation.ipynb",
+      "sha256": "706ef8640fc5e053bd6c5b34d26f7ee90766305e304669ee228a2744378797f6",
+      "bytes": 6557
+    },
+    {
+      "path": "day4/evaluate_day4.py",
+      "sha256": "7615fb4b9a5abd0ee5d6d6324c4b5435723e67817c977879090aef5990cbd079",
+      "bytes": 11133
+    },
+    {
+      "path": "day4/evaluation_metrics.py",
+      "sha256": "7a1b591e44fd425314fb183e93dcec800e73e9201afeec6ea282b20e895c5a66",
+      "bytes": 9244
+    },
+    {
+      "path": "day4/frozen_index_builder.py",
+      "sha256": "262f28b08c35de8d81746af376c7c43beb1de26ffb52fce5aad17a31801624bc",
+      "bytes": 3956
+    },
+    {
+      "path": "day4/index_audit.py",
+      "sha256": "d1f250d5df0e0cdc5707192df93786c8fc120b4d9f7a98aaa2819b796c12a806",
+      "bytes": 5223
+    },
+    {
+      "path": "day4/safety_guardrails.py",
+      "sha256": "eddbda43637f9498c16c0b0a02bfd65370805d64047a51f4604abf26694bc177",
+      "bytes": 5945
+    },
+    {
+      "path": "day4/test_day4.py",
+      "sha256": "6f08fc27d2720682cc67dec84555bfa54cb865e78d00951dfd04399189eb1d2b",
+      "bytes": 7930
+    },
+    {
+      "path": "day4/test_day4_compliance.py",
+      "sha256": "59d52d318268ed0be0baf66d09cad0b31c541f3ca8f8dac7fef71c978b6a6998",
+      "bytes": 2143
+    },
+    {
+      "path": "day4/threshold_calibration.py",
+      "sha256": "b542bbca002235203e172394bd135013716427e16741d51aa21b3f79e81f055a",
+      "bytes": 8602
+    },
+    {
+      "path": "evaluation/baseline_results.csv",
+      "sha256": "b93daf6bdc993083dc14d44146a7e2bf668a4b0437702004579c1b661ff96b85",
+      "bytes": 13617
+    },
+    {
+      "path": "evaluation/baseline_results.json",
+      "sha256": "401de628daf98ab04a83cd8eea9ea569860e5eb52adac8dfc65f99912ccfafd4",
+      "bytes": 46925
+    },
+    {
+      "path": "evaluation/chunking_experiment_results.csv",
+      "sha256": "58c777abcf6418b5e776d86c753a697c62124732937b515ed1c1641f7107479d",
+      "bytes": 351
+    },
+    {
+      "path": "evaluation/chunking_experiment_results.json",
+      "sha256": "939776bf503f948ae2a1e911f07b612f4fc43ab8b38c52d73faa9ab85afec02b",
+      "bytes": 958
+    },
+    {
+      "path": "evaluation/day3_refusal_test_cases.csv",
+      "sha256": "f0878152c2b14500985205a47a0eb6c37cc8a3e43d1cde730df2a6241285d31b",
+      "bytes": 2140
+    },
+    {
+      "path": "evaluation/day3_refusal_test_cases.json",
+      "sha256": "dfd041555edb9ac31bd84abfe1170a6e76a594b4be42311f157c685372d672f5",
+      "bytes": 3428
+    },
+    {
+      "path": "evaluation/embedding_benchmark_results.csv",
+      "sha256": "12a9c72f0e26713ff6a849eb71301a1f72ec18477ebc98e29512400809efad94",
+      "bytes": 370
+    },
+    {
+      "path": "evaluation/embedding_benchmark_results.json",
+      "sha256": "4e853a5fbdf9eed4fd23719914f1e26669ae6ebd001ee2be4d38881d58463e2d",
+      "bytes": 873
+    },
+    {
+      "path": "evaluation/failure_analysis.md",
+      "sha256": "40bf85c16730ffbc515e7f45001e09ff6a2f14fb26c24fa2e1f168abe6e9d1d0",
+      "bytes": 4453
+    },
+    {
+      "path": "evaluation/reranker_experiment_results.json",
+      "sha256": "a01fb6f1d3e86e5a1eda5def49295a00903088cab33d734ace722ab25bcebb61",
+      "bytes": 21301
+    },
+    {
+      "path": "evaluation/thyroid_ground_truth.csv",
+      "sha256": "8653c25a1eb9e4078036721f3ffeac19dafaef2d4cd218206bc1755ae12448a6",
+      "bytes": 3004
+    },
+    {
+      "path": "evaluation/thyroid_ground_truth.json",
+      "sha256": "f60a259c08757d18bd15ad8d70b607c01210341c4358cf6de56fcd17c6fdd410",
+      "bytes": 10113
+    },
+    {
+      "path": "evaluation/top_k_validation_results.json",
+      "sha256": "30067e1bc7782bf2b9eb72bcab6974eaed7206cedc0e7a5fcfb8dc0b7879163c",
+      "bytes": 793
+    },
+    {
+      "path": "generator.py",
+      "sha256": "b79983da931b19f16d0b90c71f66f15d2e85c552ad6d6b80f1ef3bab430c5b6a",
+      "bytes": 18468
+    },
+    {
+      "path": "rag_pipeline.py",
+      "sha256": "fd506fadd2c2b81ca132a3e885b0a37c38af47cf4d5255827058a80646901f50",
+      "bytes": 15412
+    },
+    {
+      "path": "requirements.txt",
+      "sha256": "badb4083e4648ab4c547b2f1ef254d0144baf7e4be8afd14c7bf4f7880905e20",
+      "bytes": 577
+    },
+    {
+      "path": "results/best_retrieval_config.json",
+      "sha256": "fc6bc826555c7266257f7c13e7cd201182c9697180f7f12bfde97f8ba6d6e09a",
+      "bytes": 2590
+    },
+    {
+      "path": "results/day4/SANDBOX_TEST_REPORT.md",
+      "sha256": "e1b850f6757be8754564544592653d60f8ec8971e672bbe2eff71801bdb3bd47",
+      "bytes": 2489
+    },
+    {
+      "path": "results/day4/index_audit.json",
+      "sha256": "46ce5d3f4095ebae63ed818ec9a32aa51bceac27e28f8efdfa726f7775cab02c",
+      "bytes": 467
+    },
+    {
+      "path": "results/day4/pre_day4_manifest.json",
+      "sha256": "8414df3a1c8947fff5d1e3f9a801539dcc1917e6db63dfb53ceaf8e753a503a2",
+      "bytes": 11804
+    },
+    {
+      "path": "results/day4/sandbox_test_report.json",
+      "sha256": "0d92b4b30c9c4cb8207f4bed8d641da4b7f70f1ff6c91d09c9611a923e0b65cd",
+      "bytes": 1287
+    },
+    {
+      "path": "results/retrieval_summary.csv",
+      "sha256": "4287c9b7dbba1e7ef9ca5ff32e0815f31818a0f9950e476f2b86c80d48a29639",
+      "bytes": 1668
+    },
+    {
+      "path": "schema/response_schema.json",
+      "sha256": "86f35107b72a5e7856b049e08b79c804f5fdf09093bbee366e06602b1cc778b6",
+      "bytes": 2134
+    },
+    {
+      "path": "verify_project.py",
+      "sha256": "92da6623e3f4224d555385a89bc22628a7f8613210a129aab3ab7882e93d99eb",
+      "bytes": 1411
+    }
+  ]
+}

@@ -1,0 +1,38 @@
+[
+  {
+    "model_name": "sentence-transformers/all-MiniLM-L6-v2",
+    "dimension": 384,
+    "hit_at_1": 0.4375,
+    "hit_at_3": 0.8125,
+    "hit_at_5": 0.8125,
+    "p_at_3": 0.5833,
+    "p_at_5": 0.4875,
+    "mrr": 0.6146,
+    "query_latency_ms": 14.54,
+    "indexing_time_s": 35.33
+  },
+  {
+    "model_name": "sentence-transformers/all-mpnet-base-v2",
+    "dimension": 768,
+    "hit_at_1": 0.5,
+    "hit_at_3": 0.75,
+    "hit_at_5": 0.8125,
+    "p_at_3": 0.4792,
+    "p_at_5": 0.4375,
+    "mrr": 0.6375,
+    "query_latency_ms": 42.85,
+    "indexing_time_s": 202.39
+  },
+  {
+    "model_name": "BAAI/bge-small-en-v1.5",
+    "dimension": 384,
+    "hit_at_1": 0.5625,
+    "hit_at_3": 0.8125,
+    "hit_at_5": 0.875,
+    "p_at_3": 0.5417,
+    "p_at_5": 0.5,
+    "mrr": 0.7031,
+    "query_latency_ms": 22.4,
+    "indexing_time_s": 58.66
+  }
+]

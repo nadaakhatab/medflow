@@ -1,0 +1,26 @@
+# Environment & Secrets
+.env
+.env.local
+.env.*.local
+*.pem
+*.key
+
+# Python Virtual Environments & Caches
+.venv/
+venv/
+ENV/
+__pycache__/
+*.pyc
+*.pyo
+*.pyd
+
+# SQLite Database & Storage runtime files
+*.db
+medflow_auth.db
+server-*.log
+*.log
+
+# IDE & System Files
+.DS_Store
+.vscode/
+.idea/

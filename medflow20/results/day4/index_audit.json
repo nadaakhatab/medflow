@@ -1,0 +1,25 @@
+{
+  "persist_directory": "chroma_db_day2_frozen",
+  "collection_name": "thyroid_day2_frozen",
+  "expected_indexed_chunks": 1470,
+  "database_exists": true,
+  "actual_indexed_chunks": 1470,
+  "manifest_exists": true,
+  "manifest_matches_frozen_day2": true,
+  "index_matches_frozen_day2": true,
+  "notes": [
+    "Persisted collection count and frozen-index manifest match the Day 2 configuration."
+  ],
+  "manifest": {
+    "purpose": "non-destructive exact Day 2 frozen-index rebuild for Day 4 evaluation",
+    "collection_name": "thyroid_day2_frozen",
+    "embedding_model": "BAAI/bge-small-en-v1.5",
+    "normalize_embeddings": true,
+    "chunk_size_tokens": 200,
+    "chunk_overlap_tokens": 0,
+    "indexed_chunks": 1470,
+    "expected_indexed_chunks": 1470,
+    "top_k": 4,
+    "source_pdf_count": 11
+  }
+}

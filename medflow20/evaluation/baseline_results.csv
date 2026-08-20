@@ -1,0 +1,81 @@
+query_id,condition,intent,question,rank,document,page,section,chunk_id,similarity,is_relevant
+GT_01,Hypothyroidism,Diagnosis,How is hypothyroidism diagnosed in clinical practice?,1,Hypothyroidism_web_booklet.pdf,15,Treatment & Management,S00234,0.618,NO
+GT_01,Hypothyroidism,Diagnosis,How is hypothyroidism diagnosed in clinical practice?,2,Hypothyroidism_web_booklet.pdf,5,Treatment & Management,S00144,0.6054,YES
+GT_01,Hypothyroidism,Diagnosis,How is hypothyroidism diagnosed in clinical practice?,3,Hypothyroidism_web_booklet.pdf,7,Symptoms & Clinical Presentation,S00164,0.6028,NO
+GT_01,Hypothyroidism,Diagnosis,How is hypothyroidism diagnosed in clinical practice?,4,Hypothyroidism_web_booklet.pdf,19,Treatment & Management,S00257,0.6023,NO
+GT_01,Hypothyroidism,Diagnosis,How is hypothyroidism diagnosed in clinical practice?,5,ThyroidDisease.pdf,11,Treatment & Management,S00360,0.6017,NO
+GT_02,Hypothyroidism,Symptoms,What are the common clinical signs and symptoms of hypothyroidism?,1,Hypothyroidism_web_booklet.pdf,5,Treatment & Management,S00144,0.6129,YES
+GT_02,Hypothyroidism,Symptoms,What are the common clinical signs and symptoms of hypothyroidism?,2,Hypothyroidism_web_booklet.pdf,5,Symptoms & Clinical Presentation,S00149,0.6089,YES
+GT_02,Hypothyroidism,Symptoms,What are the common clinical signs and symptoms of hypothyroidism?,3,Hypothyroidism_web_booklet.pdf,15,Treatment & Management,S00234,0.6062,NO
+GT_02,Hypothyroidism,Symptoms,What are the common clinical signs and symptoms of hypothyroidism?,4,ThyroidDisease.pdf,12,Treatment & Management,S00364,0.6052,NO
+GT_02,Hypothyroidism,Symptoms,What are the common clinical signs and symptoms of hypothyroidism?,5,Hypothyroidism_web_booklet.pdf,7,Symptoms & Clinical Presentation,S00164,0.602,YES
+GT_03,Hypothyroidism,Treatment,What is the standard medical treatment for primary hypothyroidism?,1,Hypothyroidism_web_booklet.pdf,3,Treatment & Management,S00124,0.5966,NO
+GT_03,Hypothyroidism,Treatment,What is the standard medical treatment for primary hypothyroidism?,2,Hypothyroidism_web_booklet.pdf,3,Treatment & Management,S00119,0.5948,NO
+GT_03,Hypothyroidism,Treatment,What is the standard medical treatment for primary hypothyroidism?,3,Hypothyroidism_web_booklet.pdf,3,Diagnosis & Tests,S00127,0.5936,NO
+GT_03,Hypothyroidism,Treatment,What is the standard medical treatment for primary hypothyroidism?,4,Hypothyroidism_web_booklet.pdf,3,Surveillance & Follow-Up,S00131,0.5928,NO
+GT_03,Hypothyroidism,Treatment,What is the standard medical treatment for primary hypothyroidism?,5,Hypothyroidism_web_booklet.pdf,3,Surveillance & Follow-Up,S00129,0.5881,NO
+GT_04,Hashimoto's Thyroiditis,Diagnosis,How is Hashimoto's disease diagnosed?,1,ThyroidDisease.pdf,10,Diagnosis & Tests,S00358,0.5829,NO
+GT_04,Hashimoto's Thyroiditis,Diagnosis,How is Hashimoto's disease diagnosed?,2,ThyroidDisease.pdf,10,Symptoms & Clinical Presentation,S00356,0.5829,NO
+GT_04,Hashimoto's Thyroiditis,Diagnosis,How is Hashimoto's disease diagnosed?,3,thy.2015.0020.pdf,36,Treatment & Management,S00941,0.5705,NO
+GT_04,Hashimoto's Thyroiditis,Diagnosis,How is Hashimoto's disease diagnosed?,4,Hashimotos_Thyroiditis.pdf,2,Diagnosis & Tests,S00098,0.5697,YES
+GT_04,Hashimoto's Thyroiditis,Diagnosis,How is Hashimoto's disease diagnosed?,5,thy.2015.0020.pdf,12,Evaluation & Workup,S00619,0.5684,NO
+GT_05,Hashimoto's Thyroiditis,Etiology,What is the underlying cause and pathophysiology of Hashimoto's thyroiditis?,1,Hypo_brochure.pdf,2,Treatment & Management,S00108,0.594,NO
+GT_05,Hashimoto's Thyroiditis,Etiology,What is the underlying cause and pathophysiology of Hashimoto's thyroiditis?,2,Hypothyroidism_web_booklet.pdf,14,Surveillance & Follow-Up,S00226,0.5897,NO
+GT_05,Hashimoto's Thyroiditis,Etiology,What is the underlying cause and pathophysiology of Hashimoto's thyroiditis?,3,Hypothyroidism_web_booklet.pdf,15,Treatment & Management,S00238,0.5883,NO
+GT_05,Hashimoto's Thyroiditis,Etiology,What is the underlying cause and pathophysiology of Hashimoto's thyroiditis?,4,Hypothyroidism_web_booklet.pdf,3,Treatment & Management,S00122,0.5881,NO
+GT_05,Hashimoto's Thyroiditis,Etiology,What is the underlying cause and pathophysiology of Hashimoto's thyroiditis?,5,Hypothyroidism_web_booklet.pdf,6,Symptoms & Clinical Presentation,S00151,0.5851,NO
+GT_06,Hyperthyroidism,Diagnosis,How is hyperthyroidism diagnosed?,1,Hypothyroidism_web_booklet.pdf,15,Treatment & Management,S00234,0.6077,NO
+GT_06,Hyperthyroidism,Diagnosis,How is hyperthyroidism diagnosed?,2,Hypothyroidism_web_booklet.pdf,7,Symptoms & Clinical Presentation,S00164,0.6028,NO
+GT_06,Hyperthyroidism,Diagnosis,How is hyperthyroidism diagnosed?,3,Hashimotos_Thyroiditis.pdf,2,Diagnosis & Tests,S00098,0.6027,NO
+GT_06,Hyperthyroidism,Diagnosis,How is hyperthyroidism diagnosed?,4,ThyroidDisease.pdf,10,Risk Stratification & Complications,S00353,0.6017,NO
+GT_06,Hyperthyroidism,Diagnosis,How is hyperthyroidism diagnosed?,5,Nodules_brochure.pdf,1,Diagnosis & Tests,S00265,0.5996,NO
+GT_07,Hyperthyroidism,Treatment,What are the primary treatment options available for hyperthyroidism?,1,Hypothyroidism_web_booklet.pdf,3,Diagnosis & Tests,S00127,0.5866,NO
+GT_07,Hyperthyroidism,Treatment,What are the primary treatment options available for hyperthyroidism?,2,Hypothyroidism_web_booklet.pdf,14,Surveillance & Follow-Up,S00221,0.5853,NO
+GT_07,Hyperthyroidism,Treatment,What are the primary treatment options available for hyperthyroidism?,3,ATA_2016_Hyperthyroidism_Thyrotoxicosis_Guidelines.pdf,6,Treatment & Management,S00052,0.5853,NO
+GT_07,Hyperthyroidism,Treatment,What are the primary treatment options available for hyperthyroidism?,4,Hypothyroidism_web_booklet.pdf,3,Treatment & Management,S00119,0.5827,NO
+GT_07,Hyperthyroidism,Treatment,What are the primary treatment options available for hyperthyroidism?,5,Hypothyroidism_web_booklet.pdf,3,Surveillance & Follow-Up,S00131,0.5811,NO
+GT_08,Graves' Disease,Diagnosis,How is the diagnosis of Graves' disease made?,1,ThyroidDisease.pdf,12,Treatment & Management,S00364,0.6231,NO
+GT_08,Graves' Disease,Diagnosis,How is the diagnosis of Graves' disease made?,2,ThyroidDisease.pdf,12,Diagnosis & Tests,S00366,0.6182,NO
+GT_08,Graves' Disease,Diagnosis,How is the diagnosis of Graves' disease made?,3,Graves_brochure.pdf,2,Diagnosis & Tests,S00084,0.6159,YES
+GT_08,Graves' Disease,Diagnosis,How is the diagnosis of Graves' disease made?,4,Graves_brochure.pdf,2,Treatment & Management,S00090,0.6065,YES
+GT_08,Graves' Disease,Diagnosis,How is the diagnosis of Graves' disease made?,5,Graves_brochure.pdf,2,Diagnosis & Tests,S00083,0.6064,YES
+GT_09,Graves' Disease,Treatment,What are the treatment options for Graves disease?,1,Graves_brochure.pdf,2,Treatment & Management,S00086,0.6168,YES
+GT_09,Graves' Disease,Treatment,What are the treatment options for Graves disease?,2,Graves_brochure.pdf,2,Treatment & Management,S00087,0.6109,YES
+GT_09,Graves' Disease,Treatment,What are the treatment options for Graves disease?,3,Graves_brochure.pdf,2,Treatment & Management,S00090,0.6074,YES
+GT_09,Graves' Disease,Treatment,What are the treatment options for Graves disease?,4,thy.2015.0020.pdf,55,Surgery,S01172,0.6018,NO
+GT_09,Graves' Disease,Treatment,What are the treatment options for Graves disease?,5,ThyroidDisease.pdf,14,Surgery,S00380,0.6017,NO
+GT_10,Graves' Disease,Complications,What are the clinical manifestations of Graves' eye disease (orbitopathy)?,1,ThyroidDisease.pdf,12,Diagnosis & Tests,S00366,0.6312,NO
+GT_10,Graves' Disease,Complications,What are the clinical manifestations of Graves' eye disease (orbitopathy)?,2,Graves_brochure.pdf,1,Symptoms & Clinical Presentation,S00079,0.6262,YES
+GT_10,Graves' Disease,Complications,What are the clinical manifestations of Graves' eye disease (orbitopathy)?,3,Graves_brochure.pdf,2,Diagnosis & Tests,S00084,0.6256,YES
+GT_10,Graves' Disease,Complications,What are the clinical manifestations of Graves' eye disease (orbitopathy)?,4,ThyroidDisease.pdf,12,Treatment & Management,S00364,0.6164,NO
+GT_10,Graves' Disease,Complications,What are the clinical manifestations of Graves' eye disease (orbitopathy)?,5,Graves_brochure.pdf,1,Symptoms & Clinical Presentation,S00080,0.6155,YES
+GT_11,Thyroid Nodules,Evaluation,How should a thyroid nodule be evaluated?,1,thy.2015.0020.pdf,27,Evaluation & Workup,S00825,0.6115,NO
+GT_11,Thyroid Nodules,Evaluation,How should a thyroid nodule be evaluated?,2,Nodules_brochure.pdf,1,Diagnosis & Tests,S00264,0.6093,YES
+GT_11,Thyroid Nodules,Evaluation,How should a thyroid nodule be evaluated?,3,Nodules_brochure.pdf,1,Symptoms & Clinical Presentation,S00260,0.6073,YES
+GT_11,Thyroid Nodules,Evaluation,How should a thyroid nodule be evaluated?,4,thy.2015.0020.pdf,2,Surveillance & Follow-Up,S00517,0.6069,YES
+GT_11,Thyroid Nodules,Evaluation,How should a thyroid nodule be evaluated?,5,Hypothyroidism_web_booklet.pdf,15,Treatment & Management,S00234,0.6064,NO
+GT_12,Thyroid Nodules,Evaluation,When is a fine needle aspiration (FNA) biopsy recommended for a thyroid nodule?,1,thy.2015.0020.pdf,18,Evaluation & Workup,S00683,0.6007,NO
+GT_12,Thyroid Nodules,Evaluation,When is a fine needle aspiration (FNA) biopsy recommended for a thyroid nodule?,2,thy.2015.0020.pdf,25,Evaluation & Workup,S00798,0.6001,NO
+GT_12,Thyroid Nodules,Evaluation,When is a fine needle aspiration (FNA) biopsy recommended for a thyroid nodule?,3,thy.2015.0020.pdf,21,Evaluation & Workup,S00736,0.5996,NO
+GT_12,Thyroid Nodules,Evaluation,When is a fine needle aspiration (FNA) biopsy recommended for a thyroid nodule?,4,thy.2015.0020.pdf,14,Evaluation & Workup,S00640,0.5983,YES
+GT_12,Thyroid Nodules,Evaluation,When is a fine needle aspiration (FNA) biopsy recommended for a thyroid nodule?,5,Nodules_brochure.pdf,2,Evaluation & Workup,S00271,0.5979,NO
+GT_13,Differentiated Thyroid Cancer,Management,How is differentiated thyroid cancer managed?,1,Nodules_brochure.pdf,2,Evaluation & Workup,S00270,0.6176,NO
+GT_13,Differentiated Thyroid Cancer,Management,How is differentiated thyroid cancer managed?,2,ThyroidCancer_brochure.pdf,2,Diagnosis & Tests,S00299,0.6157,NO
+GT_13,Differentiated Thyroid Cancer,Management,How is differentiated thyroid cancer managed?,3,thy.2015.0020.pdf,29,Evaluation & Workup,S00842,0.6156,YES
+GT_13,Differentiated Thyroid Cancer,Management,How is differentiated thyroid cancer managed?,4,ThyroidCancer_brochure.pdf,1,Treatment & Management,S00287,0.6144,NO
+GT_13,Differentiated Thyroid Cancer,Management,How is differentiated thyroid cancer managed?,5,Hypothyroidism_web_booklet.pdf,15,Treatment & Management,S00238,0.6134,NO
+GT_14,Differentiated Thyroid Cancer,Risk Stratification,How is recurrence risk stratified in differentiated thyroid cancer after initial surgery?,1,thy.2015.0020.pdf,33,Surveillance & Follow-Up,S00895,0.6209,YES
+GT_14,Differentiated Thyroid Cancer,Risk Stratification,How is recurrence risk stratified in differentiated thyroid cancer after initial surgery?,2,thy.2015.0020.pdf,45,Surveillance & Follow-Up,S01067,0.6058,NO
+GT_14,Differentiated Thyroid Cancer,Risk Stratification,How is recurrence risk stratified in differentiated thyroid cancer after initial surgery?,3,ThyroidCancer_brochure.pdf,2,Diagnosis & Tests,S00299,0.6031,NO
+GT_14,Differentiated Thyroid Cancer,Risk Stratification,How is recurrence risk stratified in differentiated thyroid cancer after initial surgery?,4,Nodules_brochure.pdf,2,Surveillance & Follow-Up,S00272,0.6028,NO
+GT_14,Differentiated Thyroid Cancer,Risk Stratification,How is recurrence risk stratified in differentiated thyroid cancer after initial surgery?,5,thy.2015.0020.pdf,29,Evaluation & Workup,S00842,0.6023,NO
+GT_15,Differentiated Thyroid Cancer,Follow-Up,What tests are used for long-term surveillance of differentiated thyroid cancer?,1,thy.2015.0020.pdf,6,Evaluation & Workup,S00568,0.6124,NO
+GT_15,Differentiated Thyroid Cancer,Follow-Up,What tests are used for long-term surveillance of differentiated thyroid cancer?,2,thy.2015.0020.pdf,2,Surveillance & Follow-Up,S00516,0.611,NO
+GT_15,Differentiated Thyroid Cancer,Follow-Up,What tests are used for long-term surveillance of differentiated thyroid cancer?,3,thy.2015.0020.pdf,19,Treatment & Management,S00701,0.6068,NO
+GT_15,Differentiated Thyroid Cancer,Follow-Up,What tests are used for long-term surveillance of differentiated thyroid cancer?,4,thy.2015.0020.pdf,1,Evaluation & Workup,S00512,0.6065,NO
+GT_15,Differentiated Thyroid Cancer,Follow-Up,What tests are used for long-term surveillance of differentiated thyroid cancer?,5,thy.2015.0020.pdf,89,Treatment & Management,S01643,0.6035,NO
+GT_16,Thyroid Nodules & DTC,Management,What are the updated guidelines regarding active surveillance for low-risk thyroid tumors?,1,thy.2015.0020.pdf,11,Evaluation & Workup,S00615,0.6146,NO
+GT_16,Thyroid Nodules & DTC,Management,What are the updated guidelines regarding active surveillance for low-risk thyroid tumors?,2,thy.2015.0020.pdf,2,Surveillance & Follow-Up,S00516,0.605,YES
+GT_16,Thyroid Nodules & DTC,Management,What are the updated guidelines regarding active surveillance for low-risk thyroid tumors?,3,thy.2015.0020.pdf,63,Surveillance & Follow-Up,S01294,0.604,NO
+GT_16,Thyroid Nodules & DTC,Management,What are the updated guidelines regarding active surveillance for low-risk thyroid tumors?,4,thy.2015.0020.pdf,35,Surveillance & Follow-Up,S00934,0.5995,NO
+GT_16,Thyroid Nodules & DTC,Management,What are the updated guidelines regarding active surveillance for low-risk thyroid tumors?,5,thy.2015.0020.pdf,14,Evaluation & Workup,S00640,0.5991,NO
