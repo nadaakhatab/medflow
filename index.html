@@ -3290,6 +3290,7 @@
       
       const uploadBtn = document.getElementById('pdf-upload-btn');
       uploadBtn.disabled = false;
+      uploadBtn.querySelector('span').textContent = 'Upload & Index PDF';
       showToast(`${file.name} is ready to index.`, 'info');
       lucide.createIcons();
     }
@@ -3298,7 +3299,9 @@
       selectedPDFFile = null;
       document.getElementById('pdf-file-input').value = '';
       document.getElementById('pdf-file-details').classList.add('hidden');
-      document.getElementById('pdf-upload-btn').disabled = true;
+      const uploadBtn = document.getElementById('pdf-upload-btn');
+      uploadBtn.disabled = true;
+      uploadBtn.querySelector('span').textContent = 'Upload & Index PDF';
       hidePDFError();
     }
 
@@ -3313,7 +3316,20 @@
 
     function hidePDFError() {
       const box = document.getElementById('pdf-error-box');
-      if (box) box.classList.add('hidden');
+      if (box) {
+        box.className = 'hidden p-3.5 bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-800 rounded-xl text-xs text-red-700 dark:text-red-300 flex items-start gap-2.5';
+      }
+    }
+
+    function showPDFInfo(msg) {
+      const box = document.getElementById('pdf-error-box');
+      const txt = document.getElementById('pdf-error-text');
+      if (box && txt) {
+        txt.textContent = msg;
+        box.className = 'p-3.5 bg-blue-50 dark:bg-blue-950/60 border border-blue-200 dark:border-blue-800 rounded-xl text-xs text-blue-700 dark:text-blue-300 flex items-start gap-2.5';
+        const icon = box.querySelector('i');
+        if (icon) icon.className = 'w-4 h-4 text-blue-600 shrink-0 mt-0.5';
+      }
     }
 
     function formatFileSize(bytes) {
@@ -3370,10 +3386,12 @@
 
         const data = await response.json();
 
-        if (response.status === 409) {
+        if (data.status === 'already_indexed') {
           progressBox.classList.add('hidden');
-          showPDFError('This document has already been indexed.');
-          uploadBtn.disabled = false;
+          showPDFInfo(data.message);
+          uploadBtn.disabled = true;
+          uploadBtn.querySelector('span').textContent = 'Already Indexed';
+          document.getElementById('pdf-upload-status-badge').textContent = 'Already Indexed';
           return;
         }
 

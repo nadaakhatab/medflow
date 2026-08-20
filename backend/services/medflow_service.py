@@ -77,6 +77,7 @@ class Medflow20Service:
 
         self.data_dir = os.path.join(self.medflow_dir, "data")
         self.metadata_file = os.path.join(self.storage_dir, "imported_documents.json")
+        self._curated_hashes = self._build_curated_hash_index()
 
         os.makedirs(self.storage_dir, exist_ok=True)
 
@@ -117,6 +118,38 @@ class Medflow20Service:
         self._rebuild_bm25()
 
         print(f"[Medflow20Service] Ready! Active chunks indexed in Medflow20: {len(self.active_corpus)}")
+
+    def _build_curated_hash_index(self) -> Dict[str, str]:
+        """Map local curated PDF content hashes to filenames for duplicate checks."""
+        hashes: Dict[str, str] = {}
+        for root, _, files in os.walk(self.data_dir):
+            for name in files:
+                if not name.lower().endswith(".pdf"):
+                    continue
+                path = os.path.join(root, name)
+                with open(path, "rb") as pdf_file:
+                    hashes[hashlib.sha256(pdf_file.read()).hexdigest()] = name
+        return hashes
+
+    def get_duplicate_status(self, sha256: str) -> Optional[Dict[str, Any]]:
+        """Return an exact-content duplicate, preferring curated corpus ownership."""
+        curated_filename = self._curated_hashes.get(sha256)
+        if curated_filename:
+            return {
+                "status": "already_indexed",
+                "duplicate_type": "curated",
+                "message": "This document is already included in the curated Medflow knowledge base.",
+                "document": {"filename": curated_filename, "sha256": sha256, "source_type": "curated"},
+            }
+        for existing in self._load_metadata_store():
+            if existing.get("sha256") == sha256:
+                return {
+                    "status": "already_indexed",
+                    "duplicate_type": "uploaded",
+                    "message": "Already indexed — this exact PDF is already available in the Medflow knowledge base.",
+                    "document": existing,
+                }
+        return None
 
     def _load_metadata_store(self) -> List[Dict[str, Any]]:
         """Reads metadata JSON store for imported PDFs."""
@@ -295,15 +328,11 @@ class Medflow20Service:
             raise ValueError("Only PDF files are supported.")
 
         sha256 = hashlib.sha256(file_bytes).hexdigest()
-        existing_docs = self._load_metadata_store()
+        duplicate = self.get_duplicate_status(sha256)
+        if duplicate:
+            return duplicate
 
-        for existing in existing_docs:
-            if existing.get("sha256") == sha256:
-                return {
-                    "status": "duplicate",
-                    "message": "This document has already been indexed in Medflow20.",
-                    "document": existing
-                }
+        existing_docs = self._load_metadata_store()
 
         doc_id = f"doc_{sha256[:12]}"
         file_path = os.path.join(self.storage_dir, f"{doc_id}.pdf")

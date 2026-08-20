@@ -1,14 +1,5 @@
 [
   {
-    "document_id": "doc_c833940006cb",
-    "filename": "arXiv_Thyroid_Disease_Diagnosis_Model.pdf",
-    "sha256": "c833940006cbdc6101a2259d504c655bcda96ec406128d0dd6446e6769367531",
-    "total_pages": 15,
-    "total_chunks": 65,
-    "file_size_bytes": 565273,
-    "upload_timestamp": "2026-08-19T18:51:20.759401+00:00"
-  },
-  {
     "document_id": "doc_e6122f35bd1d",
     "filename": "Hypothyroidism_web_booklet (1).pdf",
     "sha256": "e6122f35bd1deaac723e4e152ca83379aba7b9a0ad9e2e425f396aa00d468c66",
@@ -16,5 +7,23 @@
     "total_chunks": 143,
     "file_size_bytes": 1981744,
     "upload_timestamp": "2026-08-19T18:51:32.244682+00:00"
+  },
+  {
+    "document_id": "doc_f6c4ed8dfa2a",
+    "filename": "arXiv_Thyroid_Nodule_Malignancy_Classification.pdf",
+    "sha256": "f6c4ed8dfa2ad59722ebd514218ab301b06044c6336daea31e43e139fed43da2",
+    "total_pages": 5,
+    "total_chunks": 38,
+    "file_size_bytes": 349838,
+    "upload_timestamp": "2026-08-20T12:58:56.096981+00:00"
+  },
+  {
+    "document_id": "doc_7cb89e0df200",
+    "filename": "arXiv_Thyroid_Diseases_Diagnosis_Expert_System.pdf",
+    "sha256": "7cb89e0df200b92c6db38ab5f2cce8398708b5baa5539275996f94ff3c5689d6",
+    "total_pages": 12,
+    "total_chunks": 57,
+    "file_size_bytes": 185725,
+    "upload_timestamp": "2026-08-20T13:02:30.706193+00:00"
   }
 ]

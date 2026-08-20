@@ -189,7 +189,9 @@ async def root_endpoint():
     index_path = os.path.join(PROJECT_ROOT, "index.html")
     if not os.path.exists(index_path):
         raise HTTPException(status_code=500, detail="Frontend asset is unavailable.")
-    return FileResponse(index_path)
+    # The application bundles its JavaScript inline in index.html.  Never serve
+    # a stale page after an authentication or API-routing update.
+    return FileResponse(index_path, headers={"Cache-Control": "no-store, max-age=0"})
 
 @app.get("/health")
 @app.get("/api/v1/health")
@@ -527,14 +529,10 @@ async def upload_pdf_document(request: Request, file: UploadFile = File(...), cu
         contents = await file.read()
         result = rag_engine.index_pdf_document(contents, file.filename)
         
-        if result.get("status") == "duplicate":
+        if result.get("status") == "already_indexed":
             return JSONResponse(
-                status_code=409,
-                content={
-                    "status": "duplicate",
-                    "message": "This document has already been indexed.",
-                    "document": result.get("document")
-                }
+                status_code=200,
+                content=result,
             )
             
         return result
