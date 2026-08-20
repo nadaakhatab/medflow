@@ -65,9 +65,11 @@ async def get_current_user(request: Request, db: Session = Depends(get_db)):
             token = auth_header.split(" ")[1]
         
     if not token:
-        # Dev fallback only when DEV_AUTH_BYPASS is active in local development
+        # This is intentionally opt-in and is never available in Public Mode.
         initial_admin_email = os.getenv("INITIAL_ADMIN_EMAIL", "").strip()
-        if initial_admin_email and os.getenv("APP_ENV") != "production":
+        dev_bypass_enabled = os.getenv("DEV_AUTH_BYPASS", "false").lower() == "true"
+        local_client = request.client and request.client.host in {"127.0.0.1", "::1", "localhost"}
+        if initial_admin_email and dev_bypass_enabled and os.getenv("APP_ENV") != "production" and local_client:
             dev_user = db.query(models.User).filter(models.User.email == initial_admin_email.lower()).first()
             if dev_user:
                 return dev_user

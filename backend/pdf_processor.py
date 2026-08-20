@@ -9,9 +9,10 @@ import re
 import hashlib
 from datetime import datetime, timezone
 from typing import List, Dict, Any, Tuple
+import os
 import pypdf
 
-MAX_FILE_SIZE = 25 * 1024 * 1024  # 25 MB max limit
+MAX_FILE_SIZE = int(os.getenv("PDF_UPLOAD_MAX_MB", "25")) * 1024 * 1024
 
 def validate_pdf_file(file_bytes: bytes, filename: str) -> Tuple[bool, str]:
     """

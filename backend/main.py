@@ -16,11 +16,18 @@ import json
 import os
 import sys
 import asyncio
+import time
+from collections import defaultdict, deque
+from threading import Lock
+from dotenv import load_dotenv
 
 # Ensure project root and medflow20 are in sys.path so medflow20 can be imported cleanly
 CURRENT_DIR = os.path.dirname(os.path.abspath(__file__))
 PROJECT_ROOT = os.path.dirname(CURRENT_DIR)
 MEDFLOW20_DIR = os.path.join(PROJECT_ROOT, "medflow20")
+
+# Load local, git-ignored production settings before importing authentication.
+load_dotenv(os.path.join(PROJECT_ROOT, ".env"))
 
 if PROJECT_ROOT not in sys.path:
     sys.path.insert(0, PROJECT_ROOT)
@@ -95,10 +102,12 @@ def startup_event():
                 db.commit()
                 print("[FastAPI] Configured initial admin account from Space environment settings.")
             else:
-                admin_user.role = "admin"
-                admin_user.password_hash = auth.get_password_hash(admin_password)
-                db.commit()
-                print("[FastAPI] Verified existing admin user credentials.")
+                # Initial credentials are a one-time bootstrap only.  Never reset
+                # an existing local account's password when the service restarts.
+                if admin_user.role != "admin":
+                    admin_user.role = "admin"
+                    db.commit()
+                print("[FastAPI] Existing initial admin account retained without changing its password.")
         else:
             print("[FastAPI] INITIAL_ADMIN_EMAIL / INITIAL_ADMIN_PASSWORD not set. Skipping initial admin seeding.")
     finally:
@@ -108,6 +117,28 @@ def startup_event():
 print("[FastAPI] Initializing Medflow20 Core RAG Engine Service...")
 rag_engine = Medflow20Service()
 print("[FastAPI] Medflow20 Core RAG Engine Ready!")
+
+# Lightweight, process-local protection for the expensive local inference paths.
+# The public tunnel is the only inbound route, so this deliberately stays simple
+# and has no external service or cloud dependency.
+_rate_windows = defaultdict(deque)
+_rate_lock = Lock()
+
+def enforce_rate_limit(request: Request, bucket: str, limit: int, window_seconds: int = 60) -> None:
+    client_ip = request.headers.get("CF-Connecting-IP") or (request.client.host if request.client else "unknown")
+    key = f"{bucket}:{client_ip}"
+    now = time.monotonic()
+    with _rate_lock:
+        attempts = _rate_windows[key]
+        while attempts and now - attempts[0] >= window_seconds:
+            attempts.popleft()
+        if len(attempts) >= limit:
+            raise HTTPException(
+                status_code=429,
+                detail=f"Too many {bucket} requests. Please try again in a minute.",
+                headers={"Retry-After": str(window_seconds)},
+            )
+        attempts.append(now)
 
 # --- Pydantic Schemas ---
 
@@ -179,6 +210,8 @@ def get_system_health():
         "status": "healthy",
         "ready": True,
         "service": "MedFlow Medical RAG API (Medflow20 Core Engine)",
+        "collection": "thyroid_section_aware",
+        "active_chunks": total_active_chunks,
         "vector_store": f"Medflow20 ChromaDB Persistent ({total_active_chunks} Active Section-Aware Chunks Indexed)",
         "imported_documents_count": len(imported_docs),
         "models": {
@@ -188,11 +221,12 @@ def get_system_health():
     }
 
 @app.post("/api/v1/query", response_model=RAGQueryResponse)
-async def query_rag_engine(payload: RAGQueryRequest, current_user: models.User = Depends(auth.get_current_user)):
+async def query_rag_engine(payload: RAGQueryRequest, request: Request, current_user: models.User = Depends(auth.get_current_user)):
     """
     Live Hybrid RAG retrieval and synthesis endpoint combining ChromaDB + BM25 + Reranker.
     Searches both built-in guidelines and user-uploaded PDFs.
     """
+    enforce_rate_limit(request, "RAG", limit=15)
     if not payload.query.strip():
         raise HTTPException(status_code=400, detail="Query string cannot be empty.")
     
@@ -223,6 +257,7 @@ async def query_rag_engine(payload: RAGQueryRequest, current_user: models.User =
 @app.post("/api/v1/query/stream")
 async def stream_rag_engine(
     payload: RAGQueryRequest, 
+    request: Request,
     x_session_id: Optional[str] = Header(None),
     current_user: models.User = Depends(auth.get_current_user),
     db: Session = Depends(get_db)
@@ -230,6 +265,7 @@ async def stream_rag_engine(
     """
     Server-Sent Events (SSE) streaming endpoint for real-time typewriter AI response.
     """
+    enforce_rate_limit(request, "RAG", limit=15)
     if not payload.query.strip():
         raise HTTPException(status_code=400, detail="Query string cannot be empty.")
         
@@ -276,6 +312,7 @@ async def stream_rag_engine(
 @app.post("/api/v1/interpret-labs", response_model=LabInterpretationResponse)
 async def interpret_labs(
     payload: LabInterpreterRequest, 
+    request: Request,
     x_session_id: Optional[str] = Header(None),
     current_user: models.User = Depends(auth.get_current_user),
     db: Session = Depends(get_db)
@@ -284,6 +321,7 @@ async def interpret_labs(
     Context-aware Lab Test Interpreter endpoint evaluating patient thyroid status
     (functioning, post-thyroidectomy/ablated, congenital hypothyroidism, or unknown).
     """
+    enforce_rate_limit(request, "lab interpretation", limit=20)
     # Server-side event logging
     if x_session_id:
         analytics.log_event(db, current_user.id, x_session_id, "lab_interpretation", "Lab Interpreter", json.dumps({"status": payload.thyroid_status}))
@@ -482,11 +520,12 @@ async def search_pdf_documents(
 # --- PDF Upload & Indexing Endpoints ---
 
 @app.post("/api/v1/upload-pdf")
-async def upload_pdf_document(file: UploadFile = File(...), current_user: models.User = Depends(auth.get_current_user)):
+async def upload_pdf_document(request: Request, file: UploadFile = File(...), current_user: models.User = Depends(auth.get_current_user)):
     """
     Uploads, validates, extracts, embeds, and indexes a PDF document into ChromaDB & BM25.
     Returns status, SHA-256 hash, page count, and chunk count.
     """
+    enforce_rate_limit(request, "PDF upload", limit=5)
     if not file.filename:
         raise HTTPException(status_code=400, detail="Filename cannot be empty.")
         

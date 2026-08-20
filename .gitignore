@@ -20,6 +20,7 @@ medflow_auth.db
 server-*.log
 *.log
 logs/
+tools/cloudflared.exe
 
 # IDE & System Files
 .DS_Store

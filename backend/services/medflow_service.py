@@ -90,10 +90,20 @@ class Medflow20Service:
         print(f"[Medflow20Service] Connecting to Medflow20 ChromaDB at '{self.chroma_db_path}'...")
         self.chroma_client = chromadb.PersistentClient(path=self.chroma_db_path)
         
-        self.section_collection = self.chroma_client.get_or_create_collection(
-            name=settings.COLLECTION_NAME,
-            metadata={"hnsw:space": "cosine"}
-        )
+        # Public Mode must never silently create an empty Medflow20 corpus.
+        # It must connect to the curated, section-aware collection already on disk.
+        try:
+            self.section_collection = self.chroma_client.get_collection(name=settings.COLLECTION_NAME)
+        except Exception as exc:
+            raise RuntimeError(
+                f"Required Medflow20 collection '{settings.COLLECTION_NAME}' was not found at "
+                f"'{self.chroma_db_path}'. Restore the local Medflow20 ChromaDB before starting Public Mode."
+            ) from exc
+        if self.section_collection.count() <= 0:
+            raise RuntimeError(
+                f"Required Medflow20 collection '{settings.COLLECTION_NAME}' is empty. "
+                "Public Mode will not start with an empty medical corpus."
+            )
         self.naive_collection = self.chroma_client.get_or_create_collection(
             name="thyroid_naive",
             metadata={"hnsw:space": "cosine"}
