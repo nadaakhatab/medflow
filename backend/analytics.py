@@ -4,10 +4,9 @@ from sqlalchemy import func
 from typing import List, Dict, Any
 import datetime
 
-import models
-import schemas
-from database import get_db
-from auth import get_current_user, get_current_admin
+from backend import models, schemas
+from backend.database import get_db
+from backend.auth import get_current_user, get_current_admin
 
 router = APIRouter(prefix="/api/v1/analytics", tags=["analytics"])
 

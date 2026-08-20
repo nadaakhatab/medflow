@@ -12,10 +12,10 @@ services:
       - APP_ENV=production
       - PORT=7860
       - DATA_DIR=/app/data
-      - SECRET_KEY=
-      - SECURE_COOKIE=false
-      - INITIAL_ADMIN_EMAIL=
-      - INITIAL_ADMIN_PASSWORD=
+      - SECRET_KEY=${SECRET_KEY:-}
+      - SECURE_COOKIE=${SECURE_COOKIE:-true}
+      - INITIAL_ADMIN_EMAIL=${INITIAL_ADMIN_EMAIL:-}
+      - INITIAL_ADMIN_PASSWORD=${INITIAL_ADMIN_PASSWORD:-}
     volumes:
       - medflow_data:/app/data
     restart: unless-stopped

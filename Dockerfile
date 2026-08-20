@@ -44,7 +44,7 @@ EXPOSE 7860
 
 # Health check probe
 HEALTHCHECK --interval=30s --timeout=5s --start-period=45s --retries=3 \
-    CMD curl -f http://127.0.0.1:/health || exit 1
+    CMD curl -f http://127.0.0.1:7860/health || exit 1
 
 # Production entrypoint: start FastAPI backend serving both REST API and SPA frontend
-CMD ["sh", "-c", "exec uvicorn backend.main:app --host 0.0.0.0 --port "]
+CMD ["sh", "-c", "exec uvicorn backend.main:app --host 0.0.0.0 --port ${PORT:-7860}"]

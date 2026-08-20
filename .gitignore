@@ -19,6 +19,7 @@ __pycache__/
 medflow_auth.db
 server-*.log
 *.log
+logs/
 
 # IDE & System Files
 .DS_Store

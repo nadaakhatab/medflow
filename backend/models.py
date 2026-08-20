@@ -1,6 +1,6 @@
 from sqlalchemy import Column, Integer, String, Boolean, DateTime
 from sqlalchemy.sql import func
-from database import Base
+from backend.database import Base
 
 class User(Base):
     __tablename__ = "users"
@@ -25,4 +25,3 @@ class AnalyticsEvent(Base):
     feature = Column(String, index=True)    # e.g., RAG Chat, Lab Interpreter
     metadata_json = Column(String, nullable=True)
     timestamp = Column(DateTime(timezone=True), server_default=func.now(), index=True)
-

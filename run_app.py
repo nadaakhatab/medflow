@@ -31,7 +31,6 @@ def kill_process_on_port(port: int):
 
 def main():
     root_dir = os.path.dirname(os.path.abspath(__file__))
-    backend_dir = os.path.join(root_dir, "backend")
     
     # Prefer local virtualenv python if present
     local_venv_python = os.path.join(root_dir, ".venv", "Scripts", "python.exe")
@@ -63,8 +62,8 @@ def main():
     # 2. Start FastAPI Backend on Port 8000
     print("\n[1/2] Launching FastAPI Backend (Medflow20 Engine) on http://127.0.0.1:8000 ...")
     backend_proc = subprocess.Popen(
-        [python_exe, "-m", "uvicorn", "main:app", "--host", "127.0.0.1", "--port", "8000"],
-        cwd=backend_dir,
+        [python_exe, "-m", "uvicorn", "backend.main:app", "--host", "127.0.0.1", "--port", "8000"],
+        cwd=root_dir,
         env=env
     )
 
@@ -90,7 +89,7 @@ def main():
             sys.exit(1)
         
         try:
-            req = urllib.request.Request("http://127.0.0.1:8000/")
+            req = urllib.request.Request("http://127.0.0.1:8000/health")
             with urllib.request.urlopen(req, timeout=1) as response:
                 if response.status == 200:
                     backend_ready = True

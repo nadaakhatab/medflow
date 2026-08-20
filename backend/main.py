@@ -27,13 +27,11 @@ if PROJECT_ROOT not in sys.path:
 if MEDFLOW20_DIR not in sys.path:
     sys.path.insert(0, MEDFLOW20_DIR)
 
-from services.medflow_service import Medflow20Service
-import models
-from database import engine, SessionLocal, get_db
+from backend.services.medflow_service import Medflow20Service
+from backend import models, auth, analytics
+from backend.database import engine, SessionLocal, get_db
 from sqlalchemy.orm import Session
 from sqlalchemy import text
-import auth
-import analytics
 
 # Create database tables
 models.Base.metadata.create_all(bind=engine)
@@ -161,21 +159,12 @@ class LabInterpretationResponse(BaseModel):
 
 @app.get("/")
 @app.get("/index.html")
-async def root_endpoint(request: Request):
-    """
-    Unified entry point:
-    - Serves the Single-Page Application (index.html) for web browser navigation.
-    - Returns JSON status when explicitly queried with application/json.
-    """
-    accept = request.headers.get("accept", "")
-    # If standard browser navigation or HTML requested, serve index.html
-    if "text/html" in accept or request.url.path.endswith("index.html"):
-        index_path = os.path.join(PROJECT_ROOT, "index.html")
-        if os.path.exists(index_path):
-            return FileResponse(index_path)
-    
-    # Otherwise return JSON health status
-    return get_system_health()
+async def root_endpoint():
+    """Serve the public single-page application from the production API origin."""
+    index_path = os.path.join(PROJECT_ROOT, "index.html")
+    if not os.path.exists(index_path):
+        raise HTTPException(status_code=500, detail="Frontend asset is unavailable.")
+    return FileResponse(index_path)
 
 @app.get("/health")
 @app.get("/api/v1/health")

@@ -1,4 +1,5 @@
 import os
+import secrets
 from datetime import datetime, timedelta
 from typing import Optional
 
@@ -7,14 +8,18 @@ from sqlalchemy.orm import Session
 from passlib.context import CryptContext
 from jose import JWTError, jwt
 
-import models
-import schemas
-from database import get_db
+from backend import models, schemas
+from backend.database import get_db
 
 router = APIRouter(prefix="/api/v1/auth", tags=["auth"])
 
 # Environment configuration for JWT authentication secrets
-SECRET_KEY = os.getenv("SECRET_KEY", os.getenv("AUTH_SECRET_KEY", "medflow_jwt_secret_key_default_change_in_production"))
+SECRET_KEY = os.getenv("SECRET_KEY") or os.getenv("AUTH_SECRET_KEY")
+# Never use a source-controlled default JWT secret. A deployment without a Space
+# secret still receives a cryptographically strong process-local key; sessions
+# safely expire on a restart. Set SECRET_KEY in Space Secrets for stable sessions.
+if not SECRET_KEY:
+    SECRET_KEY = secrets.token_urlsafe(48)
 ALGORITHM = os.getenv("AUTH_ALGORITHM", "HS256")
 ACCESS_TOKEN_EXPIRE_MINUTES = 60 * 24 * 7 # 7 days
 SECURE_COOKIE = os.getenv("SECURE_COOKIE", "false").lower() == "true" or os.getenv("APP_ENV") == "production"
