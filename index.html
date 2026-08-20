@@ -2084,14 +2084,9 @@
 
   <!-- SCRIPT ENGINE -->
   <script>
-    // Centralized Dynamic API Configuration
-    // Automatically adapts to same-origin in production and port 8000 in multi-port development.
-    const API_BASE_URL = (function() {
-      if (typeof window === 'undefined') return 'http://127.0.0.1:8000';
-      if (window.location.protocol === 'file:') return 'http://127.0.0.1:8000';
-      if (window.location.port === '3000') return `${window.location.protocol}//${window.location.hostname}:8000`;
-      return window.location.origin;
-    })();
+    // Medflow is a single FastAPI application: frontend and API always share
+    // the same origin (local 7860 or the active public tunnel).
+    const API_BASE_URL = window.location.origin;
 
     // =========================================================================
     // AUTHENTICATION CONFIGURATION
@@ -2940,7 +2935,7 @@
             !
           </div>
           <div class="bg-red-50 dark:bg-red-950/60 border border-red-200 dark:border-red-800 p-4 rounded-2xl text-xs sm:text-sm text-red-700 dark:text-red-300">
-            <strong>Backend Connection Offline:</strong> Could not connect to MedFlow FastAPI server at <code>${API_BASE_URL}</code>. Please ensure the backend engine is running.
+            <strong>Backend Connection Offline:</strong> Medflow backend is unavailable. Please start Medflow using <code>start_medflow.bat</code>.
           </div>
         `;
         chatContainer.appendChild(errBubble);
@@ -3667,3 +3662,4 @@
   </script>
 </body>
 </html>
+
