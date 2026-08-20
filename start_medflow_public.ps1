@@ -69,27 +69,51 @@ try {
     if (-not $ready) { throw "Medflow20 did not become ready. See $backendLog" }
 
     Write-Host "Medflow20: READY | ChromaDB: READY | RAG: READY | Active chunks: $($health.active_chunks)" -ForegroundColor Green
-    Write-Host 'Starting secure Cloudflare quick tunnel ...'
-    # HTTP/2 avoids networks that block or interrupt Cloudflare's QUIC/UDP traffic.
-    $tunnel = Start-Process -FilePath $cloudflared -ArgumentList 'tunnel','--url','http://127.0.0.1:7860','--protocol','http2','--no-autoupdate' -WorkingDirectory $projectRoot -RedirectStandardOutput $tunnelLog -RedirectStandardError $tunnelErrorLog -PassThru -NoNewWindow
 
-    $publicUrl = $null
-    for ($i = 0; $i -lt 60; $i++) {
-        if ($tunnel.HasExited) { throw "Cloudflare Tunnel stopped. See $tunnelLog" }
-        if ((Test-Path -LiteralPath $tunnelLog) -or (Test-Path -LiteralPath $tunnelErrorLog)) {
-            $match = Select-String -LiteralPath $tunnelLog, $tunnelErrorLog -Pattern 'https://[-a-z0-9]+\.trycloudflare\.com' | Select-Object -First 1
-            if ($match) { $publicUrl = $match.Matches[0].Value; break }
+    function Start-QuickTunnel {
+        Remove-Item -LiteralPath $tunnelLog, $tunnelErrorLog -Force -ErrorAction SilentlyContinue
+        Write-Host 'Starting secure Cloudflare quick tunnel ...'
+        $newTunnel = Start-Process -FilePath $cloudflared -ArgumentList 'tunnel','--url','http://127.0.0.1:7860','--protocol','http2','--no-autoupdate' -WorkingDirectory $projectRoot -RedirectStandardOutput $tunnelLog -RedirectStandardError $tunnelErrorLog -PassThru -NoNewWindow
+        for ($i = 0; $i -lt 90; $i++) {
+            if ($newTunnel.HasExited) { break }
+            $match = Select-String -LiteralPath $tunnelLog, $tunnelErrorLog -Pattern 'https://[-a-z0-9]+\.trycloudflare\.com' -ErrorAction SilentlyContinue | Select-Object -First 1
+            if ($match) { return @{ Process = $newTunnel; Url = $match.Matches[0].Value } }
+            Start-Sleep -Seconds 1
+        }
+        if (-not $newTunnel.HasExited) { Stop-Process -Id $newTunnel.Id -ErrorAction SilentlyContinue }
+        throw "Cloudflare did not return a public URL. See $tunnelErrorLog"
+    }
+
+    $tunnelInfo = Start-QuickTunnel
+    $tunnel = $tunnelInfo.Process
+    $publicUrl = $tunnelInfo.Url
+    Write-Host ''
+    Write-Host "Public URL: $publicUrl" -ForegroundColor Cyan
+    Write-Host 'The URL will be recreated automatically if the network changes. Press Ctrl+C to stop.' -ForegroundColor Green
+
+    $failedPublicChecks = 0
+    $nextCheck = [DateTime]::UtcNow
+    while (-not $backend.HasExited) {
+        if ($tunnel.HasExited) { $failedPublicChecks = 3 }
+        if ([DateTime]::UtcNow -ge $nextCheck) {
+            try {
+                $publicHealth = Invoke-RestMethod -Uri "$publicUrl/health" -TimeoutSec 10
+                if ($publicHealth.ready -eq $true) { $failedPublicChecks = 0 } else { $failedPublicChecks++ }
+            } catch { $failedPublicChecks++ }
+            $nextCheck = [DateTime]::UtcNow.AddSeconds(20)
+        }
+        if ($failedPublicChecks -ge 3) {
+            Write-Host 'Network/tunnel changed. Recreating the public HTTPS URL ...' -ForegroundColor Yellow
+            if (-not $tunnel.HasExited) { Stop-Process -Id $tunnel.Id -ErrorAction SilentlyContinue }
+            $tunnelInfo = Start-QuickTunnel
+            $tunnel = $tunnelInfo.Process
+            $publicUrl = $tunnelInfo.Url
+            $failedPublicChecks = 0
+            $nextCheck = [DateTime]::UtcNow.AddSeconds(20)
+            Write-Host "New Public URL: $publicUrl" -ForegroundColor Cyan
         }
         Start-Sleep -Seconds 1
     }
-    if (-not $publicUrl) { throw "Cloudflare did not return a public URL. See $tunnelLog" }
-
-    $publicHealth = Invoke-RestMethod -Uri "$publicUrl/health" -TimeoutSec 20
-    if ($publicHealth.ready -ne $true) { throw 'The public tunnel did not pass its health check.' }
-    Write-Host ''
-    Write-Host "Public URL: $publicUrl" -ForegroundColor Cyan
-    Write-Host 'Public HTTPS health check: PASS. Press Ctrl+C to stop Medflow and the tunnel.' -ForegroundColor Green
-    while (-not $backend.HasExited -and -not $tunnel.HasExited) { Start-Sleep -Seconds 1 }
 } finally {
     if ($tunnel -and -not $tunnel.HasExited) { Stop-Process -Id $tunnel.Id -ErrorAction SilentlyContinue }
     if ($backend -and -not $backend.HasExited) { Stop-Process -Id $backend.Id -ErrorAction SilentlyContinue }
