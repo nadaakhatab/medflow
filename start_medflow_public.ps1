@@ -70,7 +70,8 @@ try {
 
     Write-Host "Medflow20: READY | ChromaDB: READY | RAG: READY | Active chunks: $($health.active_chunks)" -ForegroundColor Green
     Write-Host 'Starting secure Cloudflare quick tunnel ...'
-    $tunnel = Start-Process -FilePath $cloudflared -ArgumentList 'tunnel','--url','http://127.0.0.1:7860','--no-autoupdate' -WorkingDirectory $projectRoot -RedirectStandardOutput $tunnelLog -RedirectStandardError $tunnelErrorLog -PassThru -NoNewWindow
+    # HTTP/2 avoids networks that block or interrupt Cloudflare's QUIC/UDP traffic.
+    $tunnel = Start-Process -FilePath $cloudflared -ArgumentList 'tunnel','--url','http://127.0.0.1:7860','--protocol','http2','--no-autoupdate' -WorkingDirectory $projectRoot -RedirectStandardOutput $tunnelLog -RedirectStandardError $tunnelErrorLog -PassThru -NoNewWindow
 
     $publicUrl = $null
     for ($i = 0; $i -lt 60; $i++) {
