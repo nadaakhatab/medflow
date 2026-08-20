@@ -14,8 +14,6 @@ if (-not (Test-Path -LiteralPath $cloudflared)) {
     throw "Cloudflare Tunnel was not found: $cloudflared. Run install_cloudflared.ps1 once first."
 }
 if (-not (Test-Path -LiteralPath $envFile)) {
-    # First launch creates a local-only secret.  Admin values intentionally stay
-    # empty: public users can register normally and no default credential exists.
     $rng = [System.Security.Cryptography.RandomNumberGenerator]::Create()
     $secretBytes = New-Object byte[] 48
     $rng.GetBytes($secretBytes)
@@ -29,10 +27,9 @@ if (-not (Test-Path -LiteralPath $envFile)) {
         'INITIAL_ADMIN_PASSWORD='
         'PDF_UPLOAD_MAX_MB=25'
     ) | Set-Content -LiteralPath $envFile -Encoding utf8
-    Write-Host 'Created a local .env with a new random session secret. No default admin account was created.' -ForegroundColor Yellow
+    Write-Host 'Created a local .env with a new random session secret.' -ForegroundColor Yellow
 }
 
-# The tunnel is the only public-facing process. FastAPI accepts localhost traffic only.
 $env:APP_ENV = 'production'
 $env:DEV_AUTH_BYPASS = 'false'
 $env:SECURE_COOKIE = 'true'
@@ -46,27 +43,38 @@ $backendLog = Join-Path $logDir 'medflow-public-backend.log'
 $backendErrorLog = Join-Path $logDir 'medflow-public-backend-error.log'
 $tunnelLog = Join-Path $logDir 'medflow-public-tunnel.log'
 $tunnelErrorLog = Join-Path $logDir 'medflow-public-tunnel-error.log'
-Remove-Item -LiteralPath $backendLog, $backendErrorLog, $tunnelLog, $tunnelErrorLog -Force -ErrorAction SilentlyContinue
 
 $backend = $null
 $tunnel = $null
 try {
-    Write-Host 'Starting local Medflow20 on http://127.0.0.1:7860 ...'
-    $backend = Start-Process -FilePath $python -ArgumentList '-m','uvicorn','backend.main:app','--host','127.0.0.1','--port','7860' -WorkingDirectory $projectRoot -RedirectStandardOutput $backendLog -RedirectStandardError $backendErrorLog -PassThru -NoNewWindow
-
+    # Check if backend on port 7860 is already running and ready
     $ready = $false
-    for ($i = 0; $i -lt 180; $i++) {
-        if ($backend.HasExited) { throw "Medflow stopped during startup. See $backendLog" }
-        try {
-            $health = Invoke-RestMethod -Uri 'http://127.0.0.1:7860/health' -TimeoutSec 2
-            if ($health.ready -eq $true -and $health.collection -eq 'thyroid_section_aware' -and [int]$health.active_chunks -gt 0) {
-                $ready = $true
-                break
-            }
-        } catch {}
-        Start-Sleep -Seconds 1
+    try {
+        $health = Invoke-RestMethod -Uri 'http://127.0.0.1:7860/health' -TimeoutSec 2 -ErrorAction SilentlyContinue
+        if ($health.ready -eq $true -and [int]$health.active_chunks -gt 0) {
+            $ready = $true
+            Write-Host '[Launcher] Reusing active Medflow20 server on http://127.0.0.1:7860' -ForegroundColor Green
+        }
+    } catch {}
+
+    if (-not $ready) {
+        Remove-Item -LiteralPath $backendLog, $backendErrorLog -Force -ErrorAction SilentlyContinue
+        Write-Host 'Starting local Medflow20 on http://127.0.0.1:7860 ...'
+        $backend = Start-Process -FilePath $python -ArgumentList '-m','uvicorn','backend.main:app','--host','127.0.0.1','--port','7860' -WorkingDirectory $projectRoot -RedirectStandardOutput $backendLog -RedirectStandardError $backendErrorLog -PassThru -NoNewWindow
+
+        for ($i = 0; $i -lt 180; $i++) {
+            if ($backend.HasExited) { throw "Medflow backend stopped unexpectedly. See $backendLog" }
+            try {
+                $health = Invoke-RestMethod -Uri 'http://127.0.0.1:7860/health' -TimeoutSec 2
+                if ($health.ready -eq $true -and [int]$health.active_chunks -gt 0) {
+                    $ready = $true
+                    break
+                }
+            } catch {}
+            Start-Sleep -Seconds 1
+        }
+        if (-not $ready) { throw "Medflow20 backend initialization timed out. See $backendLog" }
     }
-    if (-not $ready) { throw "Medflow20 did not become ready. See $backendLog" }
 
     Write-Host "Medflow20: READY | ChromaDB: READY | RAG: READY | Active chunks: $($health.active_chunks)" -ForegroundColor Green
 
@@ -88,12 +96,14 @@ try {
     $tunnel = $tunnelInfo.Process
     $publicUrl = $tunnelInfo.Url
     Write-Host ''
-    Write-Host "Public URL: $publicUrl" -ForegroundColor Cyan
-    Write-Host 'The URL will be recreated automatically if the network changes. Press Ctrl+C to stop.' -ForegroundColor Green
+    Write-Host "=================================================================" -ForegroundColor Cyan
+    Write-Host "  FINAL LIVE DEMO URL: $publicUrl" -ForegroundColor Green
+    Write-Host "=================================================================" -ForegroundColor Cyan
+    Write-Host 'The public URL remains active while this process runs. Press Ctrl+C to stop.' -ForegroundColor Yellow
 
     $failedPublicChecks = 0
     $nextCheck = [DateTime]::UtcNow
-    while (-not $backend.HasExited) {
+    while ($true) {
         if ($tunnel.HasExited) { $failedPublicChecks = 3 }
         if ([DateTime]::UtcNow -ge $nextCheck) {
             try {
@@ -103,7 +113,7 @@ try {
             $nextCheck = [DateTime]::UtcNow.AddSeconds(20)
         }
         if ($failedPublicChecks -ge 3) {
-            Write-Host 'Network/tunnel changed. Recreating the public HTTPS URL ...' -ForegroundColor Yellow
+            Write-Host 'Tunnel connection lost. Recreating public HTTPS URL ...' -ForegroundColor Yellow
             if (-not $tunnel.HasExited) { Stop-Process -Id $tunnel.Id -ErrorAction SilentlyContinue }
             $tunnelInfo = Start-QuickTunnel
             $tunnel = $tunnelInfo.Process
@@ -117,5 +127,5 @@ try {
 } finally {
     if ($tunnel -and -not $tunnel.HasExited) { Stop-Process -Id $tunnel.Id -ErrorAction SilentlyContinue }
     if ($backend -and -not $backend.HasExited) { Stop-Process -Id $backend.Id -ErrorAction SilentlyContinue }
-    Write-Host 'Medflow Public Mode stopped cleanly.'
+    Write-Host 'Medflow Public Tunnel stopped cleanly.'
 }
