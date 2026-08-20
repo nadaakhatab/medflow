@@ -1,196 +1,189 @@
-<<<<<<< HEAD
----
-title: Medflow Medical AI Assistant
-emoji: ??
-colorFrom: blue
-colorTo: indigo
-sdk: docker
-app_port: 7860
-pinned: false
----
-
 # Medflow Medical AI Assistant (Medflow20 Core RAG Engine)
 
-Specialized Thyroid Medical AI Platform built for clinical decision support, ATA guideline-grounded retrieval, lab interpretation (functioning, post-thyroidectomy, congenital), and PDF document vector search.
+[![Python 3.10+](https://img.shields.io/badge/python-3.10+-blue.svg)](https://www.python.org/downloads/)
+[![FastAPI](https://img.shields.io/badge/FastAPI-0.115+-009688.svg)](https://fastapi.tiangolo.com/)
+[![ChromaDB](https://img.shields.io/badge/VectorDB-ChromaDB-orange.svg)](https://www.trychroma.com/)
+[![License](https://img.shields.io/badge/license-MIT-green.svg)](LICENSE)
 
-## Features
-- **Medflow20 Core RAG Engine**: Hybrid Dense (BAAI/bge-small-en-v1.5 + ChromaDB) + Sparse (BM25) with Reciprocal Rank Fusion (RRF).
-- **Grounded Evidence & Citations**: Section-aware page-level citations and verified ATA guideline grounding.
-- **Specialized Lab Interpreter**: Multi-pathway assessment for functioning thyroid, post-thyroidectomy/ablated, congenital hypothyroidism, and pediatric cases.
-- **Dynamic PDF Search & Vector Indexing**: Upload custom medical PDFs to index into ChromaDB & BM25 in real-time.
-- **Production Single-Container Architecture**: FastAPI backend serving both API endpoints (/api/v1/*) and static SPA frontend (index.html) on port 7860.
-
-## API Endpoints
-- GET / � Medflow Single-Page Application (Web Interface)
-- GET /health � System Health & RAG Engine Readiness
-- POST /api/v1/query � Live Hybrid RAG Query & Synthesis
-- POST /api/v1/interpret-labs � Specialized Thyroid Lab Interpretation
-- GET /api/v1/search-docs � Vector & BM25 Document Search
-- POST /api/v1/upload-pdf � Dynamic Medical PDF Indexing
-- GET /api/v1/imported-documents � List Imported Documents
-=======
-# MedFlow: Evidence-Grounded Medical RAG for Thyroid Diseases
-
-> **MedFlow** is a citation-bound clinical decision support system designed to retrieve traceable, verified medical evidence from official clinical guidelines before any language-model answer generation occurs.
-
-$$\mathbf{Fluent\ Answer \neq Safe\ Answer}$$
-
-In clinical decision support, large language models (LLMs) often generate syntactically fluent, authoritative-sounding answers that mask subtle factual hallucinations, obsolete clinical guidelines, or hazardous dosing recommendations. MedFlow solves this foundational safety failure by enforcing **vector indexing traceability, empirical ranking validation, strict JSON schema validation, and deterministic refusal gating** before any generative response reaches the clinician.
+**Medflow** is an advanced, production-grade Clinical AI platform engineered for evidence-based medical decision support, American Thyroid Association (ATA) guideline-grounded retrieval, interactive thyroid lab interpretation, and dynamic PDF document search.
 
 ---
 
-## 📁 Modular 3-Day Project Architecture
+## 🌟 Key Features
 
-The project is structured into **3 independent, self-contained day modules**, each equipped with its own `README.md`, `config.py`, `.env`, interactive Jupyter Notebook, and automated test suite:
+- **Hybrid Dense-Sparse RAG Engine (Medflow20)**: Combines dense vector retrieval (`BAAI/bge-small-en-v1.5` + ChromaDB) with sparse lexical search (BM25) via Reciprocal Rank Fusion (RRF).
+- **Verifiable Clinical Citations**: Provides section-aware and page-level citations from official clinical guidelines for every answer.
+- **Specialized Lab Interpreter**: Multi-pathway assessment engine for functioning thyroid, post-thyroidectomy/ablated, congenital hypothyroidism, and pediatric cases.
+- **Dynamic PDF Ingestion & Indexing**: Real-time upload, parsing, and vector indexing of custom medical PDFs.
+- **Single-Port Desktop & Web Architecture**: Integrated FastAPI backend serving both REST API endpoints (`/api/v1/*`) and modern SPA UI (`index.html`) on port `7860`.
+- **Comprehensive Evaluation & Safety Framework**: Includes 4-day benchmark notebooks and test suites covering retrieval optimization, grounded generation, citation compliance, and refusal guardrails.
 
-```text
-medflow10/
-├── README.md                                # Master project documentation & architectural guide
-├── README_PROJECT_ANALYSIS.md               # In-depth engineering benchmark & analytical report
-├── config.py                                # Master configuration (LLM, retrieval parameters, thresholds)
-├── rag_pipeline.py                          # Master end-to-end clinical QA entry point
-├── requirements.txt                         # Unified project dependencies
-├── .env                                     # Configured Groq API Key & Model settings
-│
-├── day1/                                    # 🟢 DAY 1: DOCUMENT INGESTION & BASELINE
-│   ├── README.md                            # Day 1 technical guide & execution commands
-│   ├── config.py                            # Day 1 local configuration & path resolution
-│   ├── .env                                 # Day 1 environment variables
-│   ├── ingest.py                            # PDF loading, text cleaning, naive & section-aware chunking
-│   ├── day1_pipeline.py                     # Runnable Day 1 baseline pipeline
-│   ├── day1_task1_ingestion.ipynb           # Interactive Jupyter Notebook for Day 1
-│   └── test_day1.py                         # Automated unit tests for Day 1
-│
-├── day2/                                    # 🔵 DAY 2: RETRIEVAL OPTIMIZATION & BENCHMARKING
-│   ├── README.md                            # Day 2 technical guide & benchmark results
-│   ├── config.py                            # Day 2 local configuration & retrieval settings
-│   ├── .env                                 # Day 2 environment variables
-│   ├── evaluate_retrieval.py                # Ground Truth evaluation engine (Hit@k, Precision, MRR)
-│   ├── chunk_experiments.py                 # Chunk size experiments (100 vs 200 vs 500 tokens)
-│   ├── embedding_benchmark.py               # Embedding model comparison benchmark
-│   ├── reranker_experiment.py               # Cross-Encoder re-ranker trade-off analysis
-│   ├── validate_top_k.py                    # Top-K empirical validation (K=3, 4, 5)
-│   ├── day2_retrieval_optimization.ipynb    # Interactive Jupyter Notebook for Day 2
-│   └── test_day2.py                         # Automated unit tests for Day 2
-│
-├── day3/                                    # 🟣 DAY 3: GROUNDED GENERATION & CITATION
-│   ├── README.md                            # Day 3 technical guide & grounding rules
-│   ├── config.py                            # Day 3 local configuration & refusal thresholds
-│   ├── .env                                 # Day 3 environment variables
-│   ├── generator.py                         # Citation-grounded generator & schema validator
-│   ├── day3_grounded_generation.py          # Runnable Day 3 grounded QA & refusal demo
-│   ├── day3_grounded_generation.ipynb       # Interactive Jupyter Notebook for Day 3
-│   ├── test_day3.py                         # Automated unit test suite for Day 3
-│   └── test_day3_compliance.py              # Full 10-suite Day 3 compliance test suite
-│
-├── data/                                    # 11 Official Thyroid Guidelines & Brochures (204 pages)
-├── schema/
-│   └── response_schema.json                 # Master JSON Schema draft-07 for clinical answers
-├── evaluation/                              # Master Evaluation Datasets (Ground Truth & Refusal Benchmarks)
-│   ├── thyroid_ground_truth.json            # 16 official Ground Truth QA pairs
-│   ├── thyroid_ground_truth.csv             # Tabular Ground Truth
-│   ├── day3_refusal_test_cases.json         # 10 benchmark refusal test queries
-│   └── day3_refusal_test_cases.csv          # Tabular refusal benchmark
-├── results/                                 # Official Benchmark Scorecards & Frozen Configs
-│   ├── best_retrieval_config.json           # Final frozen retriever configuration
-│   └── retrieval_summary.csv                # Complete experiment comparison table
-└── chroma_db/                               # Persisted ChromaDB Vector Store
+---
+
+## 🏗️ System Architecture
+
+```
+                                  +-----------------------+
+                                  |   Web UI (index.html) |
+                                  +-----------+-----------+
+                                              |
+                                              v
+                                  +-----------------------+
+                                  |   FastAPI Backend     |
+                                  |     (port 7860)       |
+                                  +-----------+-----------+
+                                              |
+                        +---------------------+---------------------+
+                        |                                           |
+                        v                                           v
+         +-----------------------------+             +-----------------------------+
+         |   Hybrid Retriever Engine   |             |   Specialized Lab Engine    |
+         |  ChromaDB Dense + BM25 RRF  |             | Assessment & Risk Logic     |
+         +--------------+--------------+             +-----------------------------+
+                        |
+                        v
+         +-----------------------------+
+         | Citation-Grounded Generator |
+         |   Groq / Llama-3 / GPT-OSS  |
+         +-----------------------------+
 ```
 
 ---
 
-## 🚀 Quick Start & Installation
+## 🚀 Quick Start Guide
 
-### 1. Clone & Environment Setup
+### 1. Prerequisites
+- Python 3.10 or higher
+- Git
+
+### 2. Environment Setup
+Clone the repository and activate a virtual environment:
+
 ```bash
-# Activate virtual environment
+git clone https://github.com/nadaakhatab/medflow.git
+cd medflow
+
+# Create and activate virtual environment (Windows)
+python -m venv .venv
 .venv\Scripts\activate
 
 # Install dependencies
 pip install -r requirements.txt
 ```
 
-### 2. Configure API Key
-Create or edit `.env` in the root folder:
+### 3. Configure Environment Variables
+Create a `.env` file in the project root:
+
 ```env
-GROQ_API_KEY=gsk_your_groq_api_key_here
+GROQ_API_KEY=your_groq_api_key_here
 GROQ_MODEL=openai/gpt-oss-120b
 CONFIDENCE_THRESHOLD=0.50
+PORT=7860
+```
+
+### 4. Running the Application
+
+#### Option A: One-Click Desktop Launcher (Windows)
+Double-click `start_medflow.bat` or execute in PowerShell:
+```powershell
+.\start_medflow.ps1
+```
+*This launches the backend, checks system health, and automatically opens `http://127.0.0.1:7860` in your web browser.*
+
+#### Option B: Public HTTPS Tunnel Launcher
+To generate a secure public HTTPS URL (powered by Cloudflare Tunnel):
+```cmd
+start_medflow_public.bat
+```
+
+#### Option C: Direct Python Execution
+```bash
+python run_app.py
 ```
 
 ---
 
-## 🔬 Daily Workflows & Command Matrix
+## 📡 API Documentation
 
-| Day | Focus Area | Key Module | Runnable Script | Interactive Notebook | Automated Tests |
-| :---: | :--- | :--- | :--- | :--- | :--- |
-| **Day 1** | **Ingestion & Baseline** | [`day1/ingest.py`](file:///c:/Users/user/Desktop/medflow10/day1/ingest.py) | `python day1/day1_pipeline.py` | [`day1_task1_ingestion.ipynb`](file:///c:/Users/user/Desktop/medflow10/day1/day1_task1_ingestion.ipynb) | `python -m unittest day1/test_day1.py` |
-| **Day 2** | **Retrieval Optimization** | [`day2/evaluate_retrieval.py`](file:///c:/Users/user/Desktop/medflow10/day2/evaluate_retrieval.py) | `python day2/evaluate_retrieval.py` | [`day2_retrieval_optimization.ipynb`](file:///c:/Users/user/Desktop/medflow10/day2/day2_retrieval_optimization.ipynb) | `python -m unittest day2/test_day2.py` |
-| **Day 3** | **Grounded Generation** | [`day3/generator.py`](file:///c:/Users/user/Desktop/medflow10/day3/generator.py) | `python day3/day3_grounded_generation.py` | [`day3_grounded_generation.ipynb`](file:///c:/Users/user/Desktop/medflow10/day3/day3_grounded_generation.ipynb) | `python -m unittest day3/test_day3_compliance.py` |
+When the application is running, full interactive OpenAPI documentation is available at `http://127.0.0.1:7860/docs`.
 
----
+### Primary API Endpoints
 
-## 💡 Master End-to-End Clinical QA
-
-You can run the entire RAG pipeline from python:
-
-```python
-from rag_pipeline import ask_clinical_question
-
-# 1. Ask a supported thyroid question
-result = ask_clinical_question("What are the clinical symptoms of hypothyroidism?")
-print(result)
-
-# 2. Ask an unsupported question (triggers safe refusal)
-refusal = ask_clinical_question("What is the surgical chemotherapy protocol for glioblastoma?")
-print(refusal)
-```
-
-### Example Structured Output:
-```json
-{
-  "recommendation": "The clinical symptoms of hypothyroidism include fatigue, cold intolerance, dry skin, coarse brittle hair, mild weight gain (5-20 lbs), memory impairment, muscle cramps, peripheral edema, constipation, hoarse voice, and goiter.",
-  "evidence": "The booklet lists a comprehensive set of hypothyroidism symptoms covering energy loss, temperature intolerance, skin and hair changes, weight changes, cognitive changes, respiratory and musculoskeletal symptoms...",
-  "citations": [
-    {
-      "document": "Hypothyroidism_web_booklet.pdf",
-      "section": "Symptoms & Clinical Presentation",
-      "page": 5
-    }
-  ],
-  "confidence": "high"
-}
-```
+| Method | Endpoint | Description |
+| :--- | :--- | :--- |
+| `GET` | `/` | Serves the Medflow Single-Page Application |
+| `GET` | `/health` | System readiness and health check probe |
+| `POST` | `/api/v1/query` | Hybrid RAG query synthesis with verifiable citations |
+| `POST` | `/api/v1/interpret-labs` | Diagnostic evaluation of thyroid panel inputs |
+| `GET` | `/api/v1/search-docs` | Semantic vector and BM25 document search |
+| `POST` | `/api/v1/upload-pdf` | Upload and index custom PDF medical documents |
+| `GET` | `/api/v1/imported-documents` | Retrieve list of user-imported documents |
 
 ---
 
-## 📊 Key Verified Benchmarks
+## 📂 Project Structure
+
+```
+medflow/
+├── backend/                   # FastAPI REST services, database models, and auth
+│   ├── services/              # Medflow20 core engine wrapper
+│   ├── auth.py                # Authentication & JWT handler
+│   ├── main.py                # Application entry point & route handlers
+│   ├── models.py              # SQLAlchemy database schemas
+│   └── pdf_processor.py       # PDF extraction & text cleaner
+├── medflow20/                 # Medflow20 core RAG engine & study benchmarks
+│   ├── data/                  # Official ATA guidelines & medical brochures (11 PDFs)
+│   ├── day1/                  # Day 1: Document Ingestion & Baseline
+│   ├── day2/                  # Day 2: Retrieval Optimization & Benchmarking
+│   ├── day3/                  # Day 3: Grounded Generation & Citation Compliance
+│   ├── day4/                  # Day 4: Responsible AI, Safety & Risk Classifier
+│   ├── evaluation/            # Master Ground Truth datasets & test benchmarks
+│   ├── rag_pipeline.py        # Standalone RAG execution pipeline
+│   └── requirements.txt       # Engine-specific dependencies
+├── index.html                 # Modern responsive SPA Web Interface
+├── run_app.py                 # Single-port unified service launcher
+├── start_medflow.bat          # Desktop batch launcher
+├── start_medflow.ps1          # Desktop PowerShell launcher
+├── start_medflow_public.bat   # Public HTTPS tunnel launcher
+├── Dockerfile                 # Docker container specification
+├── docker-compose.yml         # Compose deployment configuration
+└── requirements.txt           # Master project dependencies
+```
+
+---
+
+## 📊 Empirical Benchmarks & Evaluation
 
 ### Day 2 Retrieval Optimization Scorecard (16 Ground Truth Questions)
-* **Embedding Model:** `BAAI/bge-small-en-v1.5` (L2 Normalized, Cosine Space)
-* **Chunking Strategy:** Section-Aware Context-Enriched (200 tokens)
-* **Hit@1:** `0.5625` (+200.0% over Day 1 Baseline)
-* **Hit@4:** `0.8750` (+55.6% over Day 1 Baseline)
-* **Precision@4:** `0.5312` (+82.1% over Day 1 Baseline)
-* **MRR:** `0.7031` (+82.4% over Day 1 Baseline)
-* **Mean Latency:** `20.53 ms` (-36.1% faster)
+- **Embedding Model**: `BAAI/bge-small-en-v1.5` (L2 Normalized, Cosine Space)
+- **Chunking Strategy**: Section-Aware Context-Enriched (200 tokens)
+- **Hit@1**: `0.5625` (+200.0% improvement over baseline)
+- **Hit@4**: `0.8750` (+55.6% improvement over baseline)
+- **Precision@4**: `0.5312` (+82.1% improvement over baseline)
+- **MRR**: `0.7031` (+82.4% improvement over baseline)
+- **Mean Latency**: `20.53 ms` (-36.1% latency reduction)
 
 ### Day 3 Grounding & Citation Compliance
-* **JSON Schema Enforcement:** 100% compliant with `schema/response_schema.json`.
-* **Citation Integrity:** 100% verified against retrieved chunks (fabricated sources automatically purged).
-* **Refusal Precision:** 10/10 refusal benchmark categories pass with `confidence = "insufficient"`.
+- **Schema Enforcement**: 100% compliant with JSON Schema validation.
+- **Citation Integrity**: 100% verified source matching against retrieved document chunks.
+- **Refusal Precision**: 10/10 out-of-domain queries successfully triggered safe refusal.
 
 ---
 
-## 🧪 Running the Global Test Suite
+## 🧪 Automated Testing
 
-To run all automated test suites across all 3 days simultaneously:
+Run the automated test suites:
 
 ```bash
-python -m unittest discover -s day1 -p "test_*.py" -v
-python -m unittest discover -s day2 -p "test_*.py" -v
-python -m unittest discover -s day3 -p "test_*.py" -v
+# Run Medflow20 study module tests
+python -m unittest discover -s medflow20/day1 -p "test_*.py" -v
+python -m unittest discover -s medflow20/day2 -p "test_*.py" -v
+python -m unittest discover -s medflow20/day3 -p "test_*.py" -v
+python -m unittest discover -s medflow20/day4 -p "test_*.py" -v
 ```
 
-All 18 automated tests pass with `OK`.
->>>>>>> origin/main
+---
+
+## 📄 License
+
+Distributed under the MIT License. See `LICENSE` for more information.
