@@ -1,0 +1,18 @@
+services:
+  - type: web
+    name: medflow-medical-rag
+    env: docker
+    plan: free
+    region: oregon
+    dockerfilePath: Dockerfile
+    envVars:
+      - key: APP_ENV
+        value: production
+      - key: PORT
+        value: "7860"
+      - key: SECURE_COOKIE
+        value: "true"
+      - key: DEV_AUTH_BYPASS
+        value: "false"
+      - key: SECRET_KEY
+        generateValue: true
