@@ -1,0 +1,318 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1" />
+  <meta name="theme-color" content="#06101d" />
+  <meta name="description" content="MedFlow — evidence-grounded thyroid clinical AI portfolio." />
+  <title>MedFlow — Evidence-Grounded Thyroid Intelligence</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+  <div class="noise"></div>
+  <div class="scroll-progress" id="scrollProgress"></div>
+
+  <header class="topbar glass">
+    <a class="brand" href="#top" aria-label="MedFlow home">
+      <span class="brand-mark"><span class="pulse-line"></span></span>
+      <span class="brand-copy"><strong>Med<span>Flow</span></strong><small>Evidence-Grounded Medical AI</small></span>
+    </a>
+    <nav class="nav" aria-label="Primary">
+      <a href="#overview">Overview</a>
+      <a href="#architecture">Architecture</a>
+      <a href="#modules">Modules</a>
+      <a href="#evaluation">Evaluation</a>
+      <a href="#safety">Safety</a>
+      <a href="#team">Team</a>
+    </nav>
+    <a class="judge-btn" href="#evaluation">Judge Mode <span>↗</span></a>
+  </header>
+
+  <main id="top">
+    <section class="hero section-shell" id="overview">
+      <div class="hero-grid">
+        <div class="hero-copy reveal">
+          <div class="eyebrow"><span class="live-dot"></span> Medical RAG • Thyroid Domain • Evidence First</div>
+          <h1>Clinical AI that can <em>show its work.</em></h1>
+          <p class="hero-lead">MedFlow is a thyroid-focused clinical RAG system that retrieves evidence first, generates second, then validates claims, citations, numbers, and safety before a response is returned.</p>
+
+          <div class="hero-actions">
+            <a class="btn primary" href="#differentiator">See the differentiator <span>↓</span></a>
+            <a class="btn ghost" href="#demo">Explore the product</a>
+          </div>
+
+          <div class="hero-metrics" aria-label="Validated project metrics">
+            <div class="metric tilt"><b data-count="11">11</b><span>Clinical PDFs</span></div>
+            <div class="metric tilt"><b data-count="204">204</b><span>Processed pages</span></div>
+            <div class="metric tilt"><b data-count="1470">1,470</b><span>Frozen chunks</span></div>
+            <div class="metric tilt"><b>Top‑4</b><span>Retrieval window</span></div>
+          </div>
+        </div>
+
+        <div class="hero-visual reveal" aria-label="Interactive 3D thyroid visualization">
+          <div class="orbital-ring ring-a"></div>
+          <div class="orbital-ring ring-b"></div>
+          <canvas id="thyroidCanvas" width="700" height="700"></canvas>
+          <div class="hero-card glass tilt" data-depth="18">
+            <span>Generation</span>
+            <strong>Groq • GPT‑OSS‑120B</strong>
+            <small>Structured evidence-only synthesis</small>
+          </div>
+          <div class="hero-card glass tilt card-b" data-depth="14">
+            <span>Retrieval</span>
+            <strong>BGE‑small • ChromaDB</strong>
+            <small>200 tokens • Top‑K 4</small>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell differentiator" id="differentiator">
+      <div class="section-kicker">01 • THE IDEA</div>
+      <div class="headline-row reveal">
+        <div>
+          <h2>The model draft is <span>not</span> the final answer.</h2>
+          <p>Most basic RAG demos stop at retrieve → generate. MedFlow adds a verification layer that changes the LLM from the authority into a controlled component inside an auditable clinical pipeline.</p>
+        </div>
+        <div class="proof-pill">Evidence → Generation → Verification</div>
+      </div>
+
+      <div class="compare-grid">
+        <article class="compare-card weak reveal tilt">
+          <div class="compare-label">Typical RAG</div>
+          <div class="mini-flow">
+            <span>Retrieve</span><i>→</i><span>Generate</span><i>→</i><span class="danger">Display</span>
+          </div>
+          <p>Fluent output can still contain unsupported claims, wrong context, fabricated numbers, or unsafe medical advice.</p>
+        </article>
+        <article class="compare-card strong reveal tilt">
+          <div class="compare-label">MedFlow</div>
+          <div class="mini-flow stacked">
+            <span>Retrieve</span><i>→</i><span>Generate</span><i>→</i><span>Verify claims</span><i>→</i><span>Check numbers</span><i>→</i><span>Resolve citations</span><i>→</i><span class="safe">Answer / Caution / Abstain</span>
+          </div>
+          <p>The final response is the result of a system decision — not just the model's confidence or wording.</p>
+        </article>
+      </div>
+    </section>
+
+    <section class="section-shell architecture" id="architecture">
+      <div class="section-kicker">02 • END‑TO‑END SYSTEM</div>
+      <div class="section-title reveal">
+        <h2>From PDF evidence to a verified answer.</h2>
+        <p>The frozen benchmark core is deliberately simple, measurable, and traceable.</p>
+      </div>
+
+      <div class="pipeline-stage reveal" id="pipelineStage">
+        <div class="pipeline-track"></div>
+        <button class="pipeline-node active" data-step="0"><span>01</span><b>Clinical PDFs</b><small>11 curated sources</small></button>
+        <button class="pipeline-node" data-step="1"><span>02</span><b>Token Chunks</b><small>200 tokens • 0 overlap</small></button>
+        <button class="pipeline-node" data-step="2"><span>03</span><b>BGE Embeddings</b><small>384‑dim normalized</small></button>
+        <button class="pipeline-node" data-step="3"><span>04</span><b>Chroma Retrieval</b><small>Top‑4 evidence</small></button>
+        <button class="pipeline-node" data-step="4"><span>05</span><b>[E1]…[E4]</b><small>Evidence packaging</small></button>
+        <button class="pipeline-node" data-step="5"><span>06</span><b>Grounded LLM</b><small>Structured JSON</small></button>
+        <button class="pipeline-node" data-step="6"><span>07</span><b>Verification</b><small>Claims • numbers • citations</small></button>
+        <button class="pipeline-node" data-step="7"><span>08</span><b>Safety Policy</b><small>Answer • caution • abstain</small></button>
+      </div>
+      <div class="pipeline-detail glass reveal" id="pipelineDetail">
+        <div class="detail-index">01</div>
+        <div><strong>Curated thyroid evidence</strong><p>Guidelines and educational references are the source of truth. Every downstream step preserves document, page, section, and chunk provenance.</p></div>
+        <div class="detail-tech"><span>Traceability</span><span>Controlled corpus</span><span>Page metadata</span></div>
+      </div>
+    </section>
+
+    <section class="section-shell modules" id="modules">
+      <div class="section-kicker">03 • PRODUCT WORKSPACE</div>
+      <div class="section-title reveal">
+        <h2>One workspace. Six ways to inspect the evidence.</h2>
+        <p>The interface translates the RAG backend into clinical workflows the committee can understand immediately.</p>
+      </div>
+
+      <div class="module-grid">
+        <article class="module-card tilt reveal" data-image="assets/rag-chat.png">
+          <div class="module-icon">◌</div><span class="module-no">01</span><h3>RAG Chat</h3><p>Ask thyroid questions and receive source-grounded answers with inspectable evidence.</p><button class="text-link">Open preview ↗</button>
+        </article>
+        <article class="module-card tilt reveal" data-image="assets/knowledge-base.png">
+          <div class="module-icon">▤</div><span class="module-no">02</span><h3>Knowledge Base</h3><p>Structured thyroid condition summaries designed for fast clinical navigation.</p><button class="text-link">Open preview ↗</button>
+        </article>
+        <article class="module-card tilt reveal" data-image="assets/disease-matrix.png">
+          <div class="module-icon">⌗</div><span class="module-no">03</span><h3>Disease Matrix</h3><p>Compare thyroid states side by side across biomarkers, symptoms, causes, and management.</p><button class="text-link">Open preview ↗</button>
+        </article>
+        <article class="module-card tilt reveal" data-image="assets/lab-interpreter.png">
+          <div class="module-icon">⌁</div><span class="module-no">04</span><h3>Lab Interpreter</h3><p>Context-aware thyroid lab workflows for functioning, post-thyroidectomy, and congenital states.</p><button class="text-link">Open preview ↗</button>
+        </article>
+        <article class="module-card tilt reveal" data-image="assets/pdf-search.png">
+          <div class="module-icon">⌕</div><span class="module-no">05</span><h3>PDF Search</h3><p>Inspect retrieved passages, pages, chunk IDs, and source context instead of trusting a black box.</p><button class="text-link">Open preview ↗</button>
+        </article>
+        <article class="module-card tilt reveal" data-image="assets/rag-architecture-ui.png">
+          <div class="module-icon">◇</div><span class="module-no">06</span><h3>Architecture View</h3><p>Expose the system flow visually so judges can understand how retrieval and grounding connect.</p><button class="text-link">Open preview ↗</button>
+        </article>
+      </div>
+      <div class="dev-note reveal"><strong>Transparency note:</strong> UI screenshots include development-stage product counters and architecture explorations. The benchmark figures on this portfolio use the frozen evaluated retrieval configuration below.</div>
+    </section>
+
+    <section class="section-shell evaluation" id="evaluation">
+      <div class="section-kicker">04 • MEASURED, NOT ASSUMED</div>
+      <div class="section-title reveal">
+        <h2>The numbers tell the engineering story.</h2>
+        <p>Metrics are separated by what they actually measure. Retrieval quality is not medical accuracy; automated faithfulness is not clinician validation.</p>
+      </div>
+
+      <div class="eval-grid">
+        <article class="score-card hero-score reveal tilt">
+          <span class="score-tag">Canonical retrieval</span>
+          <strong>53.12%</strong>
+          <h3>Precision@4</h3>
+          <p>Strict source + expected passage/page relevance.</p>
+        </article>
+        <article class="score-card reveal tilt"><span class="score-tag">Coverage</span><strong>87.50%</strong><h3>Hit@4</h3><p>At least one relevant chunk within the Top‑4 retrieval window.</p></article>
+        <article class="score-card reveal tilt"><span class="score-tag">Ranking</span><strong>0.7031</strong><h3>MRR</h3><p>Relevant evidence tends to surface early in the ranking.</p></article>
+        <article class="score-card reveal tilt"><span class="score-tag">Live Day 3</span><strong>7 / 7</strong><h3>Grounded tests</h3><p>Real Groq generation with structured citations and abstention cases.</p></article>
+      </div>
+
+      <div class="decision-lab reveal">
+        <div class="decision-copy">
+          <span class="mini-label">Why these choices?</span>
+          <h3>Every major retrieval component was benchmarked.</h3>
+          <ul>
+            <li><b>BGE-small selected</b> for stronger Hit@1 and MRR while staying practical on CPU.</li>
+            <li><b>200-token chunks selected</b> for focused passage retrieval.</li>
+            <li><b>Top‑K 4 selected</b> because K=5 added noise without extra coverage.</li>
+            <li><b>Cross-encoder reranker rejected</b> because the tested variant was slower and worse.</li>
+          </ul>
+        </div>
+        <div class="metric-bars" aria-label="Retrieval comparison">
+          <div><span>Day 1 baseline P@3</span><i style="--w:29.17%"></i><b>29.17%</b></div>
+          <div><span>Optimized chunking P@3</span><i style="--w:58.33%"></i><b>58.33%</b></div>
+          <div><span>Final strict P@4</span><i style="--w:53.12%"></i><b>53.12%</b></div>
+          <div><span>Document-level P@4</span><i class="secondary" style="--w:85.94%"></i><b>85.94%</b></div>
+        </div>
+      </div>
+
+      <div class="generalization reveal">
+        <div class="gen-head"><div><span class="mini-label">Safety generalization</span><h3>We preserved the failures instead of hiding them.</h3></div><div class="honesty-badge">Failure-driven engineering</div></div>
+        <div class="gen-cards">
+          <div class="gen-card"><span>Development before fixes</span><strong>21 / 28</strong><small>75.0%</small></div>
+          <div class="arrow-change">→</div>
+          <div class="gen-card caution"><span>Development regression</span><strong>17 / 28</strong><small>60.7%</small></div>
+          <div class="gen-card low"><span>Held-out first run</span><strong>2 / 15</strong><small>13.3%</small></div>
+          <div class="arrow-change">→</div>
+          <div class="gen-card good"><span>Held-out regression</span><strong>8 / 15</strong><small>53.3%</small></div>
+        </div>
+        <p class="gen-note">The same held-out set is labelled <b>regression</b> after the first run. The next unbiased validation step is a newly frozen Held-Out V2. This makes the evaluation history honest and defensible.</p>
+      </div>
+    </section>
+
+    <section class="section-shell safety" id="safety">
+      <div class="section-kicker">05 • SAFETY BY DESIGN</div>
+      <div class="section-title reveal">
+        <h2>Safety is a pipeline, not a disclaimer.</h2>
+        <p>MedFlow can refuse before an LLM call, downgrade an answer when evidence is partial, or reject generated claims that cannot be supported.</p>
+      </div>
+
+      <div class="safety-grid">
+        <article class="safety-card reveal tilt"><span class="safety-state allowed">ALLOWED</span><h3>General evidence request</h3><p>In-domain thyroid questions proceed to retrieval and grounded generation.</p></article>
+        <article class="safety-card reveal tilt"><span class="safety-state caution">NEEDS_CAUTION</span><h3>Patient-specific context</h3><p>The system can provide evidence-grounded information without pretending to diagnose or prescribe for an individual.</p></article>
+        <article class="safety-card reveal tilt"><span class="safety-state refuse">REFUSE / REDIRECT</span><h3>Unsafe or out-of-scope</h3><p>Personalized unsupported dosing, prompt injection, emergencies, and clear non-thyroid requests can be intercepted locally.</p></article>
+      </div>
+
+      <div class="verification-stack reveal">
+        <div class="verify-visual">
+          <div class="verify-ring"></div>
+          <div class="verify-core">VERIFY</div>
+          <span class="sat s1">Citation IDs</span>
+          <span class="sat s2">Claim support</span>
+          <span class="sat s3">Numbers & units</span>
+          <span class="sat s4">Evidence gate</span>
+        </div>
+        <div class="verify-copy">
+          <span class="mini-label">Independent checks</span>
+          <h3>Valid citation ≠ supported claim.</h3>
+          <p>The validator separates citation ID validity, metadata resolution, claim-to-evidence support, and numeric consistency. Ambiguous claims can be marked <b>REVIEW_REQUIRED</b> instead of being forced into a pass.</p>
+          <div class="chip-row"><span>SUPPORTED</span><span>UNSUPPORTED</span><span>REVIEW_REQUIRED</span></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="section-shell demo" id="demo">
+      <div class="section-kicker">06 • PRODUCT DEMO</div>
+      <div class="section-title reveal">
+        <h2>See the clinical workspace in action.</h2>
+        <p>Click any frame to inspect a full-size product screen.</p>
+      </div>
+
+      <div class="showcase reveal" id="showcase">
+        <div class="showcase-main tilt">
+          <img src="assets/home.png" alt="MedFlow home dashboard" id="showcaseImage" />
+          <div class="browser-chrome"><i></i><i></i><i></i><span>medflow / product workspace</span></div>
+        </div>
+        <div class="showcase-tabs" role="tablist">
+          <button class="active" data-img="assets/home.png" data-title="Home / Project Overview">Home</button>
+          <button data-img="assets/rag-chat.png" data-title="RAG Chat + Evidence Panel">RAG Chat</button>
+          <button data-img="assets/knowledge-base.png" data-title="Thyroid Knowledge Base">Knowledge</button>
+          <button data-img="assets/disease-matrix.png" data-title="Disease Matrix">Matrix</button>
+          <button data-img="assets/lab-interpreter.png" data-title="Context-Aware Lab Interpreter">Labs</button>
+          <button data-img="assets/pdf-search.png" data-title="PDF Vector Search">PDF Search</button>
+          <button data-img="assets/rag-architecture-ui.png" data-title="Architecture View">Architecture</button>
+        </div>
+        <div class="showcase-caption" id="showcaseCaption">Home / Project Overview</div>
+      </div>
+    </section>
+
+    <section class="section-shell roadmap" id="roadmap">
+      <div class="section-kicker">07 • NEXT</div>
+      <div class="section-title reveal">
+        <h2>Where MedFlow goes next.</h2>
+        <p>The roadmap focuses on better retrieval precision, stronger generalization, and clinician-facing validation — not feature bloat.</p>
+      </div>
+      <div class="roadmap-grid">
+        <article class="roadmap-card reveal"><span>01</span><h3>Hybrid Retrieval V2</h3><p>Evaluate dense BGE + BM25 + RRF against the frozen baseline using the same ground truth.</p></article>
+        <article class="roadmap-card reveal"><span>02</span><h3>Hierarchical Retrieval</h3><p>Retrieve precise child chunks, then expand parent or neighboring context for generation.</p></article>
+        <article class="roadmap-card reveal"><span>03</span><h3>Held‑Out V2</h3><p>Freeze a brand-new adversarial benchmark before execution to measure safety generalization honestly.</p></article>
+        <article class="roadmap-card reveal"><span>04</span><h3>Clinical Review Layer</h3><p>Add approve, edit, flag, and escalate workflows for expert adjudication and governance.</p></article>
+      </div>
+    </section>
+
+    <section class="section-shell team" id="team">
+      <div class="team-layout">
+        <div class="event-card team-photo-card reveal tilt">
+          <img src="assets/team-photo.png" alt="The five-person MedFlow team at Creativa Egypt" />
+          <div class="event-overlay team-photo-overlay">
+            <span>MEDFLOW TEAM • CREATIVA</span>
+            <strong>From research to retrieval, grounded generation, safety, and demo.</strong>
+          </div>
+        </div>
+        <div class="team-copy reveal">
+          <div class="section-kicker">08 • THE TEAM</div>
+          <h2>Five people. One evidence-first system.</h2>
+          <p class="team-intro">The team behind MedFlow — taking the project from medical-source research and retrieval benchmarking to grounded generation, independent safety evaluation, and the final product experience.</p>
+          <div class="team-list">
+            <div><span>AE</span><b>Adham Elsayed</b></div>
+            <div><span>NK</span><b>Nada Khatabb</b></div>
+            <div><span>NA</span><b>Nourhan Adel</b></div>
+            <div><span>ME</span><b>Magdy Elbassiouny</b></div>
+            <div><span>SH</span><b>Sandy Hisham</b></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="final-cta section-shell reveal">
+      <div><span class="mini-label">The one sentence to remember</span><h2>Can the system prove that the answer is supported?</h2><p>That question — not “can the LLM answer?” — is the foundation of MedFlow.</p></div>
+      <a class="btn primary" href="#top">Back to top ↑</a>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-brand">Med<span>Flow</span></div>
+    <p>Experimental clinical decision-support prototype for research and hackathon evaluation. Not a medical device and not a substitute for professional medical judgment.</p>
+    <div class="footer-tags"><span>Measured Retrieval</span><span>Grounded Generation</span><span>Verified Evidence</span><span>Safe Refusal</span></div>
+  </footer>
+
+  <div class="lightbox" id="lightbox" aria-hidden="true">
+    <button class="lightbox-close" aria-label="Close preview">×</button>
+    <img src="" alt="Full product preview" />
+  </div>
+
+  <script src="app.js"></script>
+</body>
+</html>
